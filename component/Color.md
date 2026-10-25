@@ -2,7 +2,7 @@
 layout: default
 title: Color 
 permalink: color.html
-description: "Short Description of Color"
+description: "Guidance for selecting accessible color palettes for data visualizations, including sequential, qualitative, and diverging color schemes."
 ---
 
 # Color 
