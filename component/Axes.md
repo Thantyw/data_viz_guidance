@@ -2,7 +2,7 @@
 layout: default
 title: Axes 
 permalink: axes.html
-description: "Short Description of Axes"
+description: "Best practices for designing and labeling chart axes to improve readability, accuracy, and interpretation of data visualizations."
 ---
 
 # Axes
