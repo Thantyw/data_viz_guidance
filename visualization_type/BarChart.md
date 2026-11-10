@@ -79,9 +79,26 @@ A **slope diagram** may be more appropriate when the main analytical question co
 
 ## Data Requirements and Statistical Considerations
 
-> **TODO (Phase 2):** Complete during individual enhancement work using applicable Census Bureau data and statistical guidance.
+For the Census data example on this page, the bar chart uses the U.S. Census Bureau American Community Survey (ACS) 2020–2024 5-Year Estimates, Subject Table S2701, *Selected Characteristics of Health Insurance Coverage in the United States*. The analytical measure is the percentage of the civilian noninstitutionalized population without health insurance coverage.
 
-Future development of this section should address required variables and units, geographic level and reference period, aggregation and denominators, missing or suppressed values, margins of error and uncertainty where applicable, and comparability across groups, geographies, or time periods.
+The example compares five jurisdictions: Delaware, the District of Columbia, Maryland, Pennsylvania, and Virginia. Geography is treated as the categorical variable, and the uninsured percentage is the quantitative measure represented by bar length. Percentages are displayed in percentage units, and the bars begin at zero so that their lengths remain proportional to the values being compared.
+
+ACS five-year estimates represent data collected across the full five-year period and should not be interpreted as estimates for only the final year. The published margins of error use a 90% confidence level and should be retained when evaluating statistical uncertainty. Differences between displayed estimates should not automatically be interpreted as statistically significant.
+
+The underlying data should also be reviewed for missing or suppressed values, annotations, consistent population definitions, and compatible denominators before visualization. Missing or unavailable Census values should not be treated as zero. When comparing or ranking jurisdictions, rounding and sampling uncertainty should also be considered. For example, Delaware and Maryland both have a displayed uninsured estimate of 6.3% for 2020–2024 and should not be ranked as different based only on the rounded estimates.
+
+**Example data specification**
+
+| Element | Specification |
+|---|---|
+| Census product | American Community Survey (ACS) 5-Year Estimates |
+| Table | S2701 – Selected Characteristics of Health Insurance Coverage in the United States |
+| Reference period | 2020–2024 |
+| Universe | Civilian noninstitutionalized population |
+| Measure | Population without health insurance coverage (%) |
+| Geography | Delaware, District of Columbia, Maryland, Pennsylvania, and Virginia |
+| Unit | Percent |
+| Uncertainty | Published 90% margin of error |
 
 ## Visualization-Specific Considerations
 
@@ -100,16 +117,60 @@ Relevant component guidance should also be consulted for axes, color, grids, leg
 
 ## Census Data Example
 
-> **TODO (Phase 2):** Add an example using public Census Bureau data.
+### Analytical Question
 
-The future example should identify the analytical question, Census dataset and table, geography, reference period, measure and units, reason for selecting a bar chart, and relevant limitations.
+How does the percentage of the civilian noninstitutionalized population without health insurance coverage compare across Delaware, the District of Columbia, Maryland, Pennsylvania, and Virginia?
+
+A horizontal bar chart is appropriate for this question because the primary analytical task is to compare one quantitative measure across a small number of discrete geographic categories. Bar length provides a common baseline for comparison, while the horizontal orientation provides sufficient space for readable jurisdiction labels.
+
+### Example Results
+
+| Geography | Uninsured population (%) | 90% margin of error |
+|---|---:|---:|
+| District of Columbia | 3.6% | ±0.3 percentage points |
+| Pennsylvania | 5.6% | ±0.1 percentage points |
+| Delaware | 6.3% | ±0.4 percentage points |
+| Maryland | 6.3% | ±0.1 percentage points |
+| Virginia | 6.9% | ±0.1 percentage points |
+
+**Source:** U.S. Census Bureau, American Community Survey, 2020–2024 ACS 5-Year Estimates, Subject Table S2701, *Selected Characteristics of Health Insurance Coverage in the United States*.
+
+The displayed estimates range from 3.6% in the District of Columbia to 6.9% in Virginia. Delaware and Maryland both display an uninsured estimate of 6.3%. Because ACS estimates are subject to sampling uncertainty and these values are rounded for display, the chart should not imply that jurisdictions with the same displayed estimate differ from one another.
+
+The values are descriptive survey estimates. The example does not test statistical significance or establish causal explanations for differences among jurisdictions. The 2020–2024 ACS five-year estimates represent the full five-year period and should not be interpreted as measurements for 2024 alone.
+
+### Example Visualization
+
+The final reproducible Python example will generate the following visualization:
+
+![Horizontal bar chart comparing uninsured population percentages across Delaware, the District of Columbia, Maryland, Pennsylvania, and Virginia using ACS 2020–2024 5-Year Estimates.](assets/BarChart1.png)
+
+**Text description:** The horizontal bar chart compares uninsured population percentages for five jurisdictions. The District of Columbia has the lowest displayed estimate at 3.6%, followed by Pennsylvania at 5.6%. Delaware and Maryland both display 6.3%, and Virginia has the highest displayed estimate at 6.9%. These descriptive estimates are subject to ACS sampling uncertainty and should not by themselves be interpreted as statistically significant differences.
 
 ## Developer Implementation
 
-> **TODO (Phase 2):** Add reproducible implementation guidance and code examples.
+### Python
 
-Future implementation guidance may include data preparation and reproducible Python and R examples, with documentation explaining how developers can adapt the examples to other Census datasets or geographic levels.
+The Python implementation for this example uses `pandas` for data preparation and `matplotlib` for visualization. The implementation will reproduce the horizontal bar chart using the validated ACS S2701 estimates from the project EDA workflow.
 
+The implementation should:
+
+- preserve the Census source, universe, reference period, measure, and geographic definitions;
+- retain the published margins of error for interpretation;
+- use geography as the categorical variable and uninsured percentage as the quantitative variable;
+- begin the quantitative scale at zero;
+- order the jurisdictions by the displayed estimate to support comparison;
+- use direct percentage labels so that values are not communicated through bar length alone;
+- use a horizontal orientation to support readable geographic labels; and
+- generate the final visualization as `assets/BarChart1.png`.
+
+The underlying data table should remain available as an accessible alternative to the visualization.
+
+> **Statistical note:** The visualization supports descriptive comparison of published ACS estimates. The chart alone should not be used to determine whether differences between jurisdictions are statistically significant.
+
+### R
+
+> **Planned Phase 2 enhancement:** Add a corresponding R implementation after the Python example has been validated. The R version should use the same Census source, analytical measure, geographies, ordering, labels, and interpretation boundaries so that the Python and R implementations can be evaluated for consistency and reproducibility.
 ## Common Errors and Misinterpretations
 
 | Issue | Why It Matters | Recommended Correction |
@@ -135,7 +196,10 @@ Future implementation guidance may include data preparation and reproducible Pyt
 - [ ] Data source, geography, reference period, and units are documented where applicable.
 - [ ] Relevant limitations, missing values, and statistical uncertainty are addressed where applicable.
 - [ ] Related component guidance has been reviewed.
-
+- [ ] The Census dataset, table, universe, reference period, geography, and measure are documented.
+- [ ] Published margins of error and interpretation limitations are addressed where applicable.
+- [ ] An accessible data-table alternative and meaningful text description accompany the example visualization.
+      
 ## Examples
 
 Existing Census Bureau bar chart examples should be retained here as they are reviewed and incorporated into the standardized page structure.
