@@ -17,12 +17,15 @@ Geographies:
     Delaware, District of Columbia, Maryland,
     Pennsylvania, and Virginia.
 
-Output:
-    results/BarChart1.png
+Input:
+    visualization_type/data/ACSST5Y2024.S2701-Data.csv
 
-The script reads the official Census flat CSV stored in the
-repository's data directory. Missing or unavailable values are
-not replaced with zero.
+Output:
+    visualization_type/assets/BarChart1.png
+
+The script reads the versioned Census flat CSV stored in the
+visualization_type/data directory. Missing or unavailable values
+are not replaced with zero.
 """
 
 from pathlib import Path
@@ -39,17 +42,21 @@ import pandas as pd
 # File locations
 # ---------------------------------------------------------------------
 
-ROOT = Path(__file__).resolve().parent
+# This script is stored in visualization_type/code/.
+CODE_DIR = Path(__file__).resolve().parent
+
+# The parent directory contains the guidance pages, data, and assets.
+VISUALIZATION_DIR = CODE_DIR.parent
 
 DATA_FILE = (
-    ROOT
+    VISUALIZATION_DIR
     / "data"
     / "ACSST5Y2024.S2701-Data.csv"
 )
 
 OUTPUT_FILE = (
-    ROOT
-    / "results"
+    VISUALIZATION_DIR
+    / "assets"
     / "BarChart1.png"
 )
 
