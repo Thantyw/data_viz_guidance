@@ -141,36 +141,65 @@ The values are descriptive survey estimates. The example does not test statistic
 
 ### Example Visualization
 
-The final reproducible Python example will generate the following visualization:
+The validated reproducible Python implementation generates the following visualization:
 
 ![Horizontal bar chart comparing uninsured population percentages across Delaware, the District of Columbia, Maryland, Pennsylvania, and Virginia using ACS 2020–2024 5-Year Estimates.](assets/BarChart1.png)
 
-**Text description:** The horizontal bar chart compares uninsured population percentages for five jurisdictions. The District of Columbia has the lowest displayed estimate at 3.6%, followed by Pennsylvania at 5.6%. Delaware and Maryland both display 6.3%, and Virginia has the highest displayed estimate at 6.9%. These descriptive estimates are subject to ACS sampling uncertainty and should not by themselves be interpreted as statistically significant differences.
+**Text description:** The horizontal bar chart compares uninsured population percentages for five jurisdictions. The District of Columbia has the lowest displayed estimate at 3.6%, followed by Pennsylvania at 5.6%. Delaware and Maryland both display 6.3%, and Virginia has the highest displayed estimate at 6.9%. Published 90% margins of error are shown to communicate sampling uncertainty. These descriptive estimates should not by themselves be interpreted as statistically significant differences.
 
 ## Developer Implementation
 
+The example is implemented in both Python and R using the same versioned ACS S2701 source data and analytical specifications. Both implementations were executed and validated within the sponsor-repository structure.
+
 ### Python
 
-The Python implementation for this example uses `pandas` for data preparation and `matplotlib` for visualization. The implementation will reproduce the horizontal bar chart using the validated ACS S2701 estimates from the project EDA workflow.
+The Python implementation uses `pandas` for data preparation and `matplotlib` for visualization. It reads the versioned ACS S2701 source file from the repository, validates the required Census fields and selected jurisdictions, converts the uninsured estimates and published margins of error to numeric values, and generates the horizontal bar chart.
 
-The implementation should:
+**Reproducible Python code:** [View `BarChart.py`](code/BarChart.py)
 
-- preserve the Census source, universe, reference period, measure, and geographic definitions;
-- retain the published margins of error for interpretation;
-- use geography as the categorical variable and uninsured percentage as the quantitative variable;
-- begin the quantitative scale at zero;
-- order the jurisdictions by the displayed estimate to support comparison;
-- use direct percentage labels so that values are not communicated through bar length alone;
-- use a horizontal orientation to support readable geographic labels; and
-- generate the final visualization as `assets/BarChart1.png`.
+The Python implementation:
 
-The underlying data table should remain available as an accessible alternative to the visualization.
-
-> **Statistical note:** The visualization supports descriptive comparison of published ACS estimates. The chart alone should not be used to determine whether differences between jurisdictions are statistically significant.
+- preserves the Census source, universe, reference period, measure, and geographic definitions;
+- uses `S2701_C05_001E` for the uninsured population percentage;
+- uses `S2701_C05_001M` for the published 90% margin of error;
+- treats geography as the categorical variable and uninsured percentage as the quantitative variable;
+- begins the quantitative scale at zero;
+- orders jurisdictions by the displayed estimate to support comparison;
+- uses direct percentage labels;
+- uses a horizontal orientation to support readable geographic labels; and
+- generates `assets/BarChart1.png`.
 
 ### R
 
-> **Planned Phase 2 enhancement:** Add a corresponding R implementation after the Python example has been validated. The R version should use the same Census source, analytical measure, geographies, ordering, labels, and interpretation boundaries so that the Python and R implementations can be evaluated for consistency and reproducibility.
+The R implementation reproduces the same Census data selection, analytical measure, geographic scope, ordering, zero baseline, direct labels, and published 90% margins of error used by the Python implementation.
+
+**Reproducible R code:** [View `BarChart.R`](code/BarChart.R)
+
+The R implementation generates its corresponding validated output using the same versioned Census source data. Minor differences in typography, spacing, or rendering may occur between Python and R because the two languages use different graphics systems; these differences do not change the underlying data or analytical interpretation.
+
+### Reproducible Data
+
+**Versioned source data:** [ACSST5Y2024.S2701-Data.csv](data/ACSST5Y2024.S2701-Data.csv)
+
+The repository uses a versioned ACS source snapshot rather than relying on a live API request at rendering time. This supports reproducibility by allowing the example to be rerun against the same source data used during validation.
+
+### Validation
+
+The Python and R implementations were executed against the same ACS S2701 source data and reproduced the same five jurisdiction estimates and published margins of error. Repository-integration testing also confirmed that the implementations can read the versioned source data and generate their expected outputs from the Phase 2 sponsor-repository structure.
+
+> **Statistical note:** This visualization supports descriptive comparison of published ACS estimates. The chart alone should not be used to determine whether differences between jurisdictions are statistically significant.
+
+### Maintenance Notes
+
+When updating this example:
+
+- preserve the Census table, universe, measure, geography, and reference-period definitions unless the documentation is intentionally revised;
+- verify the ACS variable definitions before substituting a newer source file;
+- retain published margins of error when uncertainty is relevant to interpretation;
+- do not convert missing, suppressed, or unavailable Census values to zero;
+- rerun both Python and R implementations after source-data or code changes; and
+- verify that documentation links, generated outputs, source notes, and accessibility descriptions remain current.
+
 ## Common Errors and Misinterpretations
 
 | Issue | Why It Matters | Recommended Correction |
@@ -199,7 +228,7 @@ The underlying data table should remain available as an accessible alternative t
 - [ ] The Census dataset, table, universe, reference period, geography, and measure are documented.
 - [ ] Published margins of error and interpretation limitations are addressed where applicable.
 - [ ] An accessible data-table alternative and meaningful text description accompany the example visualization.
-      
+
 ## Examples
 
 Existing Census Bureau bar chart examples should be retained here as they are reviewed and incorporated into the standardized page structure.
