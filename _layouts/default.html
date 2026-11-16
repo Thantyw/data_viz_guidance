@@ -5,6 +5,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if page.title and page.title != site.title %}{{ page.title | escape }} | {% endif %}{{ site.title | escape }}</title>
     
 <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
     
@@ -24,7 +25,21 @@
         z-index: 1000;
         overflow-y: auto;
       }
-
+      .main-content table th {
+  background-color: #f1f5f4;
+  color: #1b1b1b;
+  font-weight: 700;
+}
+      .main-content ul.task-list {
+  list-style: none;
+  padding-left: 0;
+}
+.main-content li.task-list-item {
+  list-style: none;
+}
+.main-content .task-list-item-checkbox {
+  margin-right: 0.5rem;
+}
       .custom-sidebar h3 { font-size: 1.1rem; color: #159957; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
       .custom-sidebar ul { list-style: none; margin: 0; padding: 0; }
       .custom-sidebar li { margin-bottom: 15px; }

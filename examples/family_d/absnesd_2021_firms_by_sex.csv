@@ -1,0 +1,277 @@
+# Source: U.S. Census Bureau
+# Dataset: 2021 Nonemployer Statistics by Demographics Series (NES-D): Company Summary
+# Table: AB2100NESD01
+# API: https://api.census.gov/data/2021/absnesd
+# Variable: FIRMALL, total number of employer and nonemployer firms
+# Uncertainty: FIRMALL_S, relative standard error in percent. FIRMALL_F = S means suppressed.
+# Year: 2021
+# Industry: NAICS2017 00, total for all sectors
+# Sex codes: 001 Total, 002 Female, 003 Male, 004 Equally male/female, 098 Unclassifiable
+# For sex 001-004 the row is also ethnicity 001, race 00, and veteran status 001 (all totals).
+# The unclassifiable row is published as sex 098, ethnicity 098, race 98, and veteran status 098.
+# Geography: United States and the 50 states plus the District of Columbia.
+# Saved: 2026-11-08 from the published AB2100NESD01 file.
+# The Census Data API data endpoint asked for a key in this environment, so these rows were
+# taken from the published table file and checked against data.census.gov for the same table.
+# Do not put an API key in this file. make_ownership_pies.py reads the API when CENSUS_API_KEY is set.
+geo_id,geo_label,sex,sex_label,firms,firm_flag,relative_standard_error
+0100000US,United States,001,Total,34373425,,0
+0100000US,United States,002,Female,13275523,,0
+0100000US,United States,004,Equally male/female,1427939,,.3
+0100000US,United States,003,Male,18605656,,0
+0100000US,United States,098,Unclassifiable,1061306,,.2
+0400000US01,Alabama,001,Total,444218,,.1
+0400000US01,Alabama,002,Female,180234,,.4
+0400000US01,Alabama,004,Equally male/female,15477,,2.7
+0400000US01,Alabama,003,Male,238451,,.4
+0400000US01,Alabama,098,Unclassifiable,10653,,1.4
+0400000US02,Alaska,001,Total,75439,,.2
+0400000US02,Alaska,002,Female,28260,,.9
+0400000US02,Alaska,004,Equally male/female,4102,,6.8
+0400000US02,Alaska,003,Male,40422,,.9
+0400000US02,Alaska,098,Unclassifiable,2406,,3.5
+0400000US04,Arizona,001,Total,675930,,.1
+0400000US04,Arizona,002,Female,266144,,.3
+0400000US04,Arizona,004,Equally male/female,34252,,3.1
+0400000US04,Arizona,003,Male,357455,,.2
+0400000US04,Arizona,098,Unclassifiable,17580,,2
+0400000US05,Arkansas,001,Total,278651,,.1
+0400000US05,Arkansas,002,Female,105014,,.4
+0400000US05,Arkansas,004,Equally male/female,14803,,3.6
+0400000US05,Arkansas,003,Male,151729,,.4
+0400000US05,Arkansas,098,Unclassifiable,7603,,3.4
+0400000US06,California,001,Total,4204010,,0
+0400000US06,California,002,Female,1607305,,.1
+0400000US06,California,004,Equally male/female,175828,,1.4
+0400000US06,California,003,Male,2299191,,.1
+0400000US06,California,098,Unclassifiable,121688,,.8
+0400000US08,Colorado,001,Total,711957,,.1
+0400000US08,Colorado,002,Female,277098,,.3
+0400000US08,Colorado,004,Equally male/female,36944,,2.7
+0400000US08,Colorado,003,Male,376821,,.3
+0400000US08,Colorado,098,Unclassifiable,20595,,1.3
+0400000US09,Connecticut,001,Total,364654,,.1
+0400000US09,Connecticut,002,Female,133611,,.6
+0400000US09,Connecticut,004,Equally male/female,13628,,3.2
+0400000US09,Connecticut,003,Male,204884,,.4
+0400000US09,Connecticut,098,Unclassifiable,12631,,1.7
+0400000US10,Delaware,001,Total,104249,,.3
+0400000US10,Delaware,002,Female,36068,,.8
+0400000US10,Delaware,004,Equally male/female,5179,,6.1
+0400000US10,Delaware,003,Male,53069,,.6
+0400000US10,Delaware,098,Unclassifiable,10431,,1.1
+0400000US11,District of Columbia,001,Total,76101,,.5
+0400000US11,District of Columbia,002,Female,32965,,.8
+0400000US11,District of Columbia,004,Equally male/female,1744,,13.7
+0400000US11,District of Columbia,003,Male,36725,,.8
+0400000US11,District of Columbia,098,Unclassifiable,4866,,3.7
+0400000US12,Florida,001,Total,3257455,,0
+0400000US12,Florida,002,Female,1304282,,.2
+0400000US12,Florida,004,Equally male/female,130258,,.8
+0400000US12,Florida,003,Male,1677713,,.2
+0400000US12,Florida,098,Unclassifiable,144704,,.3
+0400000US13,Georgia,001,Total,1315831,,.1
+0400000US13,Georgia,002,Female,576204,,.1
+0400000US13,Georgia,004,Equally male/female,36086,,1.6
+0400000US13,Georgia,003,Male,671256,,.2
+0400000US13,Georgia,098,Unclassifiable,31784,,1.3
+0400000US15,Hawaii,001,Total,138620,,.2
+0400000US15,Hawaii,002,Female,57774,,.7
+0400000US15,Hawaii,004,Equally male/female,6105,,4.5
+0400000US15,Hawaii,003,Male,70669,,.9
+0400000US15,Hawaii,098,Unclassifiable,4671,,4.3
+0400000US16,Idaho,001,Total,199314,,.2
+0400000US16,Idaho,002,Female,72823,,.5
+0400000US16,Idaho,004,Equally male/female,16647,,3.7
+0400000US16,Idaho,003,Male,104811,,.7
+0400000US16,Idaho,098,Unclassifiable,5130,,2.9
+0400000US17,Illinois,001,Total,1307015,,.1
+0400000US17,Illinois,002,Female,495616,,.2
+0400000US17,Illinois,004,Equally male/female,43503,,2.3
+0400000US17,Illinois,003,Male,712412,,.3
+0400000US17,Illinois,098,Unclassifiable,55481,,.6
+0400000US18,Indiana,001,Total,564826,,.1
+0400000US18,Indiana,002,Female,214759,,.4
+0400000US18,Indiana,004,Equally male/female,24548,,3.2
+0400000US18,Indiana,003,Male,307532,,.3
+0400000US18,Indiana,098,Unclassifiable,17988,,2
+0400000US19,Iowa,001,Total,280355,,.1
+0400000US19,Iowa,002,Female,99383,,.5
+0400000US19,Iowa,004,Equally male/female,16865,,2.9
+0400000US19,Iowa,003,Male,153662,,.5
+0400000US19,Iowa,098,Unclassifiable,10044,,2.9
+0400000US20,Kansas,001,Total,264383,,.1
+0400000US20,Kansas,002,Female,96327,,.5
+0400000US20,Kansas,004,Equally male/female,16161,,3.9
+0400000US20,Kansas,003,Male,143577,,.6
+0400000US20,Kansas,098,Unclassifiable,8517,,2.4
+0400000US21,Kentucky,001,Total,377011,,.1
+0400000US21,Kentucky,002,Female,138173,,.4
+0400000US21,Kentucky,004,Equally male/female,15438,,4.4
+0400000US21,Kentucky,003,Male,211780,,.4
+0400000US21,Kentucky,098,Unclassifiable,11618,,1.5
+0400000US22,Louisiana,001,Total,495729,,.1
+0400000US22,Louisiana,002,Female,204865,,.3
+0400000US22,Louisiana,004,Equally male/female,20268,,3.1
+0400000US22,Louisiana,003,Male,257096,,.4
+0400000US22,Louisiana,098,Unclassifiable,12601,,1.6
+0400000US23,Maine,001,Total,155980,,.1
+0400000US23,Maine,002,Female,,S,
+0400000US23,Maine,004,Equally male/female,8065,,6.8
+0400000US23,Maine,003,Male,87211,,.9
+0400000US23,Maine,098,Unclassifiable,5540,,1.9
+0400000US24,Maryland,001,Total,663579,,.1
+0400000US24,Maryland,002,Female,272615,,.4
+0400000US24,Maryland,004,Equally male/female,19740,,4.6
+0400000US24,Maryland,003,Male,350176,,.5
+0400000US24,Maryland,098,Unclassifiable,21049,,1.4
+0400000US25,Massachusetts,001,Total,717483,,.1
+0400000US25,Massachusetts,002,Female,259668,,.5
+0400000US25,Massachusetts,004,Equally male/female,23442,,3.5
+0400000US25,Massachusetts,003,Male,410309,,.3
+0400000US25,Massachusetts,098,Unclassifiable,25068,,1.3
+0400000US26,Michigan,001,Total,938416,,0
+0400000US26,Michigan,002,Female,368012,,.3
+0400000US26,Michigan,004,Equally male/female,34186,,2.5
+0400000US26,Michigan,003,Male,507778,,.3
+0400000US26,Michigan,098,Unclassifiable,28938,,1.5
+0400000US27,Minnesota,001,Total,542176,,.1
+0400000US27,Minnesota,002,Female,194529,,.5
+0400000US27,Minnesota,004,Equally male/female,27127,,4.4
+0400000US27,Minnesota,003,Male,304887,,.4
+0400000US27,Minnesota,098,Unclassifiable,15030,,1.3
+0400000US28,Mississippi,001,Total,280795,,.1
+0400000US28,Mississippi,002,Female,114775,,.5
+0400000US28,Mississippi,004,Equally male/female,9341,,6.2
+0400000US28,Mississippi,003,Male,149730,,.2
+0400000US28,Mississippi,098,Unclassifiable,6849,,1.9
+0400000US29,Missouri,001,Total,572180,,.1
+0400000US29,Missouri,002,Female,213534,,.5
+0400000US29,Missouri,004,Equally male/female,29591,,2.4
+0400000US29,Missouri,003,Male,313080,,.4
+0400000US29,Missouri,098,Unclassifiable,16074,,2.6
+0400000US30,Montana,001,Total,136191,,.3
+0400000US30,Montana,002,Female,48574,,.6
+0400000US30,Montana,004,Equally male/female,11581,,3.1
+0400000US30,Montana,003,Male,70894,,.8
+0400000US30,Montana,098,Unclassifiable,4742,,3
+0400000US31,Nebraska,001,Total,187391,,.1
+0400000US31,Nebraska,002,Female,65530,,.6
+0400000US31,Nebraska,004,Equally male/female,13392,,2
+0400000US31,Nebraska,003,Male,102023,,.4
+0400000US31,Nebraska,098,Unclassifiable,6345,,3.1
+0400000US32,Nevada,001,Total,333130,,.2
+0400000US32,Nevada,002,Female,131585,,.5
+0400000US32,Nevada,004,Equally male/female,14486,,5.8
+0400000US32,Nevada,003,Male,173519,,.6
+0400000US32,Nevada,098,Unclassifiable,13542,,2.2
+0400000US33,New Hampshire,001,Total,142742,,.4
+0400000US33,New Hampshire,002,Female,50016,,.7
+0400000US33,New Hampshire,004,Equally male/female,6458,,7.4
+0400000US33,New Hampshire,003,Male,80373,,.5
+0400000US33,New Hampshire,098,Unclassifiable,5593,,1.9
+0400000US34,New Jersey,001,Total,973051,,.1
+0400000US34,New Jersey,002,Female,337776,,.2
+0400000US34,New Jersey,004,Equally male/female,44156,,2.1
+0400000US34,New Jersey,003,Male,555405,,.1
+0400000US34,New Jersey,098,Unclassifiable,35210,,.9
+0400000US35,New Mexico,001,Total,165630,,.2
+0400000US35,New Mexico,002,Female,68508,,.5
+0400000US35,New Mexico,004,Equally male/female,8984,,6.1
+0400000US35,New Mexico,003,Male,83102,,.6
+0400000US35,New Mexico,098,Unclassifiable,5136,,2.1
+0400000US36,New York,001,Total,2211082,,0
+0400000US36,New York,002,Female,764865,,.3
+0400000US36,New York,004,Equally male/female,71910,,1
+0400000US36,New York,003,Male,1233802,,.2
+0400000US36,New York,098,Unclassifiable,140504,,.4
+0400000US37,North Carolina,001,Total,1043624,,.1
+0400000US37,North Carolina,002,Female,421669,,.3
+0400000US37,North Carolina,004,Equally male/female,44864,,2
+0400000US37,North Carolina,003,Male,548054,,.4
+0400000US37,North Carolina,098,Unclassifiable,29038,,1
+0400000US38,North Dakota,001,Total,76112,,.5
+0400000US38,North Dakota,002,Female,26285,,1
+0400000US38,North Dakota,004,Equally male/female,4738,,5.2
+0400000US38,North Dakota,003,Male,42336,,1.1
+0400000US38,North Dakota,098,Unclassifiable,3153,,4.7
+0400000US39,Ohio,001,Total,1041537,,0
+0400000US39,Ohio,002,Female,393598,,.3
+0400000US39,Ohio,004,Equally male/female,36224,,2.9
+0400000US39,Ohio,003,Male,578058,,.1
+0400000US39,Ohio,098,Unclassifiable,32655,,1.6
+0400000US40,Oklahoma,001,Total,379609,,.1
+0400000US40,Oklahoma,002,Female,141385,,.3
+0400000US40,Oklahoma,004,Equally male/female,20847,,3.9
+0400000US40,Oklahoma,003,Male,206205,,.4
+0400000US40,Oklahoma,098,Unclassifiable,10969,,2.4
+0400000US41,Oregon,001,Total,406681,,.1
+0400000US41,Oregon,002,Female,166247,,.5
+0400000US41,Oregon,004,Equally male/female,25855,,2.4
+0400000US41,Oregon,003,Male,204116,,.5
+0400000US41,Oregon,098,Unclassifiable,11159,,2.1
+0400000US42,Pennsylvania,001,Total,1117379,,.1
+0400000US42,Pennsylvania,002,Female,394464,,.2
+0400000US42,Pennsylvania,004,Equally male/female,41355,,1.9
+0400000US42,Pennsylvania,003,Male,644537,,.2
+0400000US42,Pennsylvania,098,Unclassifiable,36521,,1.5
+0400000US44,Rhode Island,001,Total,109937,,.2
+0400000US44,Rhode Island,002,Female,39573,,.6
+0400000US44,Rhode Island,004,Equally male/female,6086,,7.5
+0400000US44,Rhode Island,003,Male,60133,,.8
+0400000US44,Rhode Island,098,Unclassifiable,4344,,3
+0400000US45,South Carolina,001,Total,502764,,.1
+0400000US45,South Carolina,002,Female,206063,,.3
+0400000US45,South Carolina,004,Equally male/female,17222,,3.6
+0400000US45,South Carolina,003,Male,266293,,.4
+0400000US45,South Carolina,098,Unclassifiable,12787,,1.9
+0400000US46,South Dakota,001,Total,94003,,.2
+0400000US46,South Dakota,002,Female,30976,,.8
+0400000US46,South Dakota,004,Equally male/female,8014,,3.3
+0400000US46,South Dakota,003,Male,51303,,1.1
+0400000US46,South Dakota,098,Unclassifiable,3811,,3.8
+0400000US47,Tennessee,001,Total,705016,,.1
+0400000US47,Tennessee,002,Female,285258,,.3
+0400000US47,Tennessee,004,Equally male/female,20271,,2.8
+0400000US47,Tennessee,003,Male,382672,,.3
+0400000US47,Tennessee,098,Unclassifiable,16216,,3.1
+0400000US48,Texas,001,Total,3320431,,0
+0400000US48,Texas,002,Female,1321604,,.2
+0400000US48,Texas,004,Equally male/female,110924,,1
+0400000US48,Texas,003,Male,1807780,,.2
+0400000US48,Texas,098,Unclassifiable,80124,,.6
+0400000US49,Utah,001,Total,352005,,.1
+0400000US49,Utah,002,Female,122567,,.6
+0400000US49,Utah,004,Equally male/female,27887,,3.6
+0400000US49,Utah,003,Male,189937,,.6
+0400000US49,Utah,098,Unclassifiable,11213,,1.5
+0400000US50,Vermont,001,Total,80263,,.3
+0400000US50,Vermont,002,Female,28812,,1
+0400000US50,Vermont,004,Equally male/female,4184,,8.4
+0400000US50,Vermont,003,Male,43444,,.9
+0400000US50,Vermont,098,Unclassifiable,3527,,2.8
+0400000US51,Virginia,001,Total,845379,,.1
+0400000US51,Virginia,002,Female,338515,,.3
+0400000US51,Virginia,004,Equally male/female,31406,,2.1
+0400000US51,Virginia,003,Male,452259,,.3
+0400000US51,Virginia,098,Unclassifiable,23698,,1.5
+0400000US53,Washington,001,Total,665958,,.1
+0400000US53,Washington,002,Female,257968,,.5
+0400000US53,Washington,004,Equally male/female,44149,,2.3
+0400000US53,Washington,003,Male,347617,,.4
+0400000US53,Washington,098,Unclassifiable,17425,,1.6
+0400000US54,West Virginia,001,Total,113628,,.3
+0400000US54,West Virginia,002,Female,42307,,.9
+0400000US54,West Virginia,004,Equally male/female,5008,,6.8
+0400000US54,West Virginia,003,Male,61354,,.7
+0400000US54,West Virginia,098,Unclassifiable,4759,,1.8
+0400000US55,Wisconsin,001,Total,478191,,.1
+0400000US55,Wisconsin,002,Female,171331,,.5
+0400000US55,Wisconsin,004,Equally male/female,25427,,5.1
+0400000US55,Wisconsin,003,Male,267449,,.5
+0400000US55,Wisconsin,098,Unclassifiable,14480,,2.2
+0400000US56,Wyoming,001,Total,77280,,.3
+0400000US56,Wyoming,002,Female,25179,,.5
+0400000US56,Wyoming,004,Equally male/female,8141,,3
+0400000US56,Wyoming,003,Male,37945,,.7
+0400000US56,Wyoming,098,Unclassifiable,5913,,1.8
