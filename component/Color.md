@@ -2,7 +2,7 @@
 layout: default
 title: Color 
 permalink: color.html
-description: "How to choose accessible Census Bureau colors for sequential, qualitative, diverging, highlight, and no-data palettes."
+description: "Guidance for selecting accessible color palettes for data visualizations, including sequential, qualitative, and diverging color schemes."
 ---
 
 # Color

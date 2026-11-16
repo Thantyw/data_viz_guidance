@@ -1,0 +1,35 @@
+U.S. Census Proportional Symbol Map — 1920 vs. 2020
+
+DATA STORY
+How has the geographic distribution of the U.S. population changed over
+the century from 1920 to 2020?
+
+DATA SOURCES
+Historical population counts:
+https://www.census.gov/data/tables/time-series/dec/popchange-data-text.html
+
+Geographic boundaries:
+https://www2.census.gov/geo/tiger/TIGER2020/STATE/tl_2020_us_state.zip
+
+METHOD
+- Population values are decennial Census resident population counts.
+- Marker AREA is scaled linearly to population.
+- 1920 symbols are green; 2020 symbols are pink.
+- Symbols are offset horizontally to make both years visible.
+- State boundaries use 2020 TIGER/Line geography.
+- Alaska and Hawaii are displayed in separate inset panels.
+
+GEOGRAPHIC AND COMPARABILITY NOTE
+Alaska and Hawaii were territories in 1920, not states. Their 1920 values
+represent the populations of the territories that later became states.
+The 2020 values represent state populations. Interpret those two comparisons
+with this historical distinction in mind.
+
+OUTPUTS
+- population_comparison_1920_2020.png
+- population_comparison_1920_2020.pdf
+- population_comparison_1920_2020_data.csv
+
+REPRODUCIBILITY
+Run date: 2026-11-06T00:36:32
+Python: 3.13.18

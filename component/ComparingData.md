@@ -1,82 +1,215 @@
 ---
 layout: default
-title: Comparing Data and Values 
+title: Comparing Data and Values
 permalink: comparison.html
-description: "Short Description of Comparing Data and Values"
+description: "Guidance for designing data visualizations that support accurate comparison of values, categories, trends, and related datasets."
 ---
 
 # Comparing Data and Values
 
-When designing multiple data visualizations for comparison, the goal is to facilitate the user's ability to identify trends, patterns, and differences across various datasets or subsets of a single dataset. This approach leverages the human visual system's capacity for parallel processing, allowing for quick and intuitive comparisons.
+## Purpose and Overview
 
-Comparison data visualizations involve presenting two or more distinct visual representations of data in close proximity, specifically arranged to enable direct comparison by the viewer. 
+When designing data visualizations for comparison, the goal is to facilitate the user's ability to identify trends, patterns, similarities, and differences across datasets or subsets of a single dataset.
 
-**Small multiples** are a common and highly effective form of Comparison visualization. Small multiples are a series of identical or very similar graphs, each displaying a different subset of data using the same axes and scales.
+Comparison visualizations leverage the human visual system's capacity for parallel processing, allowing users to make quick and intuitive comparisons when visual elements are presented consistently.
 
-However, other approaches to Comparison data visualization exist:
-* **Juxtaposed Views:** Presenting fundamentally different chart types or different views of the same data side-by-side to allow for disparate comparisons. While scales might differ due to the nature of the data, consistent color palettes and shared legend are crucial for linking the views (e.g., a bar chart of total sales next to a treemap of product category distribution).
-* **Superimposed/Overlaid Views:** Plotting multiple data series on the same set of axes within a single chart, often distinguished by different line styles, colors, or markers. Effective for comparing a limited number of time series or distributions (e.g., multiple stock prices on one line graph or kernel density estimates for different groups on a single plot). Requires careful design to avoid clutter.
-* **Linked Views:** An interactive approach where selections or filters applied in one visualization dynamically update multiple other visualizations. This allows users to explore relationships and patterns across different data dimensions and representations in real-time (e.g., selecting points on a scatter plot highlights corresponding bars in a histogram and regions on a map).
-* **Difference Plots / Deviation Plots:** Charts specifically designed to show the magnitude and direction of difference between two datasets or a dataset and a reference point. This often involves plotting the actual difference value, rather than the raw data itself (e.g., a bar chart showing the year-over-year percentage change in revenue, or a line chart showing the deviation from a baseline forecast).
-* **Animation/Temporal Sequencing:** Presenting changes over time by rapidly cycling through a sequence of static frames, each representing a different time step. While not a simultaneous comparison, the human visual system can perceive movement and change, facilitating temporal comparison. This method is effective for showing evolution but can make precise quantitative comparisons challenging without additional interaction (e.g., a choropleth map animating population change over decades).
+Comparison data visualizations may present two or more visual representations in close proximity or combine related series within a single view. The selected approach should make the intended comparison clear while avoiding visual differences caused by inconsistent scales, encodings, or layouts.
 
-**Scales**
-When creating data visualizations that are designed to be compared, always use consistent axes. For example, if comparing vertical axes in separate graphs, then make all vertical axes the same. This allows users to accurately compare the data across each without having to consider the variances resulting from axes with different start and end values.
+## Comparison Approaches
 
-**Aspect Ratios**
-The shape of a line curve can look very different depending on the aspect ratio used in the axes. The aspect ratio is defined as the ratio between the width and height of a rectangle. Axes with an aspect ratio of 1:1 is a square, and a wide landscape rectangle could have an aspect ratio of 16:9. Lines could look very different depending on the aspect ratio. For example, a circle will look like an ellipse with a ‘landscape’ aspect ratio. See the figure below showing the three different lines/curves for the same data but using different aspect ratios.
+### Small Multiples
 
-![Comparison 1](assets/Comparison1.png)
+**Small multiples** are a common and highly effective form of comparison visualization. They consist of a series of identical or very similar graphs, each displaying a different subset of data using the same axes and scales.
 
-## Guidance  
+Small multiples allow users to scan across related views while maintaining a consistent visual structure.
 
-## Best Practices 
+### Juxtaposed Views
 
-### Essential 
+**Juxtaposed views** present different chart types or different views of the same data side by side.
 
-* Always maintain consistent scales and axes. This is paramount for accurate comparison. If the scales differ, visual differences will be misleading.
-* Always use consistent encoding. If a particular color represents a specific category in one visualization, it must represent the same category in all Comparison visualizations. Similarly, consistent use of shapes, line types, etc., is crucial.
-* Where appropriate, make it clear which comparisons are statistically significant.
+While scales may differ because of the nature of the data, consistent visual encodings and clear labeling are important for connecting related information across the views.
+
+For example, a bar chart showing totals might appear beside another visualization showing the distribution of those totals across categories.
+
+### Superimposed or Overlaid Views
+
+**Superimposed or overlaid views** plot multiple data series on the same set of axes within a single chart. Series may be distinguished using line styles, colors, markers, or other visual encodings.
+
+This approach can be effective for comparing a limited number of time series or distributions but requires careful design to avoid clutter.
+
+### Linked Views
+
+**Linked views** are interactive visualizations in which selections or filters applied to one visualization dynamically update or highlight related information in other visualizations.
+
+For example, selecting observations in a scatter plot may highlight corresponding bars in a histogram or geographic areas on a map.
+
+Linked views can help users explore relationships across different dimensions and representations of the data.
+
+### Difference or Deviation Plots
+
+**Difference plots or deviation plots** emphasize the magnitude and direction of differences between datasets or between a dataset and a reference point.
+
+Instead of displaying only raw values, these visualizations may display a calculated difference, such as year-over-year percentage change or deviation from a baseline.
+
+### Animation or Temporal Sequencing
+
+**Animation or temporal sequencing** presents change over time through a sequence of frames representing different time periods.
+
+Although this is not a simultaneous comparison, movement can help users perceive change and evolution over time. However, animation can make precise quantitative comparisons more difficult because users must remember values or positions from previous frames.
+
+When precise comparison is important, consider providing static views, small multiples, or another comparison method in addition to or instead of animation.
+
+## Scales
+
+When data visualizations are intended to be compared, use consistent axes and scales whenever the same measure is being compared.
+
+For example, if several charts display the same measure on their vertical axes, those axes should use the same range. This allows users to compare values across charts without having to compensate mentally for differences in axis starting points, ending points, or intervals.
+
+Inconsistent scales can create false impressions of similarity or difference even when the underlying data do not support those impressions.
+
+## Aspect Ratios
+
+The apparent shape and slope of a line can change depending on the aspect ratio of the plotting area.
+
+The aspect ratio is the relationship between the width and height of a visualization. A square has an aspect ratio of 1:1, while a wide landscape display may use an aspect ratio such as 16:9.
+
+The same data can therefore appear to have substantially different patterns when displayed using different aspect ratios.
+
+The figure below illustrates how the same data can produce visually different lines or curves when the plotting area's aspect ratio changes.
+
+![The same data displayed using different aspect ratios, illustrating how chart dimensions can change the apparent shape of a line](assets/Comparison1.png)
+
+## Guidance
+
+### Essential
+
+- Always maintain consistent scales and axes when visualizations are intended to support direct comparison and represent the same measure. If scales differ, visual differences may be misleading.
+- Always use consistent visual encoding. If a particular color represents a category in one visualization, it should represent the same category in related comparison visualizations.
+- Apply the same consistency to shapes, line types, symbols, and other encodings.
+- Clearly label measures, units, categories, and time periods so users understand what is being compared.
+- Where appropriate, make it clear which comparisons are statistically significant.
+- Ensure that the datasets, categories, measures, or time periods being compared have a logical relationship.
 
 ### Avoid
 
-      
- 
-## Additional Recommendations 
+- Avoid inconsistent axes or scales for directly comparable measures.
+- Avoid changing colors, symbols, line styles, or category ordering between related charts without a meaningful reason.
+- Avoid comparing unrelated data simply because they can be placed side by side.
+- Avoid layouts that require excessive eye movement or make it difficult to associate related information.
+- Avoid aspect-ratio differences that unintentionally change the apparent pattern of comparable data.
+- Avoid overcrowding overlaid visualizations with too many series.
+- Avoid animation when users need to make precise comparisons between values that are not visible simultaneously.
 
-### Recommended  
+## Additional Recommendations
 
-* Provide clear and consistent labeling.  Labels for axes, titles, and legends should be uniform across all visualizations to avoid confusion.
-* Align elements for easy scanning. Arrange charts in a grid or a clear linear fashion (horizontally or vertically) to facilitate quick eye movement between them.
-* Provide context. Even when comparing, each individual visualization should ideally still be understandable on its own to some degree. Include titles or brief descriptions for each chart if necessary.
-* Use a consistent visual hierarchy. Ensure that the most important information is visually prominent across all charts.
-* Never force comparisons of unrelated data: Only compare data that has a logical relationship and where a comparison will yield meaningful insights.
-* Highlight key differences or similarities. If there are specific insights you want the user to glean, consider subtle annotations or visual cues to draw attention to them (e.g., highlighting a specific data point across all charts).
+### Recommended
 
-### Not Recommended  
+- Provide clear and consistent labeling. Axis labels, titles, legends, and annotations should use consistent terminology across related visualizations.
+- Align elements for easy scanning. Arrange charts in a grid or clear horizontal or vertical sequence to facilitate comparison.
+- Provide sufficient context. Each visualization should remain understandable on its own to an appropriate degree.
+- Use a consistent visual hierarchy so the same types of information receive similar emphasis across related charts.
+- Highlight important differences or similarities when they are central to the analytical message.
+- Use subtle annotations or visual cues when they help users identify the intended comparison.
+- Keep category ordering consistent across related visualizations whenever possible.
+- Use direct labeling where it reduces the effort required to connect categories or series across views.
 
+### Not Recommended
 
-## Examples 
+- Do not force comparisons between data that do not have a meaningful analytical relationship.
+- Do not manipulate axis ranges or aspect ratios to exaggerate or minimize differences.
+- Do not use inconsistent visual encodings for the same categories across related charts.
+- Do not add unnecessary visual variation merely to make individual charts look different.
+- Do not assume that proximity alone makes two visualizations meaningfully comparable.
 
-***Example 1:*** Bars, part 1
+## Choosing a Comparison Approach
 
-![Comparison 2](assets/Comparison2.png)
+| Comparison Need | Approach | Consideration |
+|---|---|---|
+| Compare the same measure across categories, groups, or geographies | Small multiples | Use consistent axes, scales, encodings, and layout. |
+| Compare different but related views | Juxtaposed views | Clearly communicate the relationship between the views. |
+| Compare a limited number of related series on the same scale | Superimposed or overlaid view | Avoid clutter and distinguish series consistently. |
+| Explore relationships interactively across several views | Linked views | Ensure interactions and selections are understandable and accessible. |
+| Emphasize change from a baseline or reference | Difference or deviation plot | Clearly define the reference point and calculation. |
+| Show evolution across time | Animation or temporal sequencing | Consider static alternatives when precise comparisons are important. |
+| Compare exact values | Table | Useful when numerical precision is more important than pattern recognition. |
 
-#### Why it Fails
+## Accessibility
 
-In both examples above, it appears that the "Col 1" values (left-most bars) are nearly identical. However, if you look closely at the tick marks on each y-axis, you'll see that the "Col 1" value in the second example is thirty percentage points less than it is in the first example.
+- Do not rely on color alone to communicate differences among categories or series.
+- Use consistent labels, symbols, patterns, line styles, or direct labeling where appropriate.
+- Maintain sufficient contrast for text and graphical elements.
+- Ensure related charts have clear titles or labels so users can determine what is being compared.
+- Provide accessible alternatives for interactive or animated comparison views.
+- When animation is used, provide controls that allow users to pause, stop, or navigate the sequence where applicable.
+- Provide underlying values in an accessible table or equivalent format when precise values are important.
+- Alt text should communicate the primary comparison, important differences, and relevant trends rather than merely listing chart types.
+- See [508 Compliance](508.html), [Color](color.html), and [Typography](typography.html) for general accessibility and presentation guidance.
 
-A data visualization is designed to add visual dimension to data, but if the visualized elements give users false impressions of the data, than the data visualization isn’t useful. For these reasons, it is important that the y-axis be consistent across all data visualizations that are designed for comparison.
+## Common Errors and Misinterpretations
 
----
+| Issue | Why It Matters | Recommended Correction |
+|---|---|---|
+| Inconsistent scales | Can make similar values appear different or different values appear similar. | Use the same scale for directly comparable measures. |
+| Inconsistent visual encoding | Forces users to relearn colors, symbols, or categories between views. | Use consistent encodings across related visualizations. |
+| Different aspect ratios | Can change the apparent shape or steepness of patterns. | Use consistent dimensions when visual shape is part of the comparison. |
+| Excessive overplotting | Makes individual series difficult to distinguish. | Reduce the number of series or use small multiples. |
+| Unrelated comparisons | Can imply relationships that have little analytical meaning. | Compare data with a clear logical or analytical relationship. |
+| Animation for precise values | Requires users to remember previous frames. | Use small multiples, static comparisons, or a table when precision is important. |
+| Inconsistent category ordering | Makes scanning and comparison unnecessarily difficult. | Maintain a consistent order across related views. |
 
-***Example 2:*** Bars, part 2
+## Publication Quality Checklist
 
-![Comparison 3](assets/Comparison3.png)
+- [ ] The analytical purpose of the comparison is clear.
+- [ ] The datasets, categories, measures, or time periods have a meaningful relationship.
+- [ ] Directly comparable charts use consistent scales and axes.
+- [ ] Comparable visualizations use consistent aspect ratios where appropriate.
+- [ ] Colors, symbols, line styles, and other encodings are used consistently.
+- [ ] Category ordering is consistent across related views where appropriate.
+- [ ] Titles, labels, units, and legends use consistent terminology.
+- [ ] Important differences or similarities are identifiable without unnecessary visual complexity.
+- [ ] Statistical significance is communicated where appropriate.
+- [ ] Overlaid views do not contain excessive series or clutter.
+- [ ] Animation is not being used when precise static comparison would be more effective.
+- [ ] Color is not the only means of communicating differences.
+- [ ] Accessible alternatives are available for interactive or animated content where applicable.
+- [ ] The comparison does not create a misleading impression through inconsistent scales, dimensions, or visual encodings.
 
-#### Why it Meets the Requirements
+## Examples
 
-Using the same data as the first set of examples, these preferred examples feature a consistent y-axis that make it easier to distinguish differences between each chart. The result produces a pair of data visualizations where the changes in values correspond to the changes in each visualization.
+### Example 1: Inconsistent Y-Axes
 
-The effectiveness of any Comparison visualization hinges on consistency in design elements and a clear intention to highlight differences or similarities.
+The following pair of bar charts demonstrates why consistent axes are important when visualizations are intended for comparison.
 
+![Two bar charts using inconsistent y-axis scales, making the left-most bars appear more similar than their values indicate](assets/Comparison2.png)
+
+#### Why It Fails
+
+In both charts, the "Col 1" values appear nearly identical. However, examining the tick marks on each y-axis shows that the "Col 1" value in the second chart is thirty percentage points lower than the value in the first chart.
+
+A data visualization adds visual structure to data, but if that structure gives users a false impression of the underlying values, the visualization does not support accurate interpretation.
+
+For this reason, the y-axis should remain consistent across visualizations that are intended for direct comparison.
+
+### Example 2: Consistent Y-Axes
+
+The following example uses the same underlying data but applies consistent y-axis scales.
+
+![Two bar charts using consistent y-axis scales so differences in values correspond to visible differences between the charts](assets/Comparison3.png)
+
+#### Why It Meets the Requirements
+
+Using consistent y-axis scales makes differences between the charts easier to interpret accurately. Changes in the underlying values correspond more directly to changes in the visual representation.
+
+The effectiveness of comparison visualization depends on consistency in design elements and a clear analytical intention to highlight meaningful differences or similarities.
+
+## Related Pages
+
+- [Axes](axes.html): guidance for scales, tick marks, labels, and consistent axes.
+- [Axes-Dual or Double-Y](axesdual.html): guidance on the risks and limited appropriate uses of dual axes.
+- [Bar Chart](barchart.html): guidance for comparing categorical values.
+- [Dot Plot Chart](dotplotchart.html): guidance for comparing categorical values using position.
+- [Slope Diagram](slopediagram.html): guidance for comparing values and changes between two points.
+- [Tables](table.html): guidance for comparisons requiring exact values.
+- [Typography](typography.html): guidance for consistent and readable text.
+- [508 Compliance](508.html): general accessibility requirements.
+- [Color](color.html): guidance for consistent and accessible color use.
