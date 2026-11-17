@@ -1,6 +1,3 @@
-Add Accessibility and Related Pages to Family D guidance pages.
- 
-Pie, Donut, Treemap, Sankey, and both Grid files get a short Accessibility section before the Census Data Example(s), without claiming 508 compliance. The Pie Chart Accessibility Review is kept as developer checks, and its "4.5 to 1" typo is fixed to "4.5:1". All pages in the set get Related Pages with existing permalinks. Component pages other than Grids get Related Pages only. The 508 page's Color sentence is now a real link. No shared layout, workflow, or JavaScript files are changed.
 ---
 layout: default
 title: Notes 
