@@ -1,0 +1,1 @@
+Small-multiple area charts showing the estimated number of people below the poverty threshold in Florida, Georgia, Virginia across ACS 1-year releases 2021–2024. All panels use a common zero-based vertical scale. Refer to the accompanying table for exact values and 90% margins of error; no significance test of year-to-year changes is implied.

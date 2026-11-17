@@ -1,0 +1,20 @@
+{
+  "source_mode": "api",
+  "year": 2024,
+  "geographies": [
+    "Florida"
+  ],
+  "mode": "percent",
+  "validation": [
+    {
+      "NAME": "Florida",
+      "total": 23372215,
+      "male": 11488598,
+      "female": 11883617,
+      "age_bins_reconciled": true
+    }
+  ],
+  "api_key_saved": false,
+  "note": "Manual Section 508/WCAG testing required; statistical results require source review.",
+  "python": "3.13.18"
+}

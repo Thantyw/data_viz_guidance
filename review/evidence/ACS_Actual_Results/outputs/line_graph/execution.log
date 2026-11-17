@@ -1,0 +1,19 @@
+Saved 6 files to /content/ACS_Examples_Builder/acs_generated_examples/outputs/line_graph
+   state  year  estimate_2024_dollars  moe_90_2024_dollars
+ Florida  2021           73061.560197           492.391029
+ Florida  2022           74281.894373           660.254923
+ Florida  2023           75464.806068           593.951700
+ Florida  2024           77735.000000           564.000000
+ Georgia  2021           77113.069442           824.899795
+ Georgia  2022           78069.785441           685.979141
+ Georgia  2023           76824.615767           857.472732
+ Georgia  2024           79991.000000           633.000000
+   Texas  2021           77581.130561           594.344936
+   Texas  2022           77477.056590           474.826187
+   Texas  2023           78006.342893           485.866902
+   Texas  2024           79721.000000           564.000000
+Virginia  2021           93801.070347           846.912570
+Virginia  2022           92042.323067           817.815757
+Virginia  2023           92573.085547           998.497659
+Virginia  2024           92090.000000           831.000000
+

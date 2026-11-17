@@ -109,3 +109,6 @@ navigation:
     sub_pages:
       - title: References
         url: references
+exclude:
+  - review/baseline_originals
+  - review/proposed_before_combination

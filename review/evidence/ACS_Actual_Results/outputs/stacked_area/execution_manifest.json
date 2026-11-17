@@ -1,0 +1,28 @@
+{
+  "source": "U.S. Census Bureau ACS 1-Year Detailed Table B01001",
+  "years": [
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "states": [
+    "Florida",
+    "Georgia"
+  ],
+  "categories": "male/female; exclusive, exhaustive partition of total",
+  "total_reconciliation": "passed",
+  "unit": "population count, millions for chart",
+  "python": "3.13.18",
+  "pandas": "2.2.3",
+  "matplotlib": "3.10.0",
+  "run_utc": "2026-11-10T20:27:12.846722+00:00",
+  "api_key_saved": false,
+  "input_metadata": {
+    "input_mode": "api",
+    "local_input": null,
+    "credentials_saved": false,
+    "source_provenance": "Census API"
+  },
+  "note": "All outputs require source and accessibility review before publication."
+}

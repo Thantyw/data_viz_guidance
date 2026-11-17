@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Line Graph</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <style>body{max-width:70rem;margin:2rem auto;padding:0 1rem;font:17px/1.6 system-ui,sans-serif;color:#171717;background:#fff}img{max-width:100%;height:auto}table{border-collapse:collapse;display:block;overflow:auto}th,td{border:1px solid #888;padding:.4rem;text-align:left}a{color:#0645ad}h1,h2,h3{line-height:1.25}pre{overflow:auto}</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Line Graph</h1>
+</header>
+<h1 id="line-graph">Line Graph</h1>
+<p><strong>Also known as:</strong> line chart, line plot, line diagram.
+A <strong>spaghetti plot</strong> is a special case containing many
+overlapping lines; it is not a synonym for every line graph.</p>
+<h2 id="applying-this-guidance">Applying this guidance</h2>
+<p>Apply the <a
+href="https://www2.census.gov/about/policies/quality/quality-standards.pdf">Census
+Bureau Statistical Quality Standards</a>, revised September 29, 2026,
+within their stated scope. The chart-selection advice and implementation
+checks on this page explain practical design choices; they do not create
+additional agency mandates. Treat <strong>Essential</strong> items as
+the core design conditions for this chart, and confirm formal
+applicability through the program’s review process.</p>
+<p>Coordinate this page with <a href="../../component/titles.md">Titles
+and Subtitles</a>, <a href="../../component/Legend.md">Legends</a>, <a
+href="../../component/Source.md">Sources</a>, and <a
+href="uncertainty.html">Visualizing Uncertainty</a>. Keep detailed
+component guidance in those shared pages rather than duplicating it
+here.</p>
+<h2 id="purpose-and-overview">1. Purpose and Overview</h2>
+<p>A line graph connects ordered observations to show change,
+continuity, or patterns across a meaningful sequence—most often time. It
+is useful for identifying upward or downward trends, turning points,
+gaps, and differences between a small number of comparable series.
+Connecting points implies meaningful order and suggests values between
+the displayed observations; do not use it for unrelated categories.</p>
+<p>Line graphs emphasize the <strong>direction and rate of
+change</strong>, but precise magnitudes, units, and uncertainty still
+matter. A line represents observations or estimates—not proof that a
+trend is statistically significant.</p>
+<h2 id="when-to-use">2. When to Use</h2>
+<p>Use a line graph when observations have a meaningful order, a
+comparable measure is available at successive periods, and changes
+across periods are central to the analytical question.</p>
+<h3 id="essential">Essential</h3>
+<ul>
+<li>Label the time/reference axis, outcome measure, units, geographic
+universe, and data source.</li>
+<li>Make each series identifiable through direct labels or a legend
+supported by noncolor cues; do not rely on hover alone.</li>
+<li>Plot periods at their actual positions when spacing is irregular.
+Explain substantive breaks in collection, definitions, or
+methodology.</li>
+<li>Represent missing or unavailable observations with a visible gap or
+documented discontinuity; never silently connect missing periods.</li>
+<li>Keep series legible and explain limitations affecting
+interpretation, including survey uncertainty where applicable.</li>
+</ul>
+<h3 id="avoid">Avoid</h3>
+<ul>
+<li>Connecting unordered categories or incompatible measures as though
+they form a continuous trend.</li>
+<li>Treating the number of lines as a universal accessibility threshold.
+Reduce clutter based on legibility and user tasks, not solely on a
+six-series rule.</li>
+<li>Presenting an interactive highlight as the sole means of identifying
+a series; keyboard and noninteractive alternatives are essential.</li>
+<li>Describing a visual increase/decrease as statistically meaningful
+without an appropriate test.</li>
+</ul>
+<h2 id="when-to-use-an-alternative">3. When to Use an Alternative</h2>
+<p>Consider another chart if the main question is a single-period
+comparison, exact values, part-to-whole composition, or dozens of
+crowded series. If observations occur only at disconnected or unordered
+categories, a dot or bar chart may communicate them more faithfully.
+When changes between periods are not directly comparable, avoid joining
+estimates into a misleading trend.</p>
+<p><strong>Recommended:</strong> Use a simple line graph for a few
+comparable time series; consider small multiples when the series crowd
+each other.</p>
+<p><strong>Not recommended:</strong> A dense, color-dependent spaghetti
+plot for a static public report without readable labels or a usable
+alternative.</p>
+<h2 id="choosing-between-alternatives">4. Choosing Between
+Alternatives</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Analytical goal</th>
+<th>Alternative visualization</th>
+<th>Why it may be preferable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Compare many separate time series</td>
+<td>Small multiples</td>
+<td>Repeated panels reduce overlap; scales must be consistently
+described</td>
+</tr>
+<tr class="even">
+<td>Compare values at one period</td>
+<td>Dot plot or bar chart</td>
+<td>Emphasizes magnitudes without implying a temporal path</td>
+</tr>
+<tr class="odd">
+<td>Show part-to-whole composition over time</td>
+<td>Stacked area chart</td>
+<td>Shows composition when categories form a valid exclusive partition;
+not appropriate for overlapping categories</td>
+</tr>
+<tr class="even">
+<td>Check exact values or assistive-technology access</td>
+<td>Accessible data table</td>
+<td>Supports precise lookup and interpretation of missing values</td>
+</tr>
+<tr class="odd">
+<td>Show one estimate with uncertainty for each time point</td>
+<td>Line with error bars or a documented interval band</td>
+<td>Communicates precision, provided the intervals are calculated and
+labeled appropriately</td>
+</tr>
+</tbody>
+</table>
+<h2 id="data-requirements-and-statistical-considerations">5. Data
+Requirements and Statistical Considerations</h2>
+<p>Record <strong>Census program, table and variable IDs, vintage,
+geography, universe, units, price year (when relevant), reference
+period, retrieval date, and data quality flags</strong>. Validate that
+each observation is unique for its geography/period/measure and that
+periods sort chronologically.</p>
+<ul>
+<li><strong>Comparability:</strong> Compare like-for-like estimates.
+Verify revisions to definitions, survey methodology, geography, sampling
+frames, and reference periods. Do not imply a continuous ACS 1-year
+series across <strong>2020</strong>, when the standard ACS 1-year
+release was not available.</li>
+<li><strong>Money measures:</strong> Median household income is reported
+in each ACS release’s inflation-adjusted dollars. A nominal line across
+releases is <strong>not</strong> an inflation-adjusted trend without a
+documented common-dollar conversion.</li>
+<li><strong>Uncertainty:</strong> Retain paired ACS margins of error
+when interpreting differences. Do not determine statistical significance
+solely from whether intervals overlap; use applicable source-specific
+testing guidance.</li>
+<li><strong>Missing/flagged values:</strong> Check API special values
+and suppressed estimates before numeric conversion. Never replace
+missing data with zero or interpolate without a prominent methodological
+disclosure.</li>
+<li><strong>Multiple series:</strong> Verify identical measures,
+denominators, and units before comparing or placing series on one axis.
+Avoid dual axes when they create misleading apparent
+correspondence.</li>
+</ul>
+<h2 id="visualization-specific-considerations-and-accessibility">6.
+Visualization-Specific Considerations and Accessibility</h2>
+<ul>
+<li>Use a chronological x-axis with honest spacing. Put a visible gap at
+omitted observations rather than bridging across them.</li>
+<li>Choose a y-axis range that reveals meaningful variation
+<strong>without exaggerating</strong> small differences. A zero baseline
+is not universally required for lines; disclose meaningful truncation
+where interpretation could change.</li>
+<li>Prefer end-of-line direct labels for a small number of series and a
+clear legend for larger sets. Use distinguishable dash patterns,
+markers, or labels as redundant noncolor cues.</li>
+<li>Avoid crowding. For many comparable series, offer
+filtering/highlighting <strong>with keyboard operation</strong>, or a
+static small-multiples alternative.</li>
+<li>Use gridlines sparingly and specify axis units. Do not annotate
+every point if labels obscure the data.</li>
+<li>Supply concise alt text describing the main observed pattern and
+meaningful gaps, plus a <strong>semantic HTML data table</strong> with
+period, estimate, geography/series, and uncertainty as applicable.
+Review reading order, accessible names, contrast, resize, and keyboard
+interaction in the <strong>rendered GitHub Pages page</strong>.</li>
+</ul>
+<p>See relevant repository guidance for axes, color, typography,
+sources, <strong>Visualizing Uncertainty</strong>, and <strong>Small
+Multiples</strong>; verify links before publication.</p>
+<h3 id="legends-and-reference-lines">Legends and reference lines</h3>
+<p>For a single plainly identified series, omit a redundant legend. For
+several series, use direct labels or a legend that clearly maps each
+line to its meaning. Use horizontal reference lines only when they help
+readers compare values or interpret a meaningful threshold; keep them
+visually subordinate to the data.</p>
+<h3 id="design-comparison">Design comparison</h3>
+<p>Use these comparisons to connect each design choice with its effect
+on interpretation.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Problematic approach</th>
+<th>Why it matters</th>
+<th>Preferred approach</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Omitted years are squeezed out of the horizontal axis</td>
+<td>The apparent rate of change is distorted</td>
+<td>Use actual year coordinates and leave a visible break for missing
+observations</td>
+</tr>
+<tr class="even">
+<td>Income estimates from different release years are joined without a
+common price basis</td>
+<td>Inflation and income change are mixed</td>
+<td>Convert estimates and MOEs to a documented common dollar year before
+comparison</td>
+</tr>
+<tr class="odd">
+<td>Series can be identified only by color or hover</td>
+<td>Some readers cannot follow the lines</td>
+<td>Combine direct labels, distinguishable line styles or markers, and a
+matching table</td>
+</tr>
+</tbody>
+</table>
+<h3 id="checking-the-published-example">Checking the published
+example</h3>
+<p>Test the chart at its intended display size and with enlarged text.
+Follow the reading sequence from title to explanation, figure, table,
+and source. Check that labels and meaningful marks remain
+distinguishable without color and that any controls can be operated by
+keyboard with visible focus. Read the explanation and table with a
+screen reader to confirm that they convey the same measures, units,
+missing-data conditions, and important relationships as the chart.</p>
+<p>Use <a
+href="https://www.section508.gov/test/testing-overview/">automated and
+manual accessibility testing</a> together. A downloadable CSV supplies
+values but does not replace the chart’s explanatory narrative; see <a
+href="https://designsystem.digital.gov/components/data-visualizations/">USWDS
+visualization guidance</a>. Record the page/version, tool or assistive
+technology, result, and corrective action. Apply the sponsor’s agreed
+accessibility baseline rather than treating a palette simulation as a
+conformance test.</p>
+<h2 id="original-examples-and-additional-acs-demonstration">7. Original
+Examples and Additional ACS Demonstration</h2>
+<h3 id="original-examples-and-their-teaching-purpose">7.1 Original
+examples and their teaching purpose</h3>
+<p>The following examples are retained from the Census guidance. Their
+datasets, periods, universes and design lessons remain distinct. Some
+illustrate limitations or less-preferred choices; inclusion does not
+certify every design or its accessibility.</p>
+<p><strong><em>Example 1.</em></strong> Line chart of the poverty rate
+and the number of people in poverty: 1959 to 2022.</p>
+<figure>
+<img src="../../visualization_type/assets/LineGraph1.png"
+alt="Separate poverty-rate and number-in-poverty lines for 1959–2022, with different units and an explained break." />
+<figcaption aria-hidden="true">Separate poverty-rate and
+number-in-poverty lines for 1959–2022, with different units and an
+explained break.</figcaption>
+</figure>
+<p>This chart is a good example of the following: * Color is being used
+with purpose and the meaning behind the color is shown through clear
+labeling of the chart. * Only one line is shown on each chart and the
+units of analysis are clearly identified on both. * A gap is displayed
+where appropriate and is explained in the notes of the graph.</p>
+<p><strong><em>Example 2:</em></strong> Line chart of Number of Children
+in Poverty by Supplemental Poverty Measure Components</p>
+<figure>
+<img src="../../visualization_type/assets/LineGraph2.png"
+alt="Children-in-poverty lines for Supplemental Poverty Measure components with direct labels and definition notes." />
+<figcaption aria-hidden="true">Children-in-poverty lines for
+Supplemental Poverty Measure components with direct labels and
+definition notes.</figcaption>
+</figure>
+<p>This graph is a good example of the following: * Four lines are
+displayed with clear labels for each line along with labels for each
+data point on the line.<br />
+* Definitions for the lines are provided in the notes section so there
+is no question as to what each line represent. * Color is being used to
+distinguish the lines from each other.</p>
+<p><strong><em>Example 3:</em></strong> National Median Monthly Rent
+Paid by Renter Households: 2017, 2019, 2021. From SEHSD Working Paper
+Number FY 2024-15.</p>
+<figure>
+<img src="../../visualization_type/assets/LineGraph3.png"
+alt="Median monthly rent lines for 2017, 2019 and 2021, with point labels and interval indicators defined in the source." />
+<figcaption aria-hidden="true">Median monthly rent lines for 2017, 2019
+and 2021, with point labels and interval indicators defined in the
+source.</figcaption>
+</figure>
+<p>This graph is a good example of the following: * A legend is used to
+define each line. * Labels are used for each data point. * Error bars
+are used for each data point and the notation is clearly defined in the
+notes of the chart.</p>
+<p><strong><em>Example 4:</em></strong> Percentage of men using
+different types of leave in the 12 weeks after the birth of their first
+child, by year of birth</p>
+<figure>
+<img src="../../visualization_type/assets/LineGraph4.png"
+alt="Types of leave used after a first birth across birth-year groups, with a legend and reference gridlines." />
+<figcaption aria-hidden="true">Types of leave used after a first birth
+across birth-year groups, with a legend and reference
+gridlines.</figcaption>
+</figure>
+<p>This chart is a good example of the following: * A legend clearly
+defines the lines being presented on the chart. * Gridlines are used to
+help the reader interpret the values being displayed on the chart since
+the values within the lines are not labeled.</p>
+<h3 id="additional-acs-demonstration">7.2 Additional ACS
+demonstration</h3>
+<p><strong>2021–2024 ACS state median household income.</strong> B19013:
+use a documented common 2024-dollar basis, retain MOEs and preserve
+missing periods.</p>
+<p><strong>What this adds:</strong> Adds reproducible inflation
+handling, chronological spacing and source-to-chart checks.</p>
+<p><strong>Run evidence:</strong> The supplied November 10, 2026 run
+generated this example. Saved-data arithmetic and chart layout were
+reviewed for this package; published-page accessibility testing remains
+outstanding.</p>
+<figure>
+<img src="../../assets/examples/line_graph/linegraph_acs_income.png"
+alt="Four lines with distinct markers and dash patterns show state median household-income estimates from 2021 through 2024 in constant 2024 dollars. Virginia is highest throughout; Florida rises from about 73,062 dollars to 77,735 dollars. Exact values and MOEs are in the table." />
+<figcaption aria-hidden="true">Four lines with distinct markers and dash
+patterns show state median household-income estimates from 2021 through
+2024 in constant 2024 dollars. Virginia is highest throughout; Florida
+rises from about 73,062 dollars to 77,735 dollars. Exact values and MOEs
+are in the table.</figcaption>
+</figure>
+<p><strong>Source and interpretation:</strong> U.S. Census Bureau,
+2021–2024 ACS 1-Year Estimates, Detailed Table B19013. Estimates and 90%
+MOEs are converted to 2024 dollars using the chained ACS R-CPI-U-RS
+comparison factors recorded in the supplied manifest. The supplied run
+completed November 10, 2026 (UTC).</p>
+<p>The table retains each release-year estimate, MOE and conversion
+factor. The endpoint summary below is rounded for reading; the CSV
+preserves precision. The vertical axis is truncated, so judge changes
+against its labeled dollar scale. No significance test was performed;
+ACS income reference periods may overlap.</p>
+<p><strong>Selected values</strong> (rounded for display; CSV retains
+exported precision):</p>
+<table>
+<thead>
+<tr class="header">
+<th>State</th>
+<th>Year</th>
+<th>Income (2024 $)</th>
+<th>90% MOE (2024 $)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Florida</td>
+<td>2021</td>
+<td>73,061.56</td>
+<td>492.39</td>
+</tr>
+<tr class="even">
+<td>Florida</td>
+<td>2024</td>
+<td>77,735</td>
+<td>564</td>
+</tr>
+<tr class="odd">
+<td>Georgia</td>
+<td>2021</td>
+<td>77,113.07</td>
+<td>824.90</td>
+</tr>
+<tr class="even">
+<td>Georgia</td>
+<td>2024</td>
+<td>79,991</td>
+<td>633</td>
+</tr>
+<tr class="odd">
+<td>Texas</td>
+<td>2021</td>
+<td>77,581.13</td>
+<td>594.34</td>
+</tr>
+<tr class="even">
+<td>Texas</td>
+<td>2024</td>
+<td>79,721</td>
+<td>564</td>
+</tr>
+<tr class="odd">
+<td>Virginia</td>
+<td>2021</td>
+<td>93,801.07</td>
+<td>846.91</td>
+</tr>
+<tr class="even">
+<td>Virginia</td>
+<td>2024</td>
+<td>92,090</td>
+<td>831</td>
+</tr>
+</tbody>
+</table>
+<p><a
+href="../../assets/examples/line_graph/reviewed_data_table.html">Read
+the data tables</a> · <a
+href="../../assets/examples/line_graph/linegraph_acs_income_2024_dollars.csv">Download
+linegraph_acs_income_2024_dollars.csv</a></p>
+<p>Implementation: <a
+href="../../ACS_Examples_Builder/examples/python/02_time_series/line_graph.py">Python
+source</a>. The original illustrations above and the ACS output have
+separate asset paths and source statements.</p>
+<h3 id="how-the-examples-work-together">7.3 How the examples work
+together</h3>
+<p>Use the original illustrations to discuss design choices and their
+source-specific limitations. Use the ACS addition to demonstrate a
+documented data-to-chart workflow. Do not combine values across
+examples, imply that they use one dataset, or relabel a historical image
+as a new ACS output.</p>
+<h2 id="developer-implementation">8. Developer Implementation</h2>
+<p>The following contract defines the intended behavior of the linked
+examples. Confirm the files, commands, dependencies, and generated
+results against the repository before publication.</p>
+<h3 id="data-preparation">8.1 Data Preparation</h3>
+<p><strong>Inputs:</strong> ACS 1-Year B19013 state estimates and
+published MOEs for 2021–2024, with release year, geography, source price
+year, and documented inflation-conversion factors.</p>
+<p>Validate one record per state/year. Convert B19013_001E and valid
+B19013_001M to 2024 dollars with the same positive factor for each
+release year. Record the factor source, price-year direction, and
+formula. Do not label the series as 2024 dollars until the conversion is
+verified. Preserve missing observations and annotation codes.</p>
+<h3 id="python">8.2 Python</h3>
+<p>Use the <a
+href="../../ACS_Examples_Builder/examples/python/02_time_series/line_graph.py">supplied
+Python implementation</a> and the <a
+href="../../ACS_Examples_Builder/build_acs_examples.py">ACS example
+runner</a>. The runner maps this page to job <code>line_graph</code>.
+Its dependencies are listed in <a
+href="../../ACS_Examples_Builder/requirements.txt">requirements.txt</a>.
+Confirm supported input options in the implementation and its
+accompanying README.</p>
+<p>The <a
+href="../../review/evidence/RUN_ALL_ACS_EXAMPLES_v03_executed.ipynb">executed
+notebook</a> contains saved outputs from the supplied ACS run. The <a
+href="../../review/evidence/ACS_Actual_Results/execution_status.csv">run
+status CSV</a> records generated results. The notebook produces the ACS
+additions; it does not recreate the historical Census illustrations.</p>
+<h3 id="r">8.3 R</h3>
+<p>The analytical definitions and output checks on this page also
+specify the requirements for an R counterpart. A verified R
+implementation is not bundled in this combined package. Retain R
+execution and Python/R agreement as outstanding validation tasks; do not
+describe them as completed.</p>
+<h3 id="reproducibility-and-adaptation">8.4 Reproducibility and
+Adaptation</h3>
+<p>A personal Census API key is required for data queries under the <a
+href="https://www.census.gov/data/developers/guidance/api-user-guide.Query_Limits.html">current
+Census API guidance</a>. Read <code>CENSUS_API_KEY</code> from the
+analyst’s environment. Do not include keys in source control, saved
+notebooks, request logs, error messages, or execution manifests; redact
+the <code>key</code> query parameter wherever a request URL is recorded.
+No shared developer credential or private file path should be
+required.</p>
+<p>For each run, save the validated data, chart PNG/SVG, a semantic HTML
+table, descriptive-text draft, and a nonsecret manifest in the selected
+output folder. Include source table/variables, full reference period,
+geography, units, transformations, exclusions, dependency versions, and
+retrieval time. Pin or record versions actually tested. For identical
+inputs, R and Python should reproduce the same analytical values within
+an explicitly documented tolerance; visual styling need not be
+pixel-identical.</p>
+<p>When changing years or geographies, recheck product coverage,
+definitions, annotations, and comparability. A successful run does not
+establish statistical significance or accessibility conformance.</p>
+<h3 id="output-verification">8.5 Output Verification</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Check</th>
+<th>Expected evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Price conversion</td>
+<td>For each year, adjusted estimate = source estimate × factor and
+adjusted MOE = source MOE × the same factor; rounding occurs only for
+display</td>
+</tr>
+<tr class="even">
+<td>Time and gaps</td>
+<td>Year coordinates preserve elapsed time, and missing estimates break
+the plotted path</td>
+</tr>
+<tr class="odd">
+<td>Agreement</td>
+<td>Both languages use the same source release, factor precision, units,
+and stated numerical tolerance; no significance claim is inferred from
+appearance</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Source-statement pattern for this example:</strong> U.S.
+Census Bureau, American Community Survey, 2021–2024 ACS 1-Year
+Estimates, Detailed Table B19013, selected states. Estimates and MOEs
+converted to 2024 dollars using the documented R-CPI-U-RS factors. Add
+the specific source or reproducible request link and actual retrieval
+date; omit the API key. Identify derived calculations separately from
+published estimates.</p>
+<h2 id="common-errors-and-misinterpretations">9. Common Errors and
+Misinterpretations</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Issue</th>
+<th>Why it matters</th>
+<th>Recommended correction</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Connect unrelated categories</td>
+<td>Creates a fictional trajectory</td>
+<td>Use dots/bars or a genuinely ordered variable</td>
+</tr>
+<tr class="even">
+<td>Bridge missing periods without disclosure</td>
+<td>Suggests unobserved continuity</td>
+<td>Preserve a visible gap and note its cause</td>
+</tr>
+<tr class="odd">
+<td>Ignore unequal time intervals</td>
+<td>Distorts the apparent rate of change</td>
+<td>Use actual chronological x coordinates</td>
+</tr>
+<tr class="even">
+<td>Compare ACS income releases in different price-year dollars</td>
+<td>Creates a misleading trend</td>
+<td>Convert to common-dollar units using documented factors</td>
+</tr>
+<tr class="odd">
+<td>Suppress MOE or overclaim significance</td>
+<td>Overstates differences</td>
+<td>Document uncertainty and apply approved comparison methods</td>
+</tr>
+<tr class="even">
+<td>Differentiate lines only with color or hover</td>
+<td>Excludes some readers</td>
+<td>Use direct labels, patterns, keyboard support and a table</td>
+</tr>
+<tr class="odd">
+<td>Clutter the plot with too many lines</td>
+<td>Obscures comparison</td>
+<td>Highlight/facet/filter without losing accessible alternatives</td>
+</tr>
+<tr class="even">
+<td>Treat source special codes as numeric values</td>
+<td>Introduces fabricated points</td>
+<td>Validate codes and display missing appropriately</td>
+</tr>
+</tbody>
+</table>
+<h2 id="publication-quality-checklist">10. Publication Quality
+Checklist</h2>
+<ul class="task-list">
+<li><label><input type="checkbox" />The analysis requires ordered
+comparisons, and alternative chart choices were evaluated.</label></li>
+<li><label><input type="checkbox" />Source program, tables, variables,
+years, geography, universe, units and retrieval metadata are
+recorded.</label></li>
+<li><label><input type="checkbox" />The chronological axis is correct;
+missing years and methodological breaks are explicitly
+handled.</label></li>
+<li><label><input type="checkbox" />Inflation adjustment and uncertainty
+decisions are documented where applicable.</label></li>
+<li><label><input type="checkbox" />The chart remains interpretable
+without color or mouse hover; alt text and semantic table are
+provided.</label></li>
+<li><label><input type="checkbox" />Rendering is tested for contrast,
+reading order, screen reader/keyboard interaction as applicable, and
+zoom/reflow on the published page.</label></li>
+<li><label><input type="checkbox" />Python and R execute independently
+in a clean environment and reproduce validated results (retain execution
+evidence).</label></li>
+<li><label><input type="checkbox" />Original Census illustrations and
+links have verified permissions, paths, captions and alt
+text.</label></li>
+<li><label><input type="checkbox" />All links, file paths, images, and
+commands work from a fresh public repository clone.</label></li>
+</ul>
+<h2 id="related-pages-and-references">Related Pages and References</h2>
+<ul>
+<li><a href="uncertainty.html">Visualizing Uncertainty</a> —
+interpretation of estimates and margins of error.</li>
+<li><a href="../../component/SmallMultiples.md">Small Multiples</a> —
+alternate arrangement when series overlap; verify repository
+permalink.</li>
+<li><a
+href="https://www.census.gov/programs-surveys/acs/guidance/statistical-testing-tool.html">ACS
+statistical testing guidance</a> — verify relevant methodology for
+selected estimates and periods.</li>
+<li><a href="https://api.census.gov/data.html">Census Data API</a> — API
+catalog and metadata.</li>
+</ul>
+<h3 id="standards-and-review-references">Standards and Review
+References</h3>
+<p>The original Census page and its example assets are preserved in this
+package; see the review record for the exact baseline and changes.</p>
+<p>Use the <a
+href="https://www2.census.gov/about/policies/quality/quality-standards.pdf">September
+29, 2026 consolidated Census Statistical Quality Standards</a>,
+especially E1-6 (replication documentation), E2-2.3 (visualization
+requirements), and E3-2.4 (visualization review). Retain review findings
+and corrections separately from the design checklist.</p>
+<ul>
+<li><a
+href="https://www.census.gov/data/developers/guidance/api-user-guide.Query_Limits.html">Census
+API query requirements</a>.</li>
+<li><a href="https://www.section508.gov/test/testing-overview/">Section
+508 testing methods</a>.</li>
+<li><a
+href="https://designsystem.digital.gov/components/data-visualizations/">USWDS
+data visualization guidance</a>.</li>
+</ul>
+</body>
+</html>

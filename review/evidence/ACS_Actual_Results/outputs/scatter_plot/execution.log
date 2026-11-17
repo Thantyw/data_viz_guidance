@@ -1,0 +1,2 @@
+Created outputs in /content/ACS_Examples_Builder/acs_generated_examples/outputs/scatter_plot from api; checks: {'required_state_rows': True, 'one_row_per_state': True, 'nonnegative_population': True, 'valid_poverty_fraction': True, 'uniform_point_size': True, 'moe_for_derived_ratio_claimed': False}
+

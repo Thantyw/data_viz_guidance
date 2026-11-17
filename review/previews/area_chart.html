@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Area Chart</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <style>body{max-width:70rem;margin:2rem auto;padding:0 1rem;font:17px/1.6 system-ui,sans-serif;color:#171717;background:#fff}img{max-width:100%;height:auto}table{border-collapse:collapse;display:block;overflow:auto}th,td{border:1px solid #888;padding:.4rem;text-align:left}a{color:#0645ad}h1,h2,h3{line-height:1.25}pre{overflow:auto}</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Area Chart</h1>
+</header>
+<h1 id="area-chart">Area Chart</h1>
+<h2 id="applying-this-guidance">Applying this guidance</h2>
+<p>Apply the <a
+href="https://www2.census.gov/about/policies/quality/quality-standards.pdf">Census
+Bureau Statistical Quality Standards</a>, revised September 29, 2026,
+within their stated scope. The chart-selection advice and implementation
+checks on this page explain practical design choices; they do not create
+additional agency mandates. Treat <strong>Essential</strong> items as
+the core design conditions for this chart, and confirm formal
+applicability through the program’s review process.</p>
+<p>Coordinate this page with <a href="../../component/titles.md">Titles
+and Subtitles</a>, <a href="../../component/Legend.md">Legends</a>, <a
+href="../../component/Source.md">Sources</a>, and <a
+href="uncertainty.html">Visualizing Uncertainty</a>. Keep detailed
+component guidance in those shared pages rather than duplicating it
+here.</p>
+<h2 id="purpose-and-overview">1. Purpose and Overview</h2>
+<p>An <strong>area chart</strong> connects observations in their natural
+order and shades the region between the line and a meaningful baseline,
+ordinarily zero. Shading emphasizes <strong>quantity or
+magnitude</strong> as well as change. This page concerns
+<strong>non-stacked area charts</strong>. For cumulative parts of a
+whole, consult <a href="stacked_area.html">Stacked Area Chart</a>
+instead.</p>
+<p>Do not interpret the filled area as an additional measure beyond the
+plotted values, or assume that overlapping shaded series should be
+summed.</p>
+<h2 id="when-to-use">2. When to Use</h2>
+<h3 id="essential">Essential</h3>
+<ul>
+<li>Use an ordered x-axis (such as time), a numerical quantity, and a
+<strong>zero-based y-axis</strong>.</li>
+<li>Label units, geographic coverage, population universe, and the
+reporting period.</li>
+<li>Make the boundary line legible and distinguish series without
+relying on color alone.</li>
+<li>Identify data gaps, revisions, and substantive comparability
+limitations.</li>
+</ul>
+<h3 id="avoid">Avoid</h3>
+<ul>
+<li>Do not fill under variables whose zero is arbitrary or
+misleading.</li>
+<li>Do not connect missing observations as though they were
+measured.</li>
+<li>Do not use overlapping filled regions when occlusion obscures the
+data.</li>
+</ul>
+<h2 id="when-to-use-an-alternative">3. When to Use an Alternative</h2>
+<h3 id="recommended">Recommended</h3>
+<ul>
+<li>Use a <strong>line graph</strong> when trends and exact changes are
+more important than magnitude.</li>
+<li>Use <strong>small multiples</strong> to compare multiple quantities
+without overlapping fills.</li>
+<li>Use a <strong>bar chart</strong> for unordered categories or a few
+discrete comparisons.</li>
+</ul>
+<h3 id="not-recommended">Not Recommended</h3>
+<ul>
+<li>Avoid an area chart when small differences, rapid fluctuations, or
+dense overlapping series require precise readings.</li>
+<li>Do not substitute a non-stacked area chart for a stacked area chart
+when the message requires additive composition.</li>
+</ul>
+<h2 id="choosing-between-alternatives">4. Choosing Between
+Alternatives</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Need</th>
+<th>More suitable form</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Emphasize a quantity changing over ordered periods</td>
+<td>Non-stacked area chart</td>
+<td>Zero-based fill reinforces magnitude</td>
+</tr>
+<tr class="even">
+<td>Compare trends precisely</td>
+<td>Line graph</td>
+<td>Avoids area/overlap distortion</td>
+</tr>
+<tr class="odd">
+<td>Compare several states without occlusion</td>
+<td>Small-multiple areas or lines</td>
+<td>Preserves legibility and common scales</td>
+</tr>
+<tr class="even">
+<td>Show components summing to a total</td>
+<td>Stacked area chart, after verifying exclusivity</td>
+<td>Conveys additive composition</td>
+</tr>
+<tr class="odd">
+<td>Compare unrelated categories</td>
+<td>Bar chart</td>
+<td>Does not imply continuity</td>
+</tr>
+</tbody>
+</table>
+<h2 id="data-requirements-and-statistical-considerations">5. Data
+Requirements and Statistical Considerations</h2>
+<ul>
+<li><strong>Baseline and scale:</strong> Start at zero; use the same
+y-axis scale in comparative panels unless clearly documented
+otherwise.</li>
+<li><strong>Ordered observations:</strong> Sort periods chronologically.
+Retain missing periods as explicit gaps, never as invented values.</li>
+<li><strong>Comparability:</strong> Review changes to survey questions,
+universes, geography, estimation methods, and reference periods. ACS
+annual estimates are not longitudinal observations of identical
+respondents.</li>
+<li><strong>Uncertainty:</strong> ACS estimates have margins of error
+(MOEs). Do not conclude that changes are statistically significant
+merely because values differ. Consult <a
+href="uncertainty.html">Visualizing Uncertainty</a>.</li>
+<li><strong>Totals versus rates:</strong> Larger states may show larger
+counts without higher <em>rates</em>. Explain the denominator, and
+consider a separate rate chart for comparisons of prevalence.</li>
+<li><strong>Avoid stacking:</strong> Distinct panels are not additive.
+Only stack mutually exclusive components that form an appropriate
+partition.</li>
+</ul>
+<h2 id="visualization-specific-considerations-and-accessibility">6.
+Visualization-Specific Considerations and Accessibility</h2>
+<ul>
+<li>Render a clear, visible boundary line; fill opacity should not
+obscure labels or nearby data.</li>
+<li>Use text labels, panel titles, and consistent axes rather than color
+alone; verify contrast on the actual published page.</li>
+<li>Supply concise alternative text summarizing the purpose and
+important relationships, plus an accessible table for exact values and
+MOEs.</li>
+<li>Ensure heading hierarchy, keyboard access (for interactive charts),
+zoom/reflow, and screen-reader reading order are checked in the rendered
+site.</li>
+<li>The existence of an SVG, alt-text draft, or HTML table does
+<strong>not</strong> by itself demonstrate Section 508 compliance.</li>
+</ul>
+<h3 id="design-comparison">Design comparison</h3>
+<p>Use these comparisons to connect each design choice with its effect
+on interpretation.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Problematic approach</th>
+<th>Why it matters</th>
+<th>Preferred approach</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Fill begins at a truncated vertical baseline</td>
+<td>Shaded magnitude is exaggerated</td>
+<td>Use a zero baseline; choose a line graph if variation around a
+nonzero value is the question</td>
+</tr>
+<tr class="even">
+<td>Several transparent areas overlap</td>
+<td>Hidden regions and shared fills can imply a total that does not
+exist</td>
+<td>Use separate panels with common scales; explain that state counts
+are independent</td>
+</tr>
+<tr class="odd">
+<td>A missing year is removed before plotting</td>
+<td>The remaining polygon suggests continuous observed coverage</td>
+<td>Retain the missing period and break the line and fill at that
+position</td>
+</tr>
+</tbody>
+</table>
+<h3 id="checking-the-published-example">Checking the published
+example</h3>
+<p>Test the chart at its intended display size and with enlarged text.
+Follow the reading sequence from title to explanation, figure, table,
+and source. Check that labels and meaningful marks remain
+distinguishable without color and that any controls can be operated by
+keyboard with visible focus. Read the explanation and table with a
+screen reader to confirm that they convey the same measures, units,
+missing-data conditions, and important relationships as the chart.</p>
+<p>Use <a
+href="https://www.section508.gov/test/testing-overview/">automated and
+manual accessibility testing</a> together. A downloadable CSV supplies
+values but does not replace the chart’s explanatory narrative; see <a
+href="https://designsystem.digital.gov/components/data-visualizations/">USWDS
+visualization guidance</a>. Record the page/version, tool or assistive
+technology, result, and corrective action. Apply the sponsor’s agreed
+accessibility baseline rather than treating a palette simulation as a
+conformance test.</p>
+<h2 id="original-examples-and-additional-acs-demonstration">7. Original
+Examples and Additional ACS Demonstration</h2>
+<h3 id="original-examples-and-their-teaching-purpose">7.1 Original
+examples and their teaching purpose</h3>
+<p>The following examples are retained from the Census guidance. Their
+datasets, periods, universes and design lessons remain distinct. Some
+illustrate limitations or less-preferred choices; inclusion does not
+certify every design or its accessibility.</p>
+<p><strong><em>Example 1.</em></strong> Estimated and Projected World
+Population by Age Group: 2010-2060</p>
+<figure>
+<img src="../../visualization_type/assets/areaplot1.jpeg"
+alt="Stacked world-population estimates and projections by age group from 2010 to 2060, retained for comparison with non-stacked areas." />
+<figcaption aria-hidden="true">Stacked world-population estimates and
+projections by age group from 2010 to 2060, retained for comparison with
+non-stacked areas.</figcaption>
+</figure>
+<p>Source: U.S. Census Bureau
+https://www.census.gov/library/stories/2023/11/world-population-estimated-eight-billion.html</p>
+<ul>
+<li>The graph includes zero and uses high contrast colors to distinguish
+the different groups being represented.<br />
+</li>
+<li>The groups are displayed logically using ascending age groupings and
+the data are not volatile.</li>
+</ul>
+<p><strong><em>Example 2:</em></strong> FRED Real Median Household
+Income and Real Median Family Income</p>
+<figure>
+<img src="../../visualization_type/assets/areaplot2.png"
+alt="Overlapping filled series of real median household and family income, illustrating shared baselines and possible occlusion." />
+<figcaption aria-hidden="true">Overlapping filled series of real median
+household and family income, illustrating shared baselines and possible
+occlusion.</figcaption>
+</figure>
+<p>Source: FRED https://fred.stlouisfed.org/series/MEHOINUSA672N#</p>
+<ul>
+<li>The graph includes zero and uses high contrast colors to distinguish
+the different groups being represented.</li>
+<li>Transparency used when areas overlap to show ‘hidden’ values</li>
+</ul>
+<p><strong>Interpretation note:</strong> Original Example 1 uses stacked
+age-group areas. It is retained here as a comparison, not as a
+non-stacked example; see <a href="stacked_area.html">Stacked Area
+Chart</a>. Original Example 2 compares overlapping household and family
+income series, which must not be added as though they form a partition.
+The ACS addition below uses separate poverty-count panels. These
+examples therefore illustrate different analytical purposes and
+datasets.</p>
+<h3 id="additional-acs-demonstration">7.2 Additional ACS
+demonstration</h3>
+<p><strong>2021–2024 ACS state poverty counts.</strong> B17001: show
+separate zero-based panels for counts below poverty threshold, with
+source MOEs available.</p>
+<p><strong>What this adds:</strong> Provides a specifically non-stacked
+example and distinguishes counts from rates.</p>
+<p><strong>Run evidence:</strong> The supplied November 10, 2026 run
+generated this example. Saved-data arithmetic and chart layout were
+reviewed for this package; published-page accessibility testing remains
+outstanding.</p>
+<figure>
+<img src="../../assets/examples/area_chart/area_chart.png"
+alt="Three separate zero-based area panels show estimated people below poverty threshold in Florida, Georgia and Virginia from 2021 through 2024, using the same count scale. Source margins of error are available in the table." />
+<figcaption aria-hidden="true">Three separate zero-based area panels
+show estimated people below poverty threshold in Florida, Georgia and
+Virginia from 2021 through 2024, using the same count scale. Source
+margins of error are available in the table.</figcaption>
+</figure>
+<p><strong>Source and interpretation:</strong> U.S. Census Bureau,
+2021–2024 ACS 1-Year Estimates, Detailed Table B17001, people below
+poverty threshold (B17001_002E). These are counts within the
+poverty-status universe, not poverty percentages. The supplied run
+completed November 10, 2026 (UTC).</p>
+<p>Each panel starts at zero and uses the same vertical scale. The
+shaded areas do not stack or add across states. Published count MOEs
+accompany the data; apparent changes have not been
+significance-tested.</p>
+<p><strong>Selected values</strong> (rounded for display; CSV retains
+exported precision):</p>
+<table>
+<thead>
+<tr class="header">
+<th>State</th>
+<th>Year</th>
+<th>People below poverty</th>
+<th>90% MOE (people)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Florida</td>
+<td>2021</td>
+<td>2,805,433</td>
+<td>50,403</td>
+</tr>
+<tr class="even">
+<td>Florida</td>
+<td>2024</td>
+<td>2,758,614</td>
+<td>58,688</td>
+</tr>
+<tr class="odd">
+<td>Georgia</td>
+<td>2021</td>
+<td>1,476,348</td>
+<td>43,526</td>
+</tr>
+<tr class="even">
+<td>Georgia</td>
+<td>2024</td>
+<td>1,373,284</td>
+<td>36,640</td>
+</tr>
+<tr class="odd">
+<td>Virginia</td>
+<td>2021</td>
+<td>854,145</td>
+<td>27,033</td>
+</tr>
+<tr class="even">
+<td>Virginia</td>
+<td>2024</td>
+<td>835,556</td>
+<td>26,795</td>
+</tr>
+</tbody>
+</table>
+<p><a
+href="../../assets/examples/area_chart/reviewed_data_table.html">Read
+the data tables</a> · <a
+href="../../assets/examples/area_chart/area_chart_data.csv">Download
+area_chart_data.csv</a></p>
+<p>Implementation: <a
+href="../../ACS_Examples_Builder/examples/python/02_time_series/area_chart.py">Python
+source</a>. The original illustrations above and the ACS output have
+separate asset paths and source statements.</p>
+<h3 id="how-the-examples-work-together">7.3 How the examples work
+together</h3>
+<p>Use the original illustrations to discuss design choices and their
+source-specific limitations. Use the ACS addition to demonstrate a
+documented data-to-chart workflow. Do not combine values across
+examples, imply that they use one dataset, or relabel a historical image
+as a new ACS output.</p>
+<h2 id="developer-implementation">8. Developer Implementation</h2>
+<p>The following contract defines the intended behavior of the linked
+examples. Confirm the files, commands, dependencies, and generated
+results against the repository before publication.</p>
+<h3 id="data-preparation">8.1 Data Preparation</h3>
+<p><strong>Inputs:</strong> Annual ACS 1-Year B17001 state records for
+2021–2024: geography, year, poverty-status universe, poverty-count
+estimate, published count MOE, and annotations.</p>
+<p>Use B17001_001E as the poverty-status universe and B17001_002E as the
+count below the poverty threshold. Retain B17001_002M as its published
+90% count MOE. Check requested state/year coverage, unique records,
+finite nonnegative counts, and count not exceeding the universe. Report
+exclusions; preserve missing periods as gaps.</p>
+<h3 id="python">8.2 Python</h3>
+<p>Use the <a
+href="../../ACS_Examples_Builder/examples/python/02_time_series/area_chart.py">supplied
+Python implementation</a> and the <a
+href="../../ACS_Examples_Builder/build_acs_examples.py">ACS example
+runner</a>. The runner maps this page to job <code>area_chart</code>.
+Its dependencies are listed in <a
+href="../../ACS_Examples_Builder/requirements.txt">requirements.txt</a>.
+Confirm supported input options in the implementation and its
+accompanying README.</p>
+<p>The <a
+href="../../review/evidence/RUN_ALL_ACS_EXAMPLES_v03_executed.ipynb">executed
+notebook</a> contains saved outputs from the supplied ACS run. The <a
+href="../../review/evidence/ACS_Actual_Results/execution_status.csv">run
+status CSV</a> records generated results. The notebook produces the ACS
+additions; it does not recreate the historical Census illustrations.</p>
+<h3 id="r">8.3 R</h3>
+<p>The analytical definitions and output checks on this page also
+specify the requirements for an R counterpart. A verified R
+implementation is not bundled in this combined package. Retain R
+execution and Python/R agreement as outstanding validation tasks; do not
+describe them as completed.</p>
+<h3 id="reproducibility-and-adaptation">8.4 Reproducibility and
+Adaptation</h3>
+<p>A personal Census API key is required for data queries under the <a
+href="https://www.census.gov/data/developers/guidance/api-user-guide.Query_Limits.html">current
+Census API guidance</a>. Read <code>CENSUS_API_KEY</code> from the
+analyst’s environment. Do not include keys in source control, saved
+notebooks, request logs, error messages, or execution manifests; redact
+the <code>key</code> query parameter wherever a request URL is recorded.
+No shared developer credential or private file path should be
+required.</p>
+<p>For each run, save the validated data, chart PNG/SVG, a semantic HTML
+table, descriptive-text draft, and a nonsecret manifest in the selected
+output folder. Include source table/variables, full reference period,
+geography, units, transformations, exclusions, dependency versions, and
+retrieval time. Pin or record versions actually tested. For identical
+inputs, R and Python should reproduce the same analytical values within
+an explicitly documented tolerance; visual styling need not be
+pixel-identical.</p>
+<p>When changing years or geographies, recheck product coverage,
+definitions, annotations, and comparability. A successful run does not
+establish statistical significance or accessibility conformance.</p>
+<h3 id="output-verification">8.5 Output Verification</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Check</th>
+<th>Expected evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Coverage</td>
+<td>Every requested state/year has a value or an explicit missing-data
+record; no straight segment or fill bridges a missing observation</td>
+</tr>
+<tr class="even">
+<td>Chart and table</td>
+<td>Plotted counts equal the exported estimates; each panel has a zero
+baseline and the same stated count scale</td>
+</tr>
+<tr class="odd">
+<td>Interpretation</td>
+<td>Labels identify people below the poverty threshold, not poverty
+rates; count MOEs are not relabeled as percentage MOEs</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Source-statement pattern for this example:</strong> U.S.
+Census Bureau, American Community Survey, 2021–2024 ACS 1-Year
+Estimates, Detailed Table B17001, selected states. Measure: people below
+the poverty threshold among the population for whom poverty status is
+determined. Add the specific source or reproducible request link and
+actual retrieval date; omit the API key. Identify derived calculations
+separately from published estimates.</p>
+<h2 id="common-errors-and-misinterpretations">9. Common Errors and
+Misinterpretations</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Error</th>
+<th>Correction</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Displaying an area chart with a truncated vertical axis</td>
+<td>Begin at zero or select another chart form</td>
+</tr>
+<tr class="even">
+<td>Treating multiple non-stacked areas as additive</td>
+<td>Explain that panels are independent; stack only legitimate
+components</td>
+</tr>
+<tr class="odd">
+<td>Using transparent overlapping fills for many series</td>
+<td>Use separate panels or lines</td>
+</tr>
+<tr class="even">
+<td>Comparing state counts as though they were poverty rates</td>
+<td>Label counts and provide rates when discussing prevalence</td>
+</tr>
+<tr class="odd">
+<td>Treating an estimate change as statistically significant</td>
+<td>Evaluate uncertainty and appropriate significance methods</td>
+</tr>
+<tr class="even">
+<td>Silently filling missing years</td>
+<td>Leave visible gaps and explain why observations are missing</td>
+</tr>
+</tbody>
+</table>
+<h2 id="publication-quality-checklist">10. Publication Quality
+Checklist</h2>
+<ul class="task-list">
+<li><label><input type="checkbox" />Zero baseline and correct units are
+visible.</label></li>
+<li><label><input type="checkbox" />Period, source, population universe,
+and series are clear.</label></li>
+<li><label><input type="checkbox" />Missing values, comparability
+limitations, and uncertainty are disclosed.</label></li>
+<li><label><input type="checkbox" />Multiple area charts are not
+mislabeled as stacked or additive.</label></li>
+<li><label><input type="checkbox" />Python and R independently execute
+with user-configurable settings and output paths.</label></li>
+<li><label><input type="checkbox" />Plotted numbers match the saved
+source table and MOEs.</label></li>
+<li><label><input type="checkbox" />Alt text and an accessible data
+table are provided; manual accessibility checks have been performed on
+the published rendering.</label></li>
+</ul>
+<h2 id="related-pages-and-references">Related Pages and References</h2>
+<p>Related guidance: <a href="line_graph.html">Line Graph</a>, <a
+href="../../component/SmallMultiples.md">Small Multiples</a>, <a
+href="uncertainty.html">Visualizing Uncertainty</a>, and <a
+href="stacked_area.html">Stacked Area Chart</a>.</p>
+<h3 id="standards-and-review-references">Standards and Review
+References</h3>
+<p>Use the <a
+href="https://www2.census.gov/about/policies/quality/quality-standards.pdf">September
+29, 2026 consolidated Census Statistical Quality Standards</a>,
+especially E1-6 (replication documentation), E2-2.3 (visualization
+requirements), and E3-2.4 (visualization review). Retain review findings
+and corrections separately from the design checklist.</p>
+<ul>
+<li><a
+href="https://www.census.gov/data/developers/guidance/api-user-guide.Query_Limits.html">Census
+API query requirements</a>.</li>
+<li><a href="https://www.section508.gov/test/testing-overview/">Section
+508 testing methods</a>.</li>
+<li><a
+href="https://designsystem.digital.gov/components/data-visualizations/">USWDS
+data visualization guidance</a>.</li>
+</ul>
+</body>
+</html>

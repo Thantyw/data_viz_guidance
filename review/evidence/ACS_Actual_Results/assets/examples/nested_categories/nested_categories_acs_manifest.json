@@ -1,0 +1,15 @@
+{
+  "source_mode": "api",
+  "year": 2024,
+  "states": [
+    "Florida",
+    "Georgia"
+  ],
+  "category_relationships": [
+    "B03002: partition with nested subgroups",
+    "DP03: overlapping coverage types"
+  ],
+  "api_key_saved": false,
+  "note": "Manual Section 508/WCAG testing required; statistical results require source review.",
+  "python": "3.13.18"
+}

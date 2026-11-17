@@ -1,0 +1,27 @@
+{
+  "visualization": "histogram",
+  "input_mode": "api",
+  "input_file": null,
+  "source_metadata": "2024 ACS 5-Year Detailed Tables Census API",
+  "dataset_year": 2024,
+  "states": [
+    "Florida",
+    "Georgia",
+    "Virginia"
+  ],
+  "observation_unit": "county",
+  "metric": "county median household income estimate (not individual household income)",
+  "county_rows": 359,
+  "valid_county_rows": 359,
+  "excluded_count": 0,
+  "python": "3.13.18",
+  "pandas": "2.2.3",
+  "numpy": "2.4.6",
+  "timestamp_utc": "2026-11-10T20:27:17.457884+00:00",
+  "api_key_saved": false,
+  "manual_section_508_verification": "not performed",
+  "bin_width_usd": 10000.0,
+  "bin_count_reconciled": true,
+  "common_bins_all_states": true,
+  "last_bin_right_endpoint_included": true
+}

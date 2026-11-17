@@ -1,0 +1,26 @@
+{
+  "checks": {
+    "uncertainty_endpoints": true,
+    "scatter_bubble_identical_values": true,
+    "poverty_percentage": true,
+    "income_cross_page_consistency": true,
+    "line_inflation_multiplication": true,
+    "line_2024_income_matches": true,
+    "area_intervals": true,
+    "area_2024_count_matches_scatter": true,
+    "stacked_population_partition": true,
+    "pyramid_population_partition": true,
+    "pyramid_sex_totals": true,
+    "nested_origin_percentage_partition": true,
+    "nested_coverage_percent_ranges": true,
+    "boxplot_county_summaries": true,
+    "histogram_counts_and_boundaries": true,
+    "boxplot_histogram_shared_counties_match": true
+  },
+  "passed": true,
+  "limitations": [
+    "Nested export omits raw B03002 children and raw DP03 coverage counts: full raw category and intersection checks cannot be independently rerun from saved CSV.",
+    "Checks establish arithmetic consistency of supplied files; no fresh API query or independent source audit performed.",
+    "Chart appearance, published-page accessibility, and R parity require separate review."
+  ]
+}

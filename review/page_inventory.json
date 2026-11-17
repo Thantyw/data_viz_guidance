@@ -1,0 +1,390 @@
+{
+  "prepared": "2026-11-14",
+  "assigned_pages": [
+    {
+      "page": "component/Uncertainty.md",
+      "title": "Visualizing Uncertainty",
+      "original_images": 6,
+      "acs_job": "uncertainty",
+      "python_source": "ACS_Examples_Builder/examples/python/03_components/uncertainty.py",
+      "acs_status": "Integrated supplied real-data output; saved-data arithmetic/layout reviewed; publication accessibility pending",
+      "baseline_sha256": "88051fad064fd8a5f3bc5e501b1510050ae9b0351678b18e7510909a509f3fb5",
+      "combined_sha256": "e8e2fe05a381cf7182173b8d63d8acfd49323115b5d5f4769b7b6929c81c853a",
+      "acs_images": [
+        "assets/examples/uncertainty/uncertainty_acs.png"
+      ],
+      "acs_csvs": [
+        "assets/examples/uncertainty/uncertainty_acs.csv"
+      ],
+      "acs_data_table": "assets/examples/uncertainty/reviewed_data_table.html"
+    },
+    {
+      "page": "component/NestedCategories.md",
+      "title": "Nested or Non-Mutually Exclusive Categories",
+      "original_images": 3,
+      "acs_job": "nested_categories",
+      "python_source": "ACS_Examples_Builder/examples/python/03_components/nested_categories.py",
+      "acs_status": "Integrated supplied real-data output; saved-data arithmetic/layout reviewed; publication accessibility pending",
+      "baseline_sha256": "108834e7418bac285816f8ab46b8685b780433a61906c56c126a549176101705",
+      "combined_sha256": "e96b40f6e21f9424de68f7732b1f106d41493613ad8966539b951b0c16a2fcbb",
+      "acs_images": [
+        "assets/examples/nested_categories/nested_b03002.png",
+        "assets/examples/nested_categories/nested_dp03.png"
+      ],
+      "acs_csvs": [
+        "assets/examples/nested_categories/nested_categories_acs.csv"
+      ],
+      "acs_data_table": "assets/examples/nested_categories/reviewed_data_table.html"
+    },
+    {
+      "page": "visualization_type/AreaChart.md",
+      "title": "Area Chart",
+      "original_images": 2,
+      "acs_job": "area_chart",
+      "python_source": "ACS_Examples_Builder/examples/python/02_time_series/area_chart.py",
+      "acs_status": "Integrated supplied real-data output; saved-data arithmetic/layout reviewed; publication accessibility pending",
+      "baseline_sha256": "21e77a17b25b55873e8cdb4d6655f8b509534875fcb862481cecac6dd247fd6a",
+      "combined_sha256": "14dce94200735d1da54cda1435fa6aa229610c8d26930ea4d6c5e16f5aaab1d9",
+      "acs_images": [
+        "assets/examples/area_chart/area_chart.png"
+      ],
+      "acs_csvs": [
+        "assets/examples/area_chart/area_chart_data.csv"
+      ],
+      "acs_data_table": "assets/examples/area_chart/reviewed_data_table.html"
+    },
+    {
+      "page": "visualization_type/Boxplot.md",
+      "title": "Boxplot",
+      "original_images": 1,
+      "acs_job": "boxplot",
+      "python_source": "ACS_Examples_Builder/examples/python/04_distributions/boxplot.py",
+      "acs_status": "Integrated supplied real-data output; saved-data arithmetic/layout reviewed; publication accessibility pending",
+      "baseline_sha256": "8db98b224e1a9e32fc1eba591abc715798c934b2d6b2922e47827cca10907596",
+      "combined_sha256": "c93f2f8f1860edf71cea267671c7606d0341a6556b7493508773ca6a0cb2ee21",
+      "acs_images": [
+        "assets/examples/boxplot/boxplot_acs.png"
+      ],
+      "acs_csvs": [
+        "assets/examples/boxplot/boxplot_summary.csv",
+        "assets/examples/boxplot/boxplot_county_data.csv"
+      ],
+      "acs_data_table": "assets/examples/boxplot/reviewed_data_table.html"
+    },
+    {
+      "page": "visualization_type/bubblechart.md",
+      "title": "Bubble Chart",
+      "original_images": 2,
+      "acs_job": "bubble_chart",
+      "python_source": "ACS_Examples_Builder/examples/python/01_bubble_scatter/bubble_chart.py",
+      "acs_status": "Integrated supplied real-data output; saved-data arithmetic/layout reviewed; publication accessibility pending",
+      "baseline_sha256": "2fd25e213b923d58298237613cee2845a5913404cc8a7d8fb239c5118d52095f",
+      "combined_sha256": "aad313b4e0b7d67d6a70f9dc3ce5c52e4a41ec3564de601066abb83e3f3987ff",
+      "acs_images": [
+        "assets/examples/bubble_chart/bubble_chart.png"
+      ],
+      "acs_csvs": [
+        "assets/examples/bubble_chart/bubble_chart_data.csv"
+      ],
+      "acs_data_table": "assets/examples/bubble_chart/reviewed_data_table.html"
+    },
+    {
+      "page": "visualization_type/Histogram.md",
+      "title": "Histogram",
+      "original_images": 1,
+      "acs_job": "histogram",
+      "python_source": "ACS_Examples_Builder/examples/python/04_distributions/histogram.py",
+      "acs_status": "Integrated supplied real-data output; saved-data arithmetic/layout reviewed; publication accessibility pending",
+      "baseline_sha256": "fea34848bbc263bb14e86f6b45087cc62ed1fa3af7be21bbe890c483084f417a",
+      "combined_sha256": "458c2093e4cda64e583f2fdc270442aeb12eb52b520b0e75878fa6e1038cb1dd",
+      "acs_images": [
+        "assets/examples/histogram/histogram_acs.png"
+      ],
+      "acs_csvs": [
+        "assets/examples/histogram/histogram_summary.csv",
+        "assets/examples/histogram/histogram_bins.csv",
+        "assets/examples/histogram/histogram_county_data.csv"
+      ],
+      "acs_data_table": "assets/examples/histogram/reviewed_data_table.html"
+    },
+    {
+      "page": "visualization_type/LineGraph.md",
+      "title": "Line Graph",
+      "original_images": 4,
+      "acs_job": "line_graph",
+      "python_source": "ACS_Examples_Builder/examples/python/02_time_series/line_graph.py",
+      "acs_status": "Integrated supplied real-data output; saved-data arithmetic/layout reviewed; publication accessibility pending",
+      "baseline_sha256": "34463b366e8b3261877145dae4782c417450fb0168dab3818c419880658dc586",
+      "combined_sha256": "57413d1c2ab3a69134f928f1cbc5211fd3f827c1a0abf9b06e38a91c2ba551aa",
+      "acs_images": [
+        "assets/examples/line_graph/linegraph_acs_income.png"
+      ],
+      "acs_csvs": [
+        "assets/examples/line_graph/linegraph_acs_income_2024_dollars.csv"
+      ],
+      "acs_data_table": "assets/examples/line_graph/reviewed_data_table.html"
+    },
+    {
+      "page": "visualization_type/PopulationPyramid.md",
+      "title": "Population Pyramid",
+      "original_images": 5,
+      "acs_job": "population_pyramid",
+      "python_source": "ACS_Examples_Builder/examples/python/03_components/population_pyramid.py",
+      "acs_status": "Integrated supplied real-data output; saved-data arithmetic/layout reviewed; publication accessibility pending",
+      "baseline_sha256": "323ddcd113a61ce25bc397990dbad033cf7e47b781f03341895e2912ba60be8d",
+      "combined_sha256": "e556870033386bbcc0b44699df022c1f54d499a72103efd6ac38bda2805c746e",
+      "acs_images": [
+        "assets/examples/population_pyramid/population_pyramid_acs.png"
+      ],
+      "acs_csvs": [
+        "assets/examples/population_pyramid/population_pyramid_acs.csv"
+      ],
+      "acs_data_table": "assets/examples/population_pyramid/reviewed_data_table.html"
+    },
+    {
+      "page": "visualization_type/ScatterPlot.md",
+      "title": "Scatter Plot",
+      "original_images": 3,
+      "acs_job": "scatter_plot",
+      "python_source": "ACS_Examples_Builder/examples/python/01_bubble_scatter/scatter_plot.py",
+      "acs_status": "Integrated supplied real-data output; saved-data arithmetic/layout reviewed; publication accessibility pending",
+      "baseline_sha256": "18c45789cfa2c53a45eff3dfa4a749d31566e8d3b787fa8012910ed44c4423a3",
+      "combined_sha256": "14c2549958df4a01363eeee1979fb7fca6bc46d4107e7f212ff829fd0b240d5c",
+      "acs_images": [
+        "assets/examples/scatter_plot/scatter_plot.png"
+      ],
+      "acs_csvs": [
+        "assets/examples/scatter_plot/scatter_plot_data.csv"
+      ],
+      "acs_data_table": "assets/examples/scatter_plot/reviewed_data_table.html"
+    },
+    {
+      "page": "visualization_type/StackedAreaChart.md",
+      "title": "Stacked Area Chart",
+      "original_images": 1,
+      "acs_job": "stacked_area",
+      "python_source": "ACS_Examples_Builder/examples/python/02_time_series/stacked_area.py",
+      "acs_status": "Integrated supplied real-data output; saved-data arithmetic/layout reviewed; publication accessibility pending",
+      "baseline_sha256": "2218a4616beb06e8f458ac64cfaa5d361891b3c62a49ca9449caa32efe42155d",
+      "combined_sha256": "e96d1d49dcc7cab82b6340fcd2bb37261705b4c3059754aff58bfd069ccd4b5b",
+      "acs_images": [
+        "assets/examples/stacked_area/stacked_area_florida.png",
+        "assets/examples/stacked_area/stacked_area_georgia.png"
+      ],
+      "acs_csvs": [
+        "assets/examples/stacked_area/stacked_area_acs_data.csv"
+      ],
+      "acs_data_table": "assets/examples/stacked_area/reviewed_data_table.html"
+    }
+  ],
+  "original_assets": [
+    {
+      "page": "component/Uncertainty.md",
+      "path": "component/assets/Uncertainty1.png",
+      "sha256": "62c1859c1c78872919e0370116cebd0a2148ece1f14c1754920994093b3c17d0",
+      "original_filename_preserved": true,
+      "bytes_unchanged": true
+    },
+    {
+      "page": "component/Uncertainty.md",
+      "path": "component/assets/Uncertainty2.png",
+      "sha256": "6aa8a2d70a8bfc493c0690de94abff78cd68ca1f3b81310e1f859ce36a5dbe19",
+      "original_filename_preserved": true,
+      "bytes_unchanged": true
+    },
+    {
+      "page": "component/Uncertainty.md",
+      "path": "component/assets/Uncertainty3.png",
+      "sha256": "c3c9072493103891f54a8e023156100d306d9f21348d859456e5d0ce578561de",
+      "original_filename_preserved": true,
+      "bytes_unchanged": true
+    },
+    {
+      "page": "component/Uncertainty.md",
+      "path": "component/assets/Uncertainty4.png",
+      "sha256": "800edf4e3d0707edf79eb2840208515f16a5a12624963a68718e35eda253cf11",
+      "original_filename_preserved": true,
+      "bytes_unchanged": true
+    },
+    {
+      "page": "component/Uncertainty.md",
+      "path": "component/assets/Uncertainty5.png",
+      "sha256": "cbb8e07fab46d97cf35d05df35fc3184bcf53182822f19245bb5c4f0bfcf9940",
+      "original_filename_preserved": true,
+      "bytes_unchanged": true
+    },
+    {
+      "page": "component/Uncertainty.md",
+      "path": "component/assets/Uncertainty6.png",
+      "sha256": "e799a3731d7834ab3755a578722d7e3aa58207c7fffccf954c8bd6a601e5ec43",
+      "original_filename_preserved": true,
+      "bytes_unchanged": true
+    },
+    {
+      "page": "component/NestedCategories.md",
+      "path": "component/assets/Nested1.png",
+      "sha256": "6aa094cf9dd5bd990b7cadf80dc7a296acd0959e025922beb9409d76d2c6f3e1",
+      "original_filename_preserved": true,
+      "bytes_unchanged": true
+    },
+    {
+      "page": "component/NestedCategories.md",
+      "path": "component/assets/Nested2.jpg",
+      "sha256": "2039fa82faf897ace29aaae51d06e87e61bab475334a63fd1f855ca0a255b823",
+      "original_filename_preserved": true,
+      "bytes_unchanged": true
+    },
+    {
+      "page": "component/NestedCategories.md",
+      "path": "component/assets/Nested3.png",
+      "sha256": "f673fa6ad03acffbf749ce81d023754391ccbdbed30b49cf890f3fd760294684",
+      "original_filename_preserved": true,
+      "bytes_unchanged": true
+    },
+    {
+      "page": "visualization_type/AreaChart.md",
+      "path": "visualization_type/assets/areaplot1.jpeg",
+      "sha256": "bbf85f076877dde5f3ee4b5c8401cf4a576c5e06184da5d643f6d593c15350e1",
+      "original_filename_preserved": true,
+      "bytes_unchanged": true
+    },
+    {
+      "page": "visualization_type/AreaChart.md",
+      "path": "visualization_type/assets/areaplot2.png",
+      "sha256": "265b5cbeda80c35aa3b255069eab0f3259c9ca43c6264bed72dee1679edbe045",
+      "original_filename_preserved": true,
+      "bytes_unchanged": true
+    },
+    {
+      "page": "visualization_type/Boxplot.md",
+      "path": "visualization_type/assets/Boxandwhisker1.png",
+      "sha256": "307fdd320c3956f6f9ede7655e3514fd8938edb3ac947c2ff1e67a0f138676b5",
+      "original_filename_preserved": true,
+      "bytes_unchanged": true
+    },
+    {
+      "page": "visualization_type/bubblechart.md",
+      "path": "visualization_type/assets/bubblechart1.png",
+      "sha256": "5cef7f4c9ab7989714b09228544b749509a5568f27a0d1a47e64c86994a722c7",
+      "original_filename_preserved": true,
+      "bytes_unchanged": true
+    },
+    {
+      "page": "visualization_type/bubblechart.md",
+      "path": "visualization_type/assets/bubblechart2.png",
+      "sha256": "a7ddcfb359df64235f2ee497ec1bc416f4f37131b7a41ec89e921f88b351cb13",
+      "original_filename_preserved": true,
+      "bytes_unchanged": true
+    },
+    {
+      "page": "visualization_type/Histogram.md",
+      "path": "visualization_type/assets/Histogram1.png",
+      "sha256": "cfd35cd87c5721df99468141f8140dca2da9cfa8aae4ec6a503ba5085928240f",
+      "original_filename_preserved": true,
+      "bytes_unchanged": true
+    },
+    {
+      "page": "visualization_type/LineGraph.md",
+      "path": "visualization_type/assets/LineGraph1.png",
+      "sha256": "56ee5d6990cbe710b9b037b9a67af4c852ee080da1076fbbab0cecd4189c478d",
+      "original_filename_preserved": true,
+      "bytes_unchanged": true
+    },
+    {
+      "page": "visualization_type/LineGraph.md",
+      "path": "visualization_type/assets/LineGraph2.png",
+      "sha256": "fb6b285965e5ea296b5a73c8a926aed6f11cc249423ef4f2fe2c6ae8a87ca042",
+      "original_filename_preserved": true,
+      "bytes_unchanged": true
+    },
+    {
+      "page": "visualization_type/LineGraph.md",
+      "path": "visualization_type/assets/LineGraph3.png",
+      "sha256": "44f6ed553d5ff5c29c166354acea78c7efaa327b25e28cf918983d168c74548e",
+      "original_filename_preserved": true,
+      "bytes_unchanged": true
+    },
+    {
+      "page": "visualization_type/LineGraph.md",
+      "path": "visualization_type/assets/LineGraph4.png",
+      "sha256": "9891aaf0a162ff305d8c9d57725ce10fecd085eed05cbb4e037f1cf9f4d5cdbb",
+      "original_filename_preserved": true,
+      "bytes_unchanged": true
+    },
+    {
+      "page": "visualization_type/PopulationPyramid.md",
+      "path": "visualization_type/assets/PopulationPyramid1.jpg",
+      "sha256": "39fb1fb8f29277a154db77c1550484c9ecb0f357f6e54b0a34860d08f65c464d",
+      "original_filename_preserved": true,
+      "bytes_unchanged": true
+    },
+    {
+      "page": "visualization_type/PopulationPyramid.md",
+      "path": "visualization_type/assets/PopulationPyramid2.jpg",
+      "sha256": "39d68aa9b36c6aceef6a808875ef89cf3693c03701bdb0d1cfb2fa7f25f70c06",
+      "original_filename_preserved": true,
+      "bytes_unchanged": true
+    },
+    {
+      "page": "visualization_type/PopulationPyramid.md",
+      "path": "visualization_type/assets/PopulationPyramid3.png",
+      "sha256": "7a78b6376640b7f8c23a9f0a7bf5817bc972a2f7fa5162246861ad4ce014b408",
+      "original_filename_preserved": true,
+      "bytes_unchanged": true
+    },
+    {
+      "page": "visualization_type/PopulationPyramid.md",
+      "path": "visualization_type/assets/PopulationPyramid4.png",
+      "sha256": "0416b8abe964fc57d76e54d996f695d670c8be935b60bad81e6b11b988f208dc",
+      "original_filename_preserved": true,
+      "bytes_unchanged": true
+    },
+    {
+      "page": "visualization_type/PopulationPyramid.md",
+      "path": "visualization_type/assets/PopulationPyramid5.png",
+      "sha256": "1a01c957ef320dddedbaca377ea848acaa07a1ee5258b2d58cf76fd2d2fa0913",
+      "original_filename_preserved": true,
+      "bytes_unchanged": true
+    },
+    {
+      "page": "visualization_type/ScatterPlot.md",
+      "path": "visualization_type/assets/ScatterPlot1.png",
+      "sha256": "2065abc9330e2b9033b70f0ec47d478d1d9c04e374120f3a465e3f3db2853f6b",
+      "original_filename_preserved": true,
+      "bytes_unchanged": true
+    },
+    {
+      "page": "visualization_type/ScatterPlot.md",
+      "path": "visualization_type/assets/ScatterPlot2.png",
+      "sha256": "23e655a7f2123c16f7d50aee001d2e280d803ae3ad7b8c10d5406732c55bc2c9",
+      "original_filename_preserved": true,
+      "bytes_unchanged": true
+    },
+    {
+      "page": "visualization_type/ScatterPlot.md",
+      "path": "visualization_type/assets/ScatterPlot3.png",
+      "sha256": "3eef004354781659b6d2139d20d6b99ec6fba41b5d5ca5687292270abe4183c2",
+      "original_filename_preserved": true,
+      "bytes_unchanged": true
+    },
+    {
+      "page": "visualization_type/StackedAreaChart.md",
+      "path": "visualization_type/assets/StackedAreaChart1.png",
+      "sha256": "a485b041a24f05269edb2465b5311456c2ed159ae82adc329974a85410f2ac61",
+      "original_filename_preserved": true,
+      "bytes_unchanged": true
+    }
+  ],
+  "original_image_count": 28,
+  "notebook_evidence": {
+    "source_notebook": "RUN_ALL_ACS_EXAMPLES_v03 (3).ipynb",
+    "included_as": "review/evidence/RUN_ALL_ACS_EXAMPLES_v03_executed.ipynb",
+    "code_cells": 7,
+    "cells_with_execution_count": 0,
+    "cells_with_outputs": 7,
+    "status": "Saved outputs and run ZIP supplied; execution counters absent in notebook. Run manifest records API execution completed November 10, 2026 UTC."
+  },
+  "acs_image_count": 12,
+  "acs_jobs_integrated": 10,
+  "supplementary_job": "small_multiples: retained as supplied evidence/assets; no change to unassigned website page"
+}

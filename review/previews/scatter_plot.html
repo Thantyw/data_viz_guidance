@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Scatter Plot</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <style>body{max-width:70rem;margin:2rem auto;padding:0 1rem;font:17px/1.6 system-ui,sans-serif;color:#171717;background:#fff}img{max-width:100%;height:auto}table{border-collapse:collapse;display:block;overflow:auto}th,td{border:1px solid #888;padding:.4rem;text-align:left}a{color:#0645ad}h1,h2,h3{line-height:1.25}pre{overflow:auto}</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Scatter Plot</h1>
+</header>
+<h1 id="scatter-plot">Scatter Plot</h1>
+<p>Also known as: scatterplot, scatter graph, scatter chart,
+scattergram, or scatter diagram. See also: <a
+href="bubble_chart.html">Bubble Chart</a>.</p>
+<h2 id="applying-this-guidance">Applying this guidance</h2>
+<p>Apply the <a
+href="https://www2.census.gov/about/policies/quality/quality-standards.pdf">Census
+Bureau Statistical Quality Standards</a>, revised September 29, 2026,
+within their stated scope. The chart-selection advice and implementation
+checks on this page explain practical design choices; they do not create
+additional agency mandates. Treat <strong>Essential</strong> items as
+the core design conditions for this chart, and confirm formal
+applicability through the program’s review process.</p>
+<p>Coordinate this page with <a href="../../component/titles.md">Titles
+and Subtitles</a>, <a href="../../component/Legend.md">Legends</a>, <a
+href="../../component/Source.md">Sources</a>, and <a
+href="uncertainty.html">Visualizing Uncertainty</a>. Keep detailed
+component guidance in those shared pages rather than duplicating it
+here.</p>
+<h2 id="purpose-and-overview">1. Purpose and Overview</h2>
+<p>A scatter plot places one observation at each pair of numerical
+coordinates (x, y), revealing patterns, clusters, outliers, and possible
+associations between <strong>two quantitative variables</strong>. A
+bubble chart adds a third quantitative variable through proportional
+circle <strong>area</strong>. Scatter plots display association, not
+causation; no fitted line is required.</p>
+<h2 id="when-to-use">2. When to Use</h2>
+<h3 id="essential">Essential</h3>
+<ul>
+<li>Specify the <strong>unit of observation</strong>, geography, year, x
+and y measures, and units in the title, axis labels, or caption.</li>
+<li>Use one consistent coordinate system and disclose missing, excluded,
+suppressed, or incomparable observations.</li>
+<li>Ensure markers can be distinguished and annotations do not obscure
+plotted values; supply a data table.</li>
+<li>Provide a clear source and explain derived variables and
+denominators.</li>
+</ul>
+<h3 id="avoid">Avoid</h3>
+<ul>
+<li>Do not infer causation or statistical significance from a visible
+trend or correlation alone.</li>
+<li>Do not connect scatter points as if they form an ordered time
+series.</li>
+<li>Do not use jitter without disclosing that positions were altered. Do
+not rely solely on color or hover to distinguish categories.</li>
+</ul>
+<h2 id="when-to-use-an-alternative">3. When to Use an Alternative</h2>
+<h3 id="recommended">Recommended</h3>
+<p>Use a <strong>Bubble Chart</strong> when the third quantity
+materially improves interpretation and can be encoded accurately by
+marker area. Use a <strong>Line Graph</strong> for changes over time; a
+<strong>Small Multiples</strong> display when group comparisons crowd a
+single view; and a data table when precise values matter most.</p>
+<h3 id="not-recommended">Not Recommended</h3>
+<p>Avoid a single static scatter plot when severe overplotting hides
+most observations, the sample is too small for a meaningful relationship
+claim, or variables are categorical rather than quantitative. Consider
+transparency, faceting, binned counts, or tabular alternatives when
+appropriate.</p>
+<h2 id="choosing-between-alternatives">4. Choosing Between
+Alternatives</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Question</th>
+<th>Visualization</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>How do two numeric measures vary together?</td>
+<td>Scatter plot</td>
+</tr>
+<tr class="even">
+<td>Does population size change the interpretation?</td>
+<td>Bubble chart, with area-proportional markers</td>
+</tr>
+<tr class="odd">
+<td>How do measurements evolve over ordered time?</td>
+<td>Line graph</td>
+</tr>
+<tr class="even">
+<td>Are subgroup comparisons obscured?</td>
+<td>Small multiples or separate charts</td>
+</tr>
+</tbody>
+</table>
+<h2 id="data-requirements-and-statistical-considerations">5. Data
+Requirements and Statistical Considerations</h2>
+<ul>
+<li>One observation must have one valid x–y pair. Record geography,
+collection period, variable labels, and source table IDs.</li>
+<li>Do not confuse a <strong>poverty-status universe</strong> with total
+population or number of households. For the ACS example below,
+percentage = <code>100 × B17001_002E / B17001_001E</code>.</li>
+<li>ACS estimates are subject to sampling error.
+<code>B19013_001M</code> and <code>B17001_002M</code> represent
+<strong>published 90% margins of error for their respective
+estimates</strong>, not a margin of error for the derived poverty
+percentage. Calculate ratio uncertainty using an appropriate
+Census-approved method if it is to be displayed or tested.</li>
+<li>Avoid misleading regressions: geographic aggregates do not establish
+individual-level relationships. If fitting a line, disclose its method,
+population, sample size, and statistical limitations.</li>
+<li>Reject negative ACS sentinel codes, zero denominators, missing
+fields, and non-comparable units before drawing the chart.</li>
+</ul>
+<h2 id="visualization-specific-considerations-and-accessibility">6.
+Visualization-Specific Considerations and Accessibility</h2>
+<ul>
+<li>Use simple, equally sized point markers when no third numeric
+quantity is encoded. Circular points avoid misleading unequal marker
+dimensions.</li>
+<li>Label axes and their units. Selectively label points without
+concealing nearby markers; an accompanying table provides all
+observations.</li>
+<li>Choose adequate contrast. Marker edges, text labels, or shapes
+should communicate distinctions <strong>without reliance on color
+alone</strong>.</li>
+<li>Provide descriptive alternative text and a properly structured HTML
+table with column headings. Test keyboard navigation and screen-reader
+behavior of the <strong>published GitHub page</strong>, not just the
+source image.</li>
+<li>If jitter, filtering, transformation, or regression is used, explain
+it adjacent to the graph.</li>
+</ul>
+<h3 id="categories-and-markers">Categories and markers</h3>
+<p>If categories or multiple point series require a key, include a clear
+legend unless direct labels already identify them unambiguously. Keep
+the title’s observation unit explicit. Use simple markers, position
+selective labels so they do not overlap, and use leader lines where
+needed. Two quantitative coordinates define the scatter plot; additional
+categories must not obscure that relationship. If a third quantitative
+value changes marker area, follow the Bubble Chart guidance.</p>
+<h3 id="design-comparison">Design comparison</h3>
+<p>Use these comparisons to connect each design choice with its effect
+on interpretation.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Problematic approach</th>
+<th>Why it matters</th>
+<th>Preferred approach</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Point sizes vary without a named third measure</td>
+<td>Readers may infer a quantity that is not encoded</td>
+<td>Use equal marker areas for the two-variable scatter plot</td>
+</tr>
+<tr class="even">
+<td>Poverty count is divided by total population</td>
+<td>The denominator differs from the published poverty-status
+universe</td>
+<td>Use B17001_001E for the derived percentage and document the
+formula</td>
+</tr>
+<tr class="odd">
+<td>A fitted line is described as a causal or nationally representative
+result</td>
+<td>Selected aggregate observations cannot support that conclusion by
+themselves</td>
+<td>Describe the selected-state association and disclose any fitted-line
+method and limitations</td>
+</tr>
+</tbody>
+</table>
+<h3 id="checking-the-published-example">Checking the published
+example</h3>
+<p>Test the chart at its intended display size and with enlarged text.
+Follow the reading sequence from title to explanation, figure, table,
+and source. Check that labels and meaningful marks remain
+distinguishable without color and that any controls can be operated by
+keyboard with visible focus. Read the explanation and table with a
+screen reader to confirm that they convey the same measures, units,
+missing-data conditions, and important relationships as the chart.</p>
+<p>Use <a
+href="https://www.section508.gov/test/testing-overview/">automated and
+manual accessibility testing</a> together. A downloadable CSV supplies
+values but does not replace the chart’s explanatory narrative; see <a
+href="https://designsystem.digital.gov/components/data-visualizations/">USWDS
+visualization guidance</a>. Record the page/version, tool or assistive
+technology, result, and corrective action. Apply the sponsor’s agreed
+accessibility baseline rather than treating a palette simulation as a
+conformance test.</p>
+<h2 id="original-examples-and-additional-acs-demonstration">7. Original
+Examples and Additional ACS Demonstration</h2>
+<h3 id="original-examples-and-their-teaching-purpose">7.1 Original
+examples and their teaching purpose</h3>
+<p>The following examples are retained from the Census guidance. Their
+datasets, periods, universes and design lessons remain distinct. Some
+illustrate limitations or less-preferred choices; inclusion does not
+certify every design or its accessibility.</p>
+<p><strong><em>Example 1:</em></strong> Percent Labor Force Covered by
+Public Pensions vs Percent of Former Wages Replaced by Pensions in
+Select Asian Countries.</p>
+<figure>
+<img src="../../visualization_type/assets/ScatterPlot1.png"
+alt="Public-pension coverage versus wage replacement for selected Asian countries, with labeled observations." />
+<figcaption aria-hidden="true">Public-pension coverage versus wage
+replacement for selected Asian countries, with labeled
+observations.</figcaption>
+</figure>
+<p>In Example 1 we notice the following consistencies with our
+standards: * The variables and units of analysis are explained in the
+title of the graph. * Labels are being used for specific observations
+and the labels do not overlap point markers. * Circles are being used as
+point markers, which are proportional in height and width. * There is
+not an excessive number of observations.</p>
+<p><strong><em>Example 2:</em></strong> Median Estimated Earnings by Sex
+and Occupation</p>
+<figure>
+<img src="../../visualization_type/assets/ScatterPlot2.png"
+alt="Occupation earnings dashboard with an equal-marker scatter plot and monetary axes." />
+<figcaption aria-hidden="true">Occupation earnings dashboard with an
+equal-marker scatter plot and monetary axes.</figcaption>
+</figure>
+<p>This plot is a good example of the following: * The units of analysis
+on this dashboard scatter plot are clearly identified as dollars using
+the dollar signs in front of the axis labels. * The symbol used for each
+data point is a circle.</p>
+<p><strong><em>Example 3:</em></strong> Uninsured Rate in 2013 and
+Change from 2013 to 2014 for Occupations</p>
+<figure>
+<img src="../../visualization_type/assets/ScatterPlot3.png"
+alt="Uninsured rate in 2013 versus its change to 2014 by occupation, with annotations, leader lines and a significance key." />
+<figcaption aria-hidden="true">Uninsured rate in 2013 versus its change
+to 2014 by occupation, with annotations, leader lines and a significance
+key.</figcaption>
+</figure>
+<p>This plot is a good example of the following: * The data is
+represented using circles that are shaded in two different colors.<br />
+* The colors are defined in a legend on the graph. * Units of analysis
+are clearly defined in the axis labels. * All labels do not interfere
+with the data points on the graph using leader lines to connect the
+label to each data point being identified.</p>
+<h3 id="additional-acs-demonstration">7.2 Additional ACS
+demonstration</h3>
+<p><strong>2024 ACS income and poverty by state.</strong> B19013 and
+B17001: use the same x/y definitions as the bubble example with equal
+marker areas.</p>
+<p><strong>What this adds:</strong> Demonstrates how a two-variable
+display differs from the three-variable bubble display without changing
+x/y meaning.</p>
+<p><strong>Run evidence:</strong> The supplied November 10, 2026 run
+generated this example. Saved-data arithmetic and chart layout were
+reviewed for this package; published-page accessibility testing remains
+outstanding.</p>
+<figure>
+<img src="../../assets/examples/scatter_plot/scatter_plot.png"
+alt="Four equal-sized labeled points compare state median household income with the percentage below poverty threshold in 2024. Virginia has the highest income and lowest poverty point estimate among the four selected states. Equal marker areas carry no population encoding." />
+<figcaption aria-hidden="true">Four equal-sized labeled points compare
+state median household income with the percentage below poverty
+threshold in 2024. Virginia has the highest income and lowest poverty
+point estimate among the four selected states. Equal marker areas carry
+no population encoding.</figcaption>
+</figure>
+<p><strong>Source and interpretation:</strong> U.S. Census Bureau, 2024
+ACS 1-Year Estimates, Detailed Tables B19013 and B17001. Poverty
+percentage = 100 × below-poverty count / poverty-status universe; income
+is in 2024 dollars. The supplied run completed November 10, 2026
+(UTC).</p>
+<p>The companion bubble chart has the same x/y values; this chart uses
+equal marker areas. Published income and poverty-count MOEs are retained
+in the data table, but no derived percentage MOE is calculated. A
+pattern across four selected states does not establish causation or a
+statistically significant relationship.</p>
+<p><strong>Selected values</strong> (rounded for display; CSV retains
+exported precision):</p>
+<table>
+<thead>
+<tr class="header">
+<th>State</th>
+<th>Income estimate ($)</th>
+<th>Below poverty (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Florida</td>
+<td>77,735</td>
+<td>12.05</td>
+</tr>
+<tr class="even">
+<td>Georgia</td>
+<td>79,991</td>
+<td>12.59</td>
+</tr>
+<tr class="odd">
+<td>Texas</td>
+<td>79,721</td>
+<td>13.41</td>
+</tr>
+<tr class="even">
+<td>Virginia</td>
+<td>92,090</td>
+<td>9.75</td>
+</tr>
+</tbody>
+</table>
+<p><a
+href="../../assets/examples/scatter_plot/reviewed_data_table.html">Read
+the data tables</a> · <a
+href="../../assets/examples/scatter_plot/scatter_plot_data.csv">Download
+scatter_plot_data.csv</a></p>
+<p>Implementation: <a
+href="../../ACS_Examples_Builder/examples/python/01_bubble_scatter/scatter_plot.py">Python
+source</a>. The original illustrations above and the ACS output have
+separate asset paths and source statements.</p>
+<h3 id="how-the-examples-work-together">7.3 How the examples work
+together</h3>
+<p>Use the original illustrations to discuss design choices and their
+source-specific limitations. Use the ACS addition to demonstrate a
+documented data-to-chart workflow. Do not combine values across
+examples, imply that they use one dataset, or relabel a historical image
+as a new ACS output.</p>
+<h2 id="developer-implementation">8. Developer Implementation</h2>
+<p>The following contract defines the intended behavior of the linked
+examples. Confirm the files, commands, dependencies, and generated
+results against the repository before publication.</p>
+<h3 id="data-preparation">8.1 Data Preparation</h3>
+<p><strong>Inputs:</strong> 2024 ACS 1-Year B19013 and B17001 records
+joined by state identifier, with income estimate/MOE, poverty count/MOE,
+poverty-status universe, and annotations.</p>
+<p>Require one x–y pair per included state. Derive poverty percentage as
+100 × B17001_002E / B17001_001E only for a valid positive universe.
+Check the count is between zero and its universe, join cardinality is
+one-to-one, and both measures use the same release and geography.
+Document excluded states and retain published MOEs.</p>
+<h3 id="python">8.2 Python</h3>
+<p>Use the <a
+href="../../ACS_Examples_Builder/examples/python/01_bubble_scatter/scatter_plot.py">supplied
+Python implementation</a> and the <a
+href="../../ACS_Examples_Builder/build_acs_examples.py">ACS example
+runner</a>. The runner maps this page to job <code>scatter_plot</code>.
+Its dependencies are listed in <a
+href="../../ACS_Examples_Builder/requirements.txt">requirements.txt</a>.
+Confirm supported input options in the implementation and its
+accompanying README.</p>
+<p>The <a
+href="../../review/evidence/RUN_ALL_ACS_EXAMPLES_v03_executed.ipynb">executed
+notebook</a> contains saved outputs from the supplied ACS run. The <a
+href="../../review/evidence/ACS_Actual_Results/execution_status.csv">run
+status CSV</a> records generated results. The notebook produces the ACS
+additions; it does not recreate the historical Census illustrations.</p>
+<h3 id="r">8.3 R</h3>
+<p>The analytical definitions and output checks on this page also
+specify the requirements for an R counterpart. A verified R
+implementation is not bundled in this combined package. Retain R
+execution and Python/R agreement as outstanding validation tasks; do not
+describe them as completed.</p>
+<h3 id="reproducibility-and-adaptation">8.4 Reproducibility and
+Adaptation</h3>
+<p>A personal Census API key is required for data queries under the <a
+href="https://www.census.gov/data/developers/guidance/api-user-guide.Query_Limits.html">current
+Census API guidance</a>. Read <code>CENSUS_API_KEY</code> from the
+analyst’s environment. Do not include keys in source control, saved
+notebooks, request logs, error messages, or execution manifests; redact
+the <code>key</code> query parameter wherever a request URL is recorded.
+No shared developer credential or private file path should be
+required.</p>
+<p>For each run, save the validated data, chart PNG/SVG, a semantic HTML
+table, descriptive-text draft, and a nonsecret manifest in the selected
+output folder. Include source table/variables, full reference period,
+geography, units, transformations, exclusions, dependency versions, and
+retrieval time. Pin or record versions actually tested. For identical
+inputs, R and Python should reproduce the same analytical values within
+an explicitly documented tolerance; visual styling need not be
+pixel-identical.</p>
+<p>When changing years or geographies, recheck product coverage,
+definitions, annotations, and comparability. A successful run does not
+establish statistical significance or accessibility conformance.</p>
+<h3 id="output-verification">8.5 Output Verification</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Check</th>
+<th>Expected evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Point count</td>
+<td>Number of plotted points equals the number of valid, unique joined
+states; each state has one recorded x–y pair</td>
+</tr>
+<tr class="even">
+<td>Coordinates</td>
+<td>X equals the income estimate and Y equals the documented poverty
+percentage; marker area is constant</td>
+</tr>
+<tr class="odd">
+<td>Uncertainty</td>
+<td>Published poverty-count MOE remains labeled as a count MOE; no
+uncalculated percentage MOE or fitted-model inference is reported</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Source-statement pattern for this example:</strong> U.S.
+Census Bureau, American Community Survey, 2024 ACS 1-Year Estimates,
+Detailed Tables B19013 and B17001, selected states. Poverty percentages
+calculated from B17001 estimates; income is in 2024 inflation-adjusted
+dollars. Add the specific source or reproducible request link and actual
+retrieval date; omit the API key. Identify derived calculations
+separately from published estimates.</p>
+<h2 id="common-errors-and-misinterpretations">9. Common Errors and
+Misinterpretations</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Error</th>
+<th>Correction</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Treating association as causation</td>
+<td>State the graph is descriptive; avoid causal claims</td>
+</tr>
+<tr class="even">
+<td>Using total population to calculate poverty percentage</td>
+<td>Divide by the B17001 poverty-status universe</td>
+</tr>
+<tr class="odd">
+<td>Claiming numerator MOE is the derived percentage MOE</td>
+<td>Use a suitable ratio-MOE method or omit a percentage MOE</td>
+</tr>
+<tr class="even">
+<td>Overlapping every point label</td>
+<td>Label selectively and provide an accompanying table</td>
+</tr>
+<tr class="odd">
+<td>Displaying suppressed ACS values as actual numbers</td>
+<td>Filter and document invalid or suppressed observations</td>
+</tr>
+<tr class="even">
+<td>Using bubble-size encoding unintentionally</td>
+<td>Keep point areas equal for a two-variable scatter plot</td>
+</tr>
+</tbody>
+</table>
+<h2 id="publication-quality-checklist">10. Publication Quality
+Checklist</h2>
+<ul class="task-list">
+<li><label><input type="checkbox" />Variables, units, observation
+geography, and denominator are documented.</label></li>
+<li><label><input type="checkbox" />Source values and estimates
+validated; missing or suppressed observations handled.</label></li>
+<li><label><input type="checkbox" />Scatter markers are legible;
+overlaps and label collisions evaluated.</label></li>
+<li><label><input type="checkbox" />Each image is an
+<strong>actual</strong>, verified chart and its relative path resolves
+from the published page.</label></li>
+<li><label><input type="checkbox" />Descriptive text alternative,
+accompanying table, and source/caption are present.</label></li>
+<li><label><input type="checkbox" />PNG/SVG, CSV, and HTML outputs
+correspond to the same API retrieval.</label></li>
+<li><label><input type="checkbox" />Python and R run with the reader’s
+own credentials and output directory.</label></li>
+<li><label><input type="checkbox" />Published HTML is manually assessed
+for keyboard access, screen-reader navigation, and
+legibility.</label></li>
+</ul>
+<p><strong>Related pages:</strong> <a href="bubble_chart.html">Bubble
+Chart</a>, <a href="line_graph.html">Line Graph</a>, and <a
+href="uncertainty.html">Visualizing Uncertainty</a>.</p>
+<h3 id="standards-and-review-references">Standards and Review
+References</h3>
+<p>The original Census page and its example assets are preserved in this
+package; see the review record for the exact baseline and changes.</p>
+<p>Use the <a
+href="https://www2.census.gov/about/policies/quality/quality-standards.pdf">September
+29, 2026 consolidated Census Statistical Quality Standards</a>,
+especially E1-6 (replication documentation), E2-2.3 (visualization
+requirements), and E3-2.4 (visualization review). Retain review findings
+and corrections separately from the design checklist.</p>
+<ul>
+<li><a
+href="https://www.census.gov/data/developers/guidance/api-user-guide.Query_Limits.html">Census
+API query requirements</a>.</li>
+<li><a href="https://www.section508.gov/test/testing-overview/">Section
+508 testing methods</a>.</li>
+<li><a
+href="https://designsystem.digital.gov/components/data-visualizations/">USWDS
+data visualization guidance</a>.</li>
+</ul>
+</body>
+</html>

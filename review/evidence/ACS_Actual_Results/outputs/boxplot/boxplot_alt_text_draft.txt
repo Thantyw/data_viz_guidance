@@ -1,0 +1,1 @@
+County median household-income estimates for Florida, Georgia, Texas, Virginia in 2024 ACS 5-year. Boxes show the 25th–75th percentiles, central lines the medians, and whiskers the most extreme counties within 1.5 times the interquartile range; circles identify outlier counties. One county is one observation. These are not individual household-income distributions.

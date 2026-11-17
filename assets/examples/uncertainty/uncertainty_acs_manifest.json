@@ -1,0 +1,18 @@
+{
+  "source_mode": "api",
+  "year": 2024,
+  "states": [
+    "Florida",
+    "Georgia",
+    "Texas",
+    "Virginia"
+  ],
+  "variables": [
+    "B19013_001E",
+    "B19013_001M"
+  ],
+  "confidence_level": "90%",
+  "api_key_saved": false,
+  "note": "Manual Section 508/WCAG testing required; statistical results require source review.",
+  "python": "3.13.18"
+}

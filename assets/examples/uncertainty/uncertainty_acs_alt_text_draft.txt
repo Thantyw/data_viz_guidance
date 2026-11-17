@@ -1,0 +1,1 @@
+Dot-and-whisker chart of 4 geographies, showing 2024 ACS B19013 median household income and its published 90% margin of error. Each horizontal interval is estimate plus or minus MOE; consult the accompanying table for exact values. Intervals alone do not establish significance.

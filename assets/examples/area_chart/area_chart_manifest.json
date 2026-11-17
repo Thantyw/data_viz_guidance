@@ -1,0 +1,31 @@
+{
+  "dataset": "ACS 1-year Detailed Tables",
+  "table": "B17001",
+  "measure": "B17001_002E",
+  "moe": "B17001_002M",
+  "states": [
+    "Florida",
+    "Georgia",
+    "Virginia"
+  ],
+  "years": [
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "output_directory": "/content/ACS_Examples_Builder/acs_generated_examples/outputs/area_chart",
+  "python": "3.13.18",
+  "pandas": "2.2.3",
+  "matplotlib": "3.10.0",
+  "requests": "2.32.4",
+  "credentials_included": false,
+  "execution_mode": "api",
+  "input_metadata": {
+    "input_mode": "api",
+    "local_input": null,
+    "credentials_saved": false,
+    "source_provenance": "Census API"
+  },
+  "manual_508_testing": "not performed by code"
+}

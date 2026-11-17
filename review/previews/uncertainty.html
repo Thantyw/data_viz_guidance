@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Visualizing Uncertainty</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <style>body{max-width:70rem;margin:2rem auto;padding:0 1rem;font:17px/1.6 system-ui,sans-serif;color:#171717;background:#fff}img{max-width:100%;height:auto}table{border-collapse:collapse;display:block;overflow:auto}th,td{border:1px solid #888;padding:.4rem;text-align:left}a{color:#0645ad}h1,h2,h3{line-height:1.25}pre{overflow:auto}</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Visualizing Uncertainty</h1>
+</header>
+<h1 id="visualizing-uncertainty">Visualizing Uncertainty</h1>
+<h2 id="applying-this-guidance">Applying this guidance</h2>
+<p>Use the <a
+href="https://www2.census.gov/about/policies/quality/quality-standards.pdf">consolidated
+Census Statistical Quality Standards</a>, revised September 29, 2026,
+within their stated scope. Separate formal requirements from the
+practical design recommendations and implementation choices described
+here. Coordinate this guidance with <a
+href="../../component/titles.md">Titles and Subtitles</a>, <a
+href="../../component/Legend.md">Legends</a>, and <a
+href="../../component/Source.md">Sources</a>.</p>
+<h2 id="purpose-and-overview">1. Purpose and Overview</h2>
+<p>Uncertainty communicates how precisely a reported value is known.
+Census estimates may be affected by sampling error, nonsampling error,
+or modeling assumptions. When uncertainty could change how readers
+interpret a difference, ranking, or trend, explain it alongside the
+estimate.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Measure</th>
+<th>Meaning</th>
+<th>Interpretation caution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Standard error (SE)</td>
+<td>Estimated sampling variability of a statistic across repeated
+samples</td>
+<td>Not a direct measure of all possible errors</td>
+</tr>
+<tr class="even">
+<td>Margin of error (MOE)</td>
+<td>Published interval half-width at a specified confidence level</td>
+<td>Always identify the confidence level</td>
+</tr>
+<tr class="odd">
+<td>Confidence interval (CI)</td>
+<td>Interval constructed by a stated statistical procedure</td>
+<td>Do not call it the range containing a fixed percentage of observed
+people</td>
+</tr>
+<tr class="even">
+<td>Standard deviation (SD)</td>
+<td>Spread of observed values around their mean</td>
+<td>Describes data variability, not automatically the SE of an
+estimate</td>
+</tr>
+<tr class="odd">
+<td>Survey coefficient of variation (CV)</td>
+<td>SE divided by a positive estimate, often multiplied by 100</td>
+<td>Measures relative sampling error; undefined at zero and unstable
+near zero</td>
+</tr>
+<tr class="even">
+<td>Descriptive coefficient of variation</td>
+<td>SD divided by the mean, under suitable conditions</td>
+<td>Describes relative spread of observations; not the same quantity as
+survey CV</td>
+</tr>
+</tbody>
+</table>
+<p>The ACS publishes MOEs at the <strong>90% confidence level</strong>.
+For survey CV interpretation, see <a
+href="https://www.census.gov/content/dam/Census/library/publications/2018/acs/acs_general_handbook_2018_ch07.pdf">Understanding
+Error and Determining Statistical Significance</a>. Other Census
+programs may use different methods; use the source’s own
+documentation.</p>
+<h2 id="when-to-use">2. When to Use</h2>
+<p>Apply uncertainty guidance whenever an estimate’s precision could
+influence comparisons, rankings, change over time, or decisions.</p>
+<h3 id="essential">Essential</h3>
+<ul>
+<li>Use trustworthy data and retain each estimate’s corresponding
+uncertainty measure, source, year, and geography.</li>
+<li>Identify whether marks represent MOE, SE, confidence intervals, or
+another quantity; state the confidence level where relevant.</li>
+<li>Communicate applicable sampling, nonsampling, or model limitations;
+an ACS MOE does not summarize every source of error.</li>
+<li>Explain uncertainty in language suitable for the intended audience,
+including a meaningful text alternative.</li>
+<li>If significant differences are annotated, use a consistent
+convention for <strong>all comparisons being tested</strong>, and
+document the test.</li>
+</ul>
+<h3 id="avoid">Avoid</h3>
+<ul>
+<li>Treating a visible difference or nonoverlapping-looking points as
+proof of statistical significance.</li>
+<li>Hiding uncertainty when it may materially affect interpretation, or
+using color alone to distinguish significance.</li>
+</ul>
+<h3 id="additional-recommendations">Additional Recommendations</h3>
+<p><strong>Recommended:</strong> Show intervals for rankings whose order
+could change within the uncertainty; provide exact values in an
+accessible data table and clarify highly uncertain estimates.</p>
+<p><strong>Not Recommended:</strong> Highly technical uncertainty
+encodings without explanation for the intended audience.</p>
+<h2 id="when-to-use-an-alternative">3. When to Use an Alternative</h2>
+<p>Use <strong>dot-and-whisker intervals</strong> when comparing several
+estimates; consider <strong>confidence bands</strong> for a valid fitted
+or time-series estimate with properly calculated uncertainty. Use
+<strong>text and a table</strong> when a graphical interval would become
+cluttered. If you need the distribution of individual observations, use
+a histogram or boxplot, but do not mistake observed-data spread for
+uncertainty about an estimate.</p>
+<h2 id="choosing-between-alternatives">4. Choosing Between
+Alternatives</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Reader’s task</th>
+<th>Representation</th>
+<th>Key caution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Compare estimates and precision</td>
+<td>Point with labeled interval</td>
+<td>Do not infer significance solely from interval overlap</td>
+</tr>
+<tr class="even">
+<td>Review a trend and uncertainty</td>
+<td>Line with documented confidence band</td>
+<td>Explain temporal comparability and band calculation</td>
+</tr>
+<tr class="odd">
+<td>Check exact values or use assistive technology</td>
+<td>Structured table and explanatory text</td>
+<td>Define estimate, MOE, CI and units in headers/caption</td>
+</tr>
+<tr class="even">
+<td>Identify supported differences</td>
+<td>Symbols and direct annotations</td>
+<td>Base labels on a valid documented test; do not rely on color</td>
+</tr>
+<tr class="odd">
+<td>Understand the distribution of observations</td>
+<td>Histogram, boxplot, or density plot</td>
+<td>Describes a different concept from a confidence interval</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Existing Census illustrations:</strong> <a
+href="https://www.census.gov/library/visualizations/2024/econ/exports-2021.html">U.S.
+Exporting Firms by Demographics in 2021</a> (intervals); <a
+href="https://www.census.gov/library/visualizations/interactive/population-without-health-insurance-coverage-2019-and-2021.html">Population
+Without Health Insurance Coverage by State: 2019 and 2021</a>
+(differences); <a
+href="https://www.census.gov/library/visualizations/interactive/married-couple-place-of-birth-and-current-state-of-residence-1900-2018.html">Married
+Couple Place of Birth and Current State of Residence: 1900–2018</a>
+(uncertainty as text). Confirm linked content and accessibility.
+Additional illustrative approaches include confidence bands,
+distribution-based displays, and outcome plots; these require carefully
+labeled statistical interpretations.</p>
+<h2 id="data-requirements-and-statistical-considerations">5. Data
+Requirements and Statistical Considerations</h2>
+<p>For each chart, document program, survey product, vintage, table and
+variables, population universe, geography, units, reference period,
+missing/suppressed flags, and source retrieval details. Check that an
+estimate and its MOE correspond to the <strong>same record and
+quantity</strong>.</p>
+<p>For the example below, use <strong>2024 ACS 1-Year Detailed Table
+B19013</strong>, <code>B19013_001E</code> (median household income) and
+<code>B19013_001M</code> (paired MOE), for selected states. Income units
+are <strong>2024 inflation-adjusted dollars</strong>. The interval
+<code>estimate ± MOE</code> is used as an illustrative 90% interval for
+valid published pairs. Inspect special values before calculation; never
+turn suppressed values into zero.</p>
+<p>For differences between estimates, use applicable <a
+href="https://www.census.gov/programs-surveys/acs/guidance/statistical-testing-tool.html">ACS
+statistical testing guidance</a>. Confidence-interval overlap alone does
+not establish whether a difference is significant. For comparisons
+across years, check changes in variable definition, geography and
+price-year units; the standard 2020 ACS 1-year product was not
+released.</p>
+<h2 id="visualization-specific-considerations">6. Visualization-Specific
+Considerations</h2>
+<p>Keep point estimates and interval endpoints on a common readable
+scale. Identify the interval level in the caption, preserve numerical
+units, and use consistent ordering. Prefer labels and marker shapes in
+addition to color. When intervals crowd the chart, consider a simpler
+layout plus a table.</p>
+<h3 id="accessibility">Accessibility</h3>
+<ul>
+<li>Provide outcome-focused <strong>alt text</strong> that describes the
+observed pattern <strong>and any uncertainty necessary to interpret
+it</strong>; finalize it only after running the example.</li>
+<li>Publish a structured HTML table with row/column headers for
+estimate, MOE, lower/upper bounds, and units. A CSV is a useful
+supplement, not the sole accessible alternative.</li>
+<li>Check text and non-text contrast, label readability, reading order
+and resize/reflow. For interactive content also check keyboard operation
+and focus.</li>
+<li>Evaluate the <strong>rendered GitHub Pages HTML</strong>, including
+manual assistive-technology testing where applicable. An automated scan
+does not establish Section 508 conformance.</li>
+</ul>
+<p>See the <a href="508.html">508 Compliance</a> and <a
+href="color.html">Color</a> pages.</p>
+<h3 id="design-comparison">Design comparison</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Problematic approach</th>
+<th>Why it matters</th>
+<th>Preferred approach</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Error bars labeled only as “error”</td>
+<td>SD, SE, MOE and CI communicate different quantities</td>
+<td>Name the measure, confidence level, units and
+calculation/source</td>
+</tr>
+<tr class="even">
+<td>Significance inferred by eye from overlapping intervals</td>
+<td>The comparison may depend on covariance and a separate test</td>
+<td>Apply the appropriate comparison method; state tested/not tested
+explicitly</td>
+</tr>
+<tr class="odd">
+<td>Empirical spread described as uncertainty of an estimate</td>
+<td>Variation among observations is confused with estimation
+precision</td>
+<td>Identify the distribution’s unit and statistical meaning</td>
+</tr>
+<tr class="even">
+<td>Estimates omitted solely because they do not differ
+significantly</td>
+<td>A display decision is confused with an inferential conclusion</td>
+<td>Report justified estimates with uncertainty; do not describe an
+unsupported difference as meaningful</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Annotation consistency:</strong> distinguish statistically
+significant, not statistically significant, and not tested. If testing
+several comparisons, identify the comparison family, applicable
+multiple-comparison treatment, and confidence level; apply the
+annotation convention consistently. A reliability threshold should be
+source- and use-specific rather than an invented universal CV
+cutoff.</p>
+<h2 id="original-examples-and-additional-acs-demonstration">7. Original
+Examples and Additional ACS Demonstration</h2>
+<h3 id="original-examples-and-their-teaching-purpose">7.1 Original
+examples and their teaching purpose</h3>
+<p>The following examples are retained from the Census guidance. Their
+datasets, periods, universes and design lessons remain distinct. Some
+illustrate limitations or less-preferred choices; inclusion does not
+certify every design or its accessibility.</p>
+<p>Different strategies can help communicate uncertainty to audiences
+effectively. The choice depends on the data, visualization type, goals,
+and audience expertise.</p>
+<p><strong><em>Example 1:</em></strong> Error bars and confidence
+bands</p>
+<ul>
+<li><a
+href="https://www.census.gov/library/visualizations/2024/econ/exports-2021.html">U.S
+Exporting Firms by Demographics in 2021</a></li>
+<li><figure>
+<img src="../../component/assets/Uncertainty1.png"
+alt="Exporting firms chart with interval indicators around destination percentages; the original notes define the statistical meaning." />
+<figcaption aria-hidden="true">Exporting firms chart with interval
+indicators around destination percentages; the original notes define the
+statistical meaning.</figcaption>
+</figure></li>
+<li><a
+href="https://www.census.gov/library/visualizations/interactive/population-65-years.html">The
+Population 65 Years and Older: 2016</a></li>
+<li><figure>
+<img src="../../component/assets/Uncertainty2.png"
+alt="Population age 65 and older dashboard with a map and comparison bars carrying interval indicators." />
+<figcaption aria-hidden="true">Population age 65 and older dashboard
+with a map and comparison bars carrying interval
+indicators.</figcaption>
+</figure></li>
+</ul>
+<p>Error bars and confidence bands communicate uncertainty according to
+their stated method. Identify what the interval represents and its
+confidence level before interpreting precision.</p>
+<p>Pros: - Simple and familiar to many users. - Based on statistical
+measures (e.g. confidence interval) - Easy to implement in most
+visualizations.</p>
+<p>Cons: - Error bars can be used to show different metrics (SE, MOE,
+etc.), and it is not always clear which one is being shown. - Viewers
+can overestimate the certainty of the estimate. - The glyph of a bar
+provides a false metaphor of containment, where values within the bar
+are seen as likelier than values outside the bar. - Interval overlap or
+nonoverlap is not a general replacement for the appropriate significance
+test; the uncertainty measure and dependence between estimates matter. -
+Readers may assume that overlapping error bars means that the difference
+between the estimates is not statistically different, when that is not
+necessarily accurate.</p>
+<hr />
+<p><strong><em>Example 2:</em></strong> Signifying statistical
+difference</p>
+<ul>
+<li><a
+href="https://www.census.gov/library/visualizations/interactive/population-without-health-insurance-coverage-2019-and-2021.html">Population
+Without Health Insurance Coverage by State: 2019 and 2021</a></li>
+<li><figure>
+<img src="../../component/assets/Uncertainty3.png"
+alt="State uninsured population comparison for 2019 and 2021 with annotations distinguishing supported differences." />
+<figcaption aria-hidden="true">State uninsured population comparison for
+2019 and 2021 with annotations distinguishing supported
+differences.</figcaption>
+</figure></li>
+<li><a
+href="https://www.census.gov/library/visualizations/interactive/coupled-households-by-county-2017-2021.html">Coupled
+Households by County: 2017-2021</a></li>
+<li><figure>
+<img src="../../component/assets/Uncertainty4.png"
+alt="County household map with classifications relative to a national estimate and a significance explanation." />
+<figcaption aria-hidden="true">County household map with classifications
+relative to a national estimate and a significance
+explanation.</figcaption>
+</figure></li>
+</ul>
+<p>Symbols, colors, or annotations can be used to explicitly indicate
+when differences between estimates are statistically significant.</p>
+<p>Pros - Easy for readers to interpret - Avoids misinterpretation based
+on overlapping confidence intervals</p>
+<p>Cons - Limited to specific comparisons (e.g., 2021 vs 2019) - Does
+not convey the degree of variability of uncertainty in each estimate</p>
+<hr />
+<p><strong><em>Example 3:</em></strong> Displaying measures of
+uncertainty as text</p>
+<ul>
+<li><a
+href="https://www.census.gov/library/visualizations/interactive/married-couple-place-of-birth-and-current-state-of-residence-1900-2018.html">Married
+Couple Place of Birth and Current State of Residence: 1900-2018</a></li>
+<li><figure>
+<img src="../../component/assets/Uncertainty5.png"
+alt="Married-couple residence stacked area display with a text callout reporting an estimate and its margin of error." />
+<figcaption aria-hidden="true">Married-couple residence stacked area
+display with a text callout reporting an estimate and its margin of
+error.</figcaption>
+</figure></li>
+</ul>
+<p>Measures of uncertainty (e.g., MOE or SE) can be shown alongside
+point estimates in graphs, tooltips, or in tables.</p>
+<p>Pros - Provides estimate-level uncertainty inputs for an appropriate,
+documented comparison method - Shows degree of uncertainty for each
+estimate - Efficient use of space, especially in interactive formats</p>
+<p>Cons - May not always be clear whether the value refers to MOE or SE
+- Uncertainty values in footnotes or separate tables are often
+overlooked or separated from the graphic. - Users have to do a
+calculation to determine if estimates are significantly different</p>
+<hr />
+<p><strong><em>Example 4:</em></strong> Probability or distribution
+plots</p>
+<ul>
+<li><a
+href="https://vis.csail.mit.edu/classes/6.859/readings/pdfs/Corell-ErrorBarsConsideredHarmful.pdf">Error
+Bars Considered Harmful: Exploring Alternate Encodings for Mean and
+Error</a></li>
+<li><figure>
+<img src="../../component/assets/Uncertainty6.png"
+alt="Two violin distributions with a labeled margin of error, illustrating that a distribution and an interval need explicit statistical definitions." />
+<figcaption aria-hidden="true">Two violin distributions with a labeled
+margin of error, illustrating that a distribution and an interval need
+explicit statistical definitions.</figcaption>
+</figure></li>
+</ul>
+<p>Histograms, density plots, boxplots, jitter plots and violin plots
+can show distribution shape, spread and central tendency. To use a
+distribution to communicate estimation uncertainty, explain whether it
+is a sampling, bootstrap, posterior or other justified distribution of
+the statistic. The empirical distribution of observations is a different
+concept.</p>
+<p>Pros - Show full distribution and variance - Reveal skewness,
+Irregular patterns, or outliers, giving more context to the estimate</p>
+<p>Cons - Higher cognitive load than simple bar or line charts - May
+require explanation for general audiences - May be unable to fully
+disaggregate for the charts due to disclosure avoidance</p>
+<hr />
+<p><strong><em>Example 5:</em></strong> More options for visualizing
+uncertainty:</p>
+<p>These examples are just a starting point for visualizing uncertainty.
+The field is continuously evolving, with new techniques being developed
+and tested through robust research. Consider if visualizations like
+<strong>hypothetical outcome plots</strong> align best with your
+audience’s needs and your project goals. Ultimately, developers should
+conduct their own research to determine how to effectively incorporate
+measures of uncertainty into their unique visualizations.</p>
+<p><strong>Interpretation note:</strong> The examples use different
+programs, periods and uncertainty encodings. Identify the uncertainty
+quantity and method for each. An observed-value distribution, a
+confidence interval and a significance annotation are not
+interchangeable. The ACS addition uses a defined estimate/MOE pair and
+does not claim a significance test merely from interval appearance.</p>
+<h3 id="additional-acs-demonstration">7.2 Additional ACS
+demonstration</h3>
+<p><strong>2024 ACS state median household income and published 90%
+MOEs.</strong> B19013: pair each estimate with its matching MOE and
+construct explicitly labeled intervals.</p>
+<p><strong>What this adds:</strong> Makes estimate/MOE pairing, interval
+arithmetic and the limits of visual significance judgments
+reproducible.</p>
+<p><strong>Run evidence:</strong> The supplied November 10, 2026 run
+generated this example. Saved-data arithmetic and chart layout were
+reviewed for this package; published-page accessibility testing remains
+outstanding.</p>
+<figure>
+<img src="../../assets/examples/uncertainty/uncertainty_acs.png"
+alt="Median household-income estimates with 90 percent intervals for Florida, Georgia, Texas and Virginia; exact estimates, margins of error and endpoints are in the accompanying table." />
+<figcaption aria-hidden="true">Median household-income estimates with 90
+percent intervals for Florida, Georgia, Texas and Virginia; exact
+estimates, margins of error and endpoints are in the accompanying
+table.</figcaption>
+</figure>
+<p><strong>Source and interpretation:</strong> U.S. Census Bureau, 2024
+ACS 1-Year Estimates, Detailed Table B19013. Income is in 2024 dollars.
+Each interval is the published estimate ± its published 90% MOE. The
+supplied run completed November 10, 2026 (UTC).</p>
+<p>Virginia has the largest point estimate in this four-state display.
+Interval overlap is not a substitute for a statistical test; no
+significance test was performed.</p>
+<p><strong>Selected values</strong> (rounded for display; CSV retains
+exported precision):</p>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>State</th>
+<th>Income estimate (<span class="math inline">)|90</span>)</th>
+<th>Lower endpoint (<span
+class="math inline">)|<em>U</em><em>p</em><em>p</em><em>e</em><em>r</em><em>e</em><em>n</em><em>d</em><em>p</em><em>o</em><em>i</em><em>n</em><em>t</em>(</span>)</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Florida</td>
+<td>77,735</td>
+<td>564</td>
+<td>77,171</td>
+<td>78,299</td>
+</tr>
+<tr class="even">
+<td>Georgia</td>
+<td>79,991</td>
+<td>633</td>
+<td>79,358</td>
+<td>80,624</td>
+</tr>
+<tr class="odd">
+<td>Texas</td>
+<td>79,721</td>
+<td>564</td>
+<td>79,157</td>
+<td>80,285</td>
+</tr>
+<tr class="even">
+<td>Virginia</td>
+<td>92,090</td>
+<td>831</td>
+<td>91,259</td>
+<td>92,921</td>
+</tr>
+</tbody>
+</table>
+<p><a
+href="../../assets/examples/uncertainty/reviewed_data_table.html">Read
+the data tables</a> · <a
+href="../../assets/examples/uncertainty/uncertainty_acs.csv">Download
+uncertainty_acs.csv</a></p>
+<p>Implementation: <a
+href="../../ACS_Examples_Builder/examples/python/03_components/uncertainty.py">Python
+source</a>. The original illustrations above and the ACS output have
+separate asset paths and source statements.</p>
+<h3 id="how-the-examples-work-together">7.3 How the examples work
+together</h3>
+<p>Use the original illustrations to discuss design choices and their
+source-specific limitations. Use the ACS addition to demonstrate a
+documented data-to-chart workflow. Do not combine values across
+examples, imply that they use one dataset, or relabel a historical image
+as a new ACS output.</p>
+<h2 id="developer-implementation">8. Developer Implementation</h2>
+<h3 id="data-preparation">8.1 Data Preparation</h3>
+<p>For the ACS demonstration, retrieve state-level
+<code>B19013_001E</code> and <code>B19013_001M</code> from the same 2024
+ACS 1-Year record. Validate geographic identifiers, reference period,
+units, annotations and estimate/MOE pairing. Preserve invalid and
+suppressed records as documented exclusions rather than zeros. Calculate
+raw lower/upper bounds as estimate minus/plus the valid published MOE.
+Apply source guidance on logical limits when relevant, retain the raw
+calculation, and disclose any bound adjustment. Negative monetary values
+are not automatically invalid for every Census measure.</p>
+<p>ACS published MOEs use a 90% confidence level; the corresponding
+normal-approximation factor is 1.645. Derive an SE as
+<code>MOE / 1.645</code> only for a compatible published 90% MOE. See <a
+href="https://www2.census.gov/programs-surveys/acs/methodology/design_and_methodology/2024/acs_design_methodology_ch12_2024.pdf">ACS
+variance methodology, Chapter 12</a>. Derived percentages, differences,
+or aggregates require their own appropriate uncertainty method; do not
+reuse or simply add source MOEs.</p>
+<h3 id="python">8.2 Python</h3>
+<p>Use the <a
+href="../../ACS_Examples_Builder/examples/python/03_components/uncertainty.py">supplied
+Python implementation</a> and the <a
+href="../../ACS_Examples_Builder/build_acs_examples.py">ACS example
+runner</a>. The runner maps this page to job <code>uncertainty</code>.
+Its dependencies are listed in <a
+href="../../ACS_Examples_Builder/requirements.txt">requirements.txt</a>.
+Confirm supported input options in the implementation and its
+accompanying README.</p>
+<p>The <a
+href="../../review/evidence/RUN_ALL_ACS_EXAMPLES_v03_executed.ipynb">executed
+notebook</a> contains saved outputs from the supplied ACS run. The <a
+href="../../review/evidence/ACS_Actual_Results/execution_status.csv">run
+status CSV</a> records generated results. The notebook produces the ACS
+additions; it does not recreate the historical Census illustrations.</p>
+<h3 id="r">8.3 R</h3>
+<p>The analytical definitions and output checks on this page also
+specify the requirements for an R counterpart. A verified R
+implementation is not bundled in this combined package. Retain R
+execution and Python/R agreement as outstanding validation tasks; do not
+describe them as completed.</p>
+<h3 id="reproducibility-and-adaptation">8.4 Reproducibility and
+Adaptation</h3>
+<p>A personal Census API key is required for data queries under the <a
+href="https://www.census.gov/data/developers/guidance/api-user-guide.Query_Limits.html">current
+API guidance</a>. Read <code>CENSUS_API_KEY</code> from the analyst’s
+environment. Redact the key from logged URLs, errors, saved notebooks,
+and manifests; do not commit it. Save source variables, the full
+reference period, geography, transformations, exclusions, retrieval
+time, and tested dependency versions with the outputs.</p>
+<p>Record the estimate, MOE, confidence level, raw bounds and any
+adjusted display bounds. Do not report a significance result unless the
+method was actually implemented and reviewed. Test the rendered figure,
+narrative and semantic table together; a generated table or automated
+scan alone does not establish accessibility conformance.</p>
+<h3 id="output-verification">8.5 Output Verification</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Check</th>
+<th>Expected evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Pairing</td>
+<td>One valid estimate/MOE pair for each included geography, measure and
+reference period</td>
+</tr>
+<tr class="even">
+<td>Arithmetic</td>
+<td>Raw lower = estimate − MOE; raw upper = estimate + MOE;
+source-defined MOE is nonnegative and special codes are excluded
+explicitly</td>
+</tr>
+<tr class="odd">
+<td>Bounds</td>
+<td>Any logical-bound adjustment follows the source method and is
+separately recorded; the underlying estimate is not changed</td>
+</tr>
+<tr class="even">
+<td>Labels</td>
+<td>The chart and table identify 90% MOEs/intervals, units, source,
+geography and comparison limitations</td>
+</tr>
+<tr class="odd">
+<td>Testing</td>
+<td>Annotation records distinguish significant, not significant and not
+tested; no overlap-only test is used</td>
+</tr>
+</tbody>
+</table>
+<h2 id="common-errors-and-misinterpretations">9. Common Errors and
+Misinterpretations</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Error</th>
+<th>Consequence</th>
+<th>Correction</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Uncertainty measure or level unlabeled</td>
+<td>False confidence in precision</td>
+<td>State MOE/SE/CI and confidence level</td>
+</tr>
+<tr class="even">
+<td>Estimate paired with a different geography/year MOE</td>
+<td>Invalid interval</td>
+<td>Join/validate by the full record keys</td>
+</tr>
+<tr class="odd">
+<td>Data-source special code treated as a number</td>
+<td>Fabricated results</td>
+<td>Detect and document flagged values</td>
+</tr>
+<tr class="even">
+<td>Interval overlap used as a significance test</td>
+<td>Unsupported claim</td>
+<td>Apply approved comparison method</td>
+</tr>
+<tr class="odd">
+<td>SD or observed-value distribution treated as CI</td>
+<td>Confuses distinct concepts</td>
+<td>Identify what varies and how it was estimated</td>
+</tr>
+<tr class="even">
+<td>Significance shown only by color</td>
+<td>Inaccessible interpretation</td>
+<td>Use direct annotation and text</td>
+</tr>
+</tbody>
+</table>
+<h2 id="publication-quality-checklist">10. Publication Quality
+Checklist</h2>
+<ul class="task-list">
+<li><label><input type="checkbox" />Dataset, table, year, geography,
+units, variables and source provenance are recorded.</label></li>
+<li><label><input type="checkbox" />Missing values, estimation
+assumptions, MOE pairing and comparisons are statistically
+reviewed.</label></li>
+<li><label><input type="checkbox" />The published Python example
+executes independently and matches the source; cross-language checks
+should be performed when an R implementation is available.</label></li>
+<li><label><input type="checkbox" />Figure has usable title, units,
+interval legend/caption and finalized descriptive alt text.</label></li>
+<li><label><input type="checkbox" />Structured HTML data alternative and
+applicable Section 508 tests are documented.</label></li>
+<li><label><input type="checkbox" />Existing links, component references
+and deployment paths are verified.</label></li>
+</ul>
+<h2 id="related-pages-and-references">Related Pages and References</h2>
+<ul>
+<li><a href="line_graph.html">Line Graph</a>, <a
+href="scatter_plot.html">Scatter Plot</a>, <a
+href="../../component/SmallMultiples.md">Small Multiples</a> — verify
+relative links after cloning.</li>
+<li><a
+href="https://www2.census.gov/about/policies/quality/quality-standards.pdf">Census
+Bureau Statistical Quality Standards</a></li>
+<li><a
+href="https://www.census.gov/programs-surveys/acs/guidance/statistical-testing-tool.html">ACS
+Statistical Testing Tool</a></li>
+<li><a href="https://www.section508.gov/">Section508.gov</a> and <a
+href="https://www.w3.org/TR/WCAG22/">WCAG 2.2</a></li>
+</ul>
+<h3 id="standards-and-review-references">Standards and Review
+References</h3>
+<p>Use the September 29, 2026 consolidated Census standards, especially
+E1-6, E2-2.3 and E3-2.4, within their stated scope. Record the
+implementation review, applicable statistical methods and actual
+rendered-site accessibility findings separately from this guidance
+checklist.</p>
+</body>
+</html>

@@ -1,0 +1,52 @@
+{
+  "dataset": "ACS 1-year detailed tables B19013",
+  "years": [
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "states": [
+    "Florida",
+    "Georgia",
+    "Texas",
+    "Virginia"
+  ],
+  "source_urls": [
+    "https://api.census.gov/data/2021/acs/acs1",
+    "https://api.census.gov/data/2022/acs/acs1",
+    "https://api.census.gov/data/2023/acs/acs1",
+    "https://api.census.gov/data/2024/acs/acs1"
+  ],
+  "price_year": 2024,
+  "inflation_index": "R-CPI-U-RS, Census ACS comparison factors",
+  "adjacent_factors": {
+    "2021": 1.08091182,
+    "2022": 1.04125145,
+    "2023": 1.02937903
+  },
+  "factor_sources": [
+    "https://www.census.gov/programs-surveys/acs/guidance/comparing-acs-data/2022.html",
+    "https://www.census.gov/programs-surveys/acs/guidance/comparing-acs-data/2023.html",
+    "https://www.census.gov/programs-surveys/acs/guidance/comparing-acs-data/2024.html"
+  ],
+  "retrieved_utc": "2026-11-10T20:26:40.420048+00:00",
+  "python": "3.13.18",
+  "pandas": "2.2.3",
+  "matplotlib": "3.10.0",
+  "checks": {
+    "unique_state_year": true,
+    "positive_factors": true,
+    "nonnegative_valid_moes": true
+  },
+  "limitations": [
+    "2020 standard ACS 1-year excluded",
+    "Adjacent ACS periods share reference months",
+    "MOEs plotted in table only; no significance tests",
+    "Public data; manual accessibility testing of published page required"
+  ],
+  "input_mode": "api",
+  "local_input": null,
+  "credentials_saved": false,
+  "source_provenance": "Census API"
+}

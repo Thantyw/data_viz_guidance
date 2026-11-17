@@ -1,0 +1,1 @@
+Two ACS 2024 category examples. B03002 Hispanic and non-Hispanic groups are mutually exclusive, with race subgroups nested within non-Hispanic origin. DP03 private and public health insurance categories overlap and must not be stacked or summed as a partition. See the data table for values and denominators.

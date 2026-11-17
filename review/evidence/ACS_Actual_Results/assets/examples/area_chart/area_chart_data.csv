@@ -1,0 +1,13 @@
+state,year,persons_below_poverty,poverty_status_universe,moe_90,lower_90_display,upper_90,source,table
+Florida,2021,2805433,21368535,50403,2755030,2855836,https://api.census.gov/data/2021/acs/acs1,B17001
+Florida,2022,2762679,21764366,47630,2715049,2810309,https://api.census.gov/data/2022/acs/acs1,B17001
+Florida,2023,2729519,22139460,62129,2667390,2791648,https://api.census.gov/data/2023/acs/acs1,B17001
+Florida,2024,2758614,22898322,58688,2699926,2817302,https://api.census.gov/data/2024/acs/acs1,B17001
+Georgia,2021,1476348,10529506,43526,1432822,1519874,https://api.census.gov/data/2021/acs/acs1,B17001
+Georgia,2022,1348344,10655140,37893,1310451,1386237,https://api.census.gov/data/2022/acs/acs1,B17001
+Georgia,2023,1461317,10765238,38018,1423299,1499335,https://api.census.gov/data/2023/acs/acs1,B17001
+Georgia,2024,1373284,10910197,36640,1336644,1409924,https://api.census.gov/data/2024/acs/acs1,B17001
+Virginia,2021,854145,8401227,27033,827112,881178,https://api.census.gov/data/2021/acs/acs1,B17001
+Virginia,2022,891390,8442437,26093,865297,917483,https://api.census.gov/data/2022/acs/acs1,B17001
+Virginia,2023,864394,8472782,26897,837497,891291,https://api.census.gov/data/2023/acs/acs1,B17001
+Virginia,2024,835556,8570581,26795,808761,862351,https://api.census.gov/data/2024/acs/acs1,B17001

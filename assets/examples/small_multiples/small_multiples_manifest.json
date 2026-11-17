@@ -1,0 +1,40 @@
+{
+  "source": "ACS 1-Year Detailed Table B17001",
+  "dataset_url_pattern": "https://api.census.gov/data/{year}/acs/acs1",
+  "years": [
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "states": [
+    "Florida",
+    "Georgia",
+    "Texas",
+    "Virginia"
+  ],
+  "denominator": "B17001_001E",
+  "numerator": "B17001_002E",
+  "margins_of_error": [
+    "B17001_001M",
+    "B17001_002M"
+  ],
+  "rate_moe": "NOT ESTIMATED; count MOEs are not a ratio MOE",
+  "shared_y_limits": [
+    0,
+    20
+  ],
+  "python": "3.13.18",
+  "pandas": "2.2.3",
+  "matplotlib": "3.10.0",
+  "requests": "2.32.4",
+  "output_dir": "/content/ACS_Examples_Builder/acs_generated_examples/outputs/small_multiples",
+  "manual_accessibility_verification": "NOT TESTED",
+  "input_metadata": {
+    "input_mode": "api",
+    "local_input": null,
+    "credentials_saved": false,
+    "source_provenance": "Census API"
+  },
+  "live_api": true
+}
