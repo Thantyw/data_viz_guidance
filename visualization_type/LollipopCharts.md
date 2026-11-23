@@ -330,29 +330,29 @@ The goal is to preserve the analytical meaning of the Census data while allowing
 
 ## Publication Quality Checklist
 
-- [ ] A lollipop chart is appropriate for the analytical question.
-- [ ] Lollipop stems begin at zero.
-- [ ] Categories are ordered in an analytically meaningful way.
-- [ ] Tied values are handled consistently.
-- [ ] Category labels clearly identify the values represented.
-- [ ] Marker sizes do not interfere with interpretation.
-- [ ] Marker sizes are consistent unless size intentionally encodes another variable.
-- [ ] Adequate space separates individual lollipops.
-- [ ] Long category labels are presented in a readable orientation.
-- [ ] Comparable charts use consistent scales.
-- [ ] Omitted categories are documented where applicable.
-- [ ] Color is used purposefully and is not the only means of communicating information.
-- [ ] The Census dataset, table, universe, geography, reference period, measure, and units are documented.
-- [ ] Missing, suppressed, or unavailable values are handled appropriately.
-- [ ] Census-published uncertainty has been considered even when it is not visually encoded.
-- [ ] Statistical significance is not inferred from the chart alone.
-- [ ] A meaningful text description or accessible data alternative accompanies the example.
-- [ ] The versioned source-data snapshot is documented.
-- [ ] Python and R implementations have been executed and verified.
-- [ ] Cross-language results have been reviewed for analytical consistency.
-- [ ] Generated output has been inspected before publication.
-- [ ] Reproducibility and adaptation instructions are current.
-- [ ] Related component guidance has been reviewed.
+- A lollipop chart is appropriate for the analytical question.
+- Lollipop stems begin at zero.
+- Categories are ordered in an analytically meaningful way.
+- Tied values are handled consistently.
+- Category labels clearly identify the values represented.
+- Marker sizes do not interfere with interpretation.
+- Marker sizes are consistent unless size intentionally encodes another variable.
+- Adequate space separates individual lollipops.
+- Long category labels are presented in a readable orientation.
+- Comparable charts use consistent scales.
+- Omitted categories are documented where applicable.
+- Color is used purposefully and is not the only means of communicating information.
+- The Census dataset, table, universe, geography, reference period, measure, and units are documented.
+- Missing, suppressed, or unavailable values are handled appropriately.
+- Census-published uncertainty has been considered even when it is not visually encoded.
+- Statistical significance is not inferred from the chart alone.
+- A meaningful text description or accessible data alternative accompanies the example.
+- The versioned source-data snapshot is documented.
+- Python and R implementations have been executed and verified.
+- Cross-language results have been reviewed for analytical consistency.
+- Generated output has been inspected before publication.
+- Reproducibility and adaptation instructions are current.
+- Related component guidance has been reviewed.
 
 ## Related Pages
 
