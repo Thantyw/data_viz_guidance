@@ -396,28 +396,28 @@ The goal is to preserve the analytical and statistical meaning of the Census dat
 
 ## Publication Quality Checklist
 
-- [ ] A table is appropriate for the analytical question.
-- [ ] Row and column headings clearly describe the information presented.
-- [ ] Rows and columns are arranged in a meaningful order.
-- [ ] Units and measurement definitions are documented.
-- [ ] Decimal precision and rounding are consistent.
-- [ ] Estimates and margins of error remain correctly associated.
-- [ ] Census Bureau standard symbols are used correctly where applicable.
-- [ ] Symbols and abbreviations are defined when necessary.
-- [ ] Missing, suppressed, or unavailable values are represented appropriately.
-- [ ] Statistical significance, margins of error, or other uncertainty are documented where applicable.
-- [ ] Notes, qualifications, and source information are included where necessary.
-- [ ] The table has a logical and accessible reading structure.
-- [ ] Semantic HTML uses appropriate captions and scoped headers.
-- [ ] Meaning does not depend on color alone.
-- [ ] Machine-readable output is provided where appropriate.
-- [ ] The Census dataset, table, universe, geography, reference period, measure, and units are documented.
-- [ ] The versioned source-data snapshot is documented.
-- [ ] Python and R implementations have been executed and verified.
-- [ ] Cross-language outputs have been compared for analytical consistency.
-- [ ] Generated CSV and HTML outputs have been inspected before publication.
-- [ ] Reproducibility and adaptation instructions are current.
-- [ ] Related accessibility and typography guidance has been reviewed.
+- A table is appropriate for the analytical question.
+- Row and column headings clearly describe the information presented.
+- Rows and columns are arranged in a meaningful order.
+- Units and measurement definitions are documented.
+- Decimal precision and rounding are consistent.
+- Estimates and margins of error remain correctly associated.
+- Census Bureau standard symbols are used correctly where applicable.
+- Symbols and abbreviations are defined when necessary.
+- Missing, suppressed, or unavailable values are represented appropriately.
+- Statistical significance, margins of error, or other uncertainty are documented where applicable.
+- Notes, qualifications, and source information are included where necessary.
+- The table has a logical and accessible reading structure.
+- Semantic HTML uses appropriate captions and scoped headers.
+- Meaning does not depend on color alone.
+- Machine-readable output is provided where appropriate.
+- The Census dataset, table, universe, geography, reference period, measure, and units are documented.
+- The versioned source-data snapshot is documented.
+- Python and R implementations have been executed and verified.
+- Cross-language outputs have been compared for analytical consistency.
+- Generated CSV and HTML outputs have been inspected before publication.
+- Reproducibility and adaptation instructions are current.
+- Related accessibility and typography guidance has been reviewed.
 
 ## Related Pages
 
