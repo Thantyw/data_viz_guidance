@@ -1,0 +1,40 @@
+{
+  "source": "https://api.census.gov/data/2024/acs/acs1",
+  "year": 2024,
+  "variables": [
+    "NAME",
+    "B19013_001E",
+    "B19013_001M",
+    "B17001_001E",
+    "B17001_002E",
+    "B17001_002M",
+    "B01003_001E"
+  ],
+  "states": [
+    "Florida",
+    "Georgia",
+    "Texas",
+    "Virginia"
+  ],
+  "point_estimate_definition": "100 * B17001_002E / B17001_001E",
+  "size_encoding": "bubble marker area in points squared proportional to B01003_001E",
+  "moe_note": "No derived poverty percentage MOE computed; published count and income MOEs retained.",
+  "python": "3.13.18",
+  "pandas": "2.2.3",
+  "matplotlib": "3.10.0",
+  "checks": {
+    "required_state_rows": true,
+    "one_row_per_state": true,
+    "nonnegative_population": true,
+    "valid_poverty_fraction": true,
+    "population_proportional_bubble_area": true,
+    "moe_for_derived_ratio_claimed": false
+  },
+  "manual_accessibility_verification": "NOT PERFORMED",
+  "live_census_api_execution": "requires analyst run",
+  "input_mode": "api",
+  "source_file": null,
+  "api_used": true,
+  "user_provided_data": false,
+  "input_schema": "Census raw or normalized"
+}

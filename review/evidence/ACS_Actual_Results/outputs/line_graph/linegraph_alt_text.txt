@@ -1,0 +1,1 @@
+Median household income by state, 2021–2024, in 2024 dollars. Each state is shown as a time series; a missing estimate produces a break in its line. Values and margins of error appear in the accompanying accessible table. No significance test of changes was performed.

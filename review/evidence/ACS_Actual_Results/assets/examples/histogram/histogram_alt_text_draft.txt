@@ -1,0 +1,1 @@
+Histograms show counts of counties across 10,000-dollar-wide bins of county median household-income estimates from 2024 ACS 5-year for Florida, Georgia, Virginia. These are county estimates, not household-level incomes. Shared bin boundaries allow comparisons. Published 90% margins of error are available in the county data table.

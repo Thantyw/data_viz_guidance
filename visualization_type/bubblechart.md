@@ -3,62 +3,215 @@ layout: default
 title: Bubble Chart
 permalink: bubblechart.html
 tags: [Distribution, Correlation]
-description: "Short Description of Bubble Chart"
+description: "Guidance for accurate and accessible bubble charts using reproducible Census data examples."
 ---
 
 # Bubble Chart
 
-Also known as: Bubble Graph, Bubble Plot.  
+Also known as: **bubble graph**, **bubble plot**. Related: [Scatter Plot]({{ '/scatterplot.html' | relative_url }}), proportional-symbol maps.
 
-See also: Proportional Symbol Map, Scatter Plot, Dot Distribution Map. 
+## Applying this guidance
 
-A bubble chart is a variation of a scatter plot that displays data points as bubbles (circles), displaying the relationship between three numeric variables using the x-axis, y-axis and bubble size.  Additional categories of data can be represented using different colors or point markers. 
+Apply the [Census Bureau Statistical Quality Standards](https://www2.census.gov/about/policies/quality/quality-standards.pdf), revised September 29, 2026, within their stated scope. The chart-selection advice and implementation checks on this page explain practical design choices; they do not create additional agency mandates. Treat **Essential** items as the core design conditions for this chart, and confirm formal applicability through the program's review process.
 
-When the bubbles are plotted against these two axes, bubble charts communicate the strength, type, and proportion of the relationship that exists between these three variables. 
+Coordinate this page with [Titles and Subtitles]({{ '/title.html' | relative_url }}), [Legends]({{ '/legend.html' | relative_url }}), [Sources]({{ '/source.html' | relative_url }}), and [Visualizing Uncertainty]({{ '/uncertainty.html' | relative_url }}). Keep detailed component guidance in those shared pages rather than duplicating it here.
 
-### Guidance 
+## 1. Purpose and Overview
 
-In addition to the guidance provided in this section, relevant guidance can also be found in the Agency Logo, Axes, Colors, Grids, Legends, Source, Titles, Typography sections. 
+A bubble chart extends a scatter plot by representing a **third quantitative variable using circle area**. Two numerical measures determine each bubble's x- and y-position, while a nonnegative magnitude determines its size. Each mark should represent a clearly defined observation such as a state or occupation. A pattern in a bubble chart is not, by itself, evidence of causation or statistical significance.
 
-## Best Practices 
+## 2. When to Use
 
-### Essential 
-
-* Include a legend if more than one category of data is being visualized. 
-* Ensure that smaller bubbles are visible when overlapping with larger bubbles. 
-** Either by placing smaller bubbles above larger bubbles or by making the larger bubbles transparent. 
-* The variable representing the size of the bubble should have a volume relationship to the plotted bubble size. 
-* Ensure the units of analysis and variables being plotted are explained in the title of the chart, axes labels, or legend.
+### Essential
+- Identify all **three variables**, their units, the observation unit, geography, and time period.
+- Make **circle area**, not radius or diameter, proportional to the size variable, with a labeled size key.
+- Make small bubbles visible; consider plotting smaller marks above larger ones and using partial transparency.
+- Identify important observations with text or an accessible accompanying table. If additional categories use color, also provide noncolor distinctions and a category key.
 
 ### Avoid
+- Do not imply a causal relationship from the displayed association.
+- Do not use bubble size for signed quantities without an explicit, defensible size transformation.
+- Avoid an unlabeled or inconsistently scaled size variable, excessive overlap, or charts requiring hover to determine basic values.
 
-* Never use a bubble chart if the relationship between the three variables is unclear.  
+## 3. When to Use an Alternative
 
-## Additional Recommendations 
+### Recommended
+- Use a **scatter plot** if only x and y measures matter or size is difficult to read.
+- Use separate panels or **small multiples** when overlap conceals observations or subgroups need independent comparisons.
+- Use a ranked table or bar chart for precise comparisons, and an accessible table for exact three-variable values.
 
-### Recommended 
+### Not Recommended
+- Avoid bubble charts when observations are too numerous, bubbles obscure each other, or the third measure is not analytically relevant.
 
-* Use a title that includes the unit of analysis being plotted and the three variables being used for the x, y and bubble size. 
-* Include point labels or markers for specific observations. 
-* Use jittering, data point transparency, sampled data, or other mitigation strategy to avoid overlapping data points and ensure data points are legible.
-* Use an interactive bubble chart to ensure data points, values and labels are legible. 
+## 4. Choosing Between Alternatives
 
-### Not Recommended 
+| Communication goal | Preferred chart | Reason |
+|---|---|---|
+| Two quantitative measures | Scatter plot | Two-axis encoding is easier to read precisely |
+| Three quantitative measures | Bubble chart | Adds area as a third encoding, with reduced precision |
+| Compare many groups with heavy overlap | Faceted scatter plots or small multiples | Reduces occlusion and preserves comparisons |
+| Exact values or ranked categories | Accessible table or bar chart | Area is not well suited to precise numerical judgments |
 
-* Don’t use a bubble chart if there are an excessive number of values that result in the bubbles appearing illegible due to excessive overlap.
+## 5. Data Requirements and Statistical Considerations
 
-## Examples
+- **Consistent observation unit:** Each bubble represents one state, county, occupation, or other explicitly defined unit. Do not mix levels without a methodological justification.
+- **Measure compatibility:** Verify the release year, geography, population universe, inflation basis, and denominators. Do not treat a poverty-status universe as identical to total population.
+- **Size encoding:** The visual *area* of the circle must be proportional to the underlying nonnegative numeric size variable. Provide a quantitative size legend.
+- **Missing and suppressed values:** Filter or flag Census sentinel codes and failed queries; never treat them as zeros.
+- **Uncertainty:** ACS published margins of error apply to specific estimates. A derived rate requires its own appropriate uncertainty calculation; do not assign the numerator's MOE to the derived rate. See [Visualizing Uncertainty]({{ '/uncertainty.html' | relative_url }}).
+- **Interpretation:** Cross-sectional differences are descriptive; do not infer individual behavior from state-level relationships (ecological fallacy).
+
+## 6. Visualization-Specific Considerations and Accessibility
+
+- Combine dark bubble outlines, sufficiently contrasting fills, and text labels; do not rely solely on color, bubble area, or tooltips.
+- Limit overlap, use transparent fills carefully, and check labels for clipping at ordinary zoom and at increased text size.
+- Provide concise image alternative text that explains the encodings and central purpose; accompany the figure with a **properly headed HTML data table** for precise values and margins of error.
+- If interactive, ensure all data and controls work by keyboard and expose usable names, values, and focus indicators to assistive technology.
+- Check the rendered page for contrast, logical reading order, zoom/reflow, and screen-reader usability. Generated files alone do **not** certify Section 508 compliance.
+
+### Categories and marker geometry
+
+Use circles with equal width and height and a quantitative area key. If color or shape distinguishes categories, provide a category legend unless direct labels identify every category clearly. Keep selected point labels readable and plot smaller marks above larger ones where possible. The chart has three quantitative encodings: horizontal position, vertical position, and area. Category encodings should remain secondary and should not be confused with additional numerical axes.
+
+### Design comparison
+
+Use these comparisons to connect each design choice with its effect on interpretation.
+
+| Problematic approach | Why it matters | Preferred approach |
+|---|---|---|
+| Circle radius is proportional to population | Circle area grows with the square of the intended quantity | Make area proportional: radius = k × square root of the nonnegative size value |
+| A size key shows only small/medium/large | Readers cannot recover the quantitative meaning | Label reference circles with values in the same units and scaling as the plotted bubbles |
+| Large bubbles hide small bubbles and their labels | Some observations disappear visually | Use drawing order, restrained sizes, clear edges, and an exact-value table; switch to facets if needed |
+
+### Checking the published example
+
+Test the chart at its intended display size and with enlarged text. Follow the reading sequence from title to explanation, figure, table, and source. Check that labels and meaningful marks remain distinguishable without color and that any controls can be operated by keyboard with visible focus. Read the explanation and table with a screen reader to confirm that they convey the same measures, units, missing-data conditions, and important relationships as the chart.
+
+Use [automated and manual accessibility testing](https://www.section508.gov/test/testing-overview/) together. A downloadable CSV supplies values but does not replace the chart's explanatory narrative; see [USWDS visualization guidance](https://designsystem.digital.gov/components/data-visualizations/). Record the page/version, tool or assistive technology, result, and corrective action. Apply the sponsor's agreed accessibility baseline rather than treating a palette simulation as a conformance test.
+
+## 7. Original Examples and Additional ACS Demonstration
+
+### 7.1 Original examples and their teaching purpose
+
+The following examples are retained from the Census guidance. Their datasets, periods, universes and design lessons remain distinct. Some illustrate limitations or less-preferred choices; inclusion does not certify every design or its accessibility.
 
 ***Example 1.*** Share of White Young Adults From Low-Income Families Living in Their Childhood Commuting Zone by CZ Mean Income
 
 The chart follows standard practices well. It includes a size legend, clear units of analysis, and a proper source statement. It effectively displays a multi-variable relationship using transparent and highlighted data points to support the story. Additionally, its observation labels are placed cleanly without overlapping other bubbles. However, the chart has one layout issue. An excessive number of bubbles overlap within the display. While this is a minor violation of a design recommendation, the chart still successfully fulfills its overall requirements.
 
-![Bubble Chart 1](assets/bubblechart1.png)
+![Commuting-zone income and young-adult residence bubble chart, with a size key and overlapping labeled observations.]({{ '/visualization_type/assets/bubblechart1.png' | relative_url }})
 
-***Example 1.*** Median Earnings of Workers by Percentage With a Bachelors Degree or More in Each Occupation: Aged 25 to 65 
+***Example 2.*** Median Earnings of Workers by Percentage With a Bachelors Degree or More in Each Occupation: Aged 25 to 65 
 
 The chart follows standard practices well. A note explains the circle representations. Small bubbles sit on larger ones cleanly. Axis labels clearly define analysis units. The chart successfully shows a three-variable relationship. Labels identify specific observations effectively. However, a few areas need improvement. Certain layout elements—specifically a label and the size explanation note—are poorly positioned, causing visual overlap and vulnerability to being cropped.
 
-![Bubble Chart 12](assets/bubblechart2.png)
+![Occupation earnings and educational-attainment bubble chart with a third quantity represented by circle size.]({{ '/visualization_type/assets/bubblechart2.png' | relative_url }})
 
 Source: Visualization: Teachers Are Among Most Educated, Yet Their Pay Lags. https://www.census.gov/library/visualizations/interactive/teachers-pay.html
+
+### 7.2 Additional ACS demonstration
+
+**2024 ACS income, poverty and population by state.** B19013, B17001 and B01003: income is x, derived poverty percentage is y, and total population controls circle area.
+
+**What this adds:** Adds quantitative area-scaling checks and a reusable exact-value dataset.
+
+**Run evidence:** The supplied November 10, 2026 run generated this example. Saved-data arithmetic and chart layout were reviewed for this package; published-page accessibility testing remains outstanding.
+
+![Four labeled state bubbles compare 2024 median household income with the percentage below poverty threshold. Texas has the largest population bubble; Virginia has the highest income and lowest poverty point estimate among these four states. Bubble area is proportional to population.]({{ '/assets/examples/bubble_chart/bubble_chart.png' | relative_url }})
+
+**Source and interpretation:** U.S. Census Bureau, 2024 ACS 1-Year Estimates, Detailed Tables B19013 (income), B17001 (poverty counts and universe) and B01003 (total population). Poverty percentage = 100 × below-poverty count / poverty-status universe. The supplied run completed November 10, 2026 (UTC).
+
+Bubble area, rather than radius, is proportional to population. Published income and poverty-count MOEs remain in the data table; no MOE was calculated for the derived poverty percentage. The companion scatter plot uses identical x/y values and equal marker areas. Four state observations do not establish causation.
+
+**Selected values** (rounded for display; CSV retains exported precision):
+
+| State | Income estimate ($) | Below poverty (%) | Population estimate |
+|---|---|---|---|
+| Florida | 77,735 | 12.05 | 23,372,215 |
+| Georgia | 79,991 | 12.59 | 11,180,878 |
+| Texas | 79,721 | 13.41 | 31,290,831 |
+| Virginia | 92,090 | 9.75 | 8,811,195 |
+
+[Read the data tables]({{ '/assets/examples/bubble_chart/reviewed_data_table.html' | relative_url }}) · [Download bubble_chart_data.csv]({{ '/assets/examples/bubble_chart/bubble_chart_data.csv' | relative_url }})
+
+Implementation: [Python source]({{ '/ACS_Examples_Builder/examples/python/01_bubble_scatter/bubble_chart.py' | relative_url }}). The integrated layout is reproduced from the saved CSV by [the reviewed-layout script]({{ '/review/rebuild_reviewed_acs_layouts.py' | relative_url }}). The original illustrations above and the ACS output have separate asset paths and source statements.
+
+### 7.3 How the examples work together
+
+Use the original illustrations to discuss design choices and their source-specific limitations. Use the ACS addition to demonstrate a documented data-to-chart workflow. Do not combine values across examples, imply that they use one dataset, or relabel a historical image as a new ACS output.
+
+## 8. Developer Implementation
+
+The following contract defines the intended behavior of the linked examples. Confirm the files, commands, dependencies, and generated results against the repository before publication.
+
+### 8.1 Data Preparation
+
+**Inputs:** Matched 2024 ACS 1-Year state records for B19013 (income), B17001 (poverty universe/count), and B01003 (total population), with applicable published MOEs and annotations.
+
+Validate a one-to-one state join across all three tables. Derive poverty percentage from B17001_002E/B17001_001E, and use B01003_001E only for bubble area. Require finite valid coordinates and nonnegative size values. Explicitly handle zero-size observations so their absence is not mistaken for missing data.
+
+### 8.2 Python
+
+Use the [supplied Python implementation]({{ '/ACS_Examples_Builder/examples/python/01_bubble_scatter/bubble_chart.py' | relative_url }}) and the [ACS example runner]({{ '/ACS_Examples_Builder/build_acs_examples.py' | relative_url }}). The runner maps this page to job `bubble_chart`. Its dependencies are listed in [requirements.txt]({{ '/ACS_Examples_Builder/requirements.txt' | relative_url }}). Confirm supported input options in the implementation and its accompanying README.
+
+The [executed notebook]({{ '/review/evidence/RUN_ALL_ACS_EXAMPLES_v03_executed.ipynb' | relative_url }}) contains saved outputs from the supplied ACS run. The [run status CSV]({{ '/review/evidence/ACS_Actual_Results/execution_status.csv' | relative_url }}) records generated results. The notebook produces the ACS additions; it does not recreate the historical Census illustrations.
+
+### 8.3 R
+
+The analytical definitions and output checks on this page also specify the requirements for an R counterpart. A verified R implementation is not bundled in this combined package. Retain R execution and Python/R agreement as outstanding validation tasks; do not describe them as completed.
+
+### 8.4 Reproducibility and Adaptation
+
+A personal Census API key is required for data queries under the [current Census API guidance](https://www.census.gov/data/developers/guidance/api-user-guide.Query_Limits.html). Read `CENSUS_API_KEY` from the analyst's environment. Do not include keys in source control, saved notebooks, request logs, error messages, or execution manifests; redact the `key` query parameter wherever a request URL is recorded. No shared developer credential or private file path should be required.
+
+For each run, save the validated data, chart PNG/SVG, a semantic HTML table, descriptive-text draft, and a nonsecret manifest in the selected output folder. Include source table/variables, full reference period, geography, units, transformations, exclusions, dependency versions, and retrieval time. Pin or record versions actually tested. For identical inputs, R and Python should reproduce the same analytical values within an explicitly documented tolerance; visual styling need not be pixel-identical.
+
+When changing years or geographies, recheck product coverage, definitions, annotations, and comparability. A successful run does not establish statistical significance or accessibility conformance.
+
+### 8.5 Output Verification
+
+| Check | Expected evidence |
+|---|---|
+| Area scaling | For positive sizes, area ratios equal quantity ratios. A fourfold quantity has fourfold area and twice the radius; the size key uses the same mapping |
+| Cross-chart agreement | For the same state selection, bubble x–y coordinates match the related scatter plot; only the third-variable area encoding differs |
+| Coverage and access | Included and excluded state counts reconcile; overlapping observations remain recoverable in the table, and no size or color is the sole source of an exact value |
+
+**Source-statement pattern for this example:** U.S. Census Bureau, American Community Survey, 2024 ACS 1-Year Estimates, Detailed Tables B19013, B17001, and B01003, selected states. Poverty percentage is derived; bubble area represents total population. Add the specific source or reproducible request link and actual retrieval date; omit the API key. Identify derived calculations separately from published estimates.
+
+## 9. Common Errors and Misinterpretations
+
+| Error | Correction |
+|---|---|
+| Scaling bubble **radius** linearly with population | Scale **area** linearly with population |
+| Treating state-level association as causation | Describe association only; avoid ecological inference |
+| Reporting numerator MOE as poverty-rate MOE | Preserve the published MOE and calculate the rate's uncertainty using an appropriate method if needed |
+| Interpreting total population as poverty-universe count | Label these denominators separately |
+| Depending exclusively on hover or color | Include labels and an accessible underlying data table |
+| Enlarging bubbles until smaller ones disappear | Reduce size, use transparency, adjust ordering, or choose small multiples |
+
+## 10. Publication Quality Checklist
+
+- [ ] All three variables, units, year, geography, and observation units are documented.
+- [ ] Bubble **area** proportionality and the quantitative size legend are verified.
+- [ ] Denominators, invalid values, and MOEs have been checked against Census metadata.
+- [ ] The static chart is understandable without hover or reliance on color alone.
+- [ ] Alternative text and the exact-value HTML table are reviewed in context.
+- [ ] Contrast, labels, keyboard behavior (where applicable), reflow, and screen-reader output are manually tested.
+- [ ] A new analyst can execute the code with their own credentials and output directory.
+
+## Related Pages and References
+
+- [Scatter Plot]({{ '/scatterplot.html' | relative_url }}) · [Small Multiples]({{ '/smallmultiples.html' | relative_url }}) · [Visualizing Uncertainty]({{ '/uncertainty.html' | relative_url }})
+- [ACS 2024 B19013 variable metadata](https://api.census.gov/data/2024/acs/acs1/groups/B19013.html)
+- [ACS 2024 B17001 variable metadata](https://api.census.gov/data/2024/acs/acs1/groups/B17001.html)
+- [ACS 2024 B01003 variable metadata](https://api.census.gov/data/2024/acs/acs1/groups/B01003.html)
+
+### Standards and Review References
+
+The original Census page and its example assets are preserved in this package; see the review record for the exact baseline and changes.
+
+Use the [September 29, 2026 consolidated Census Statistical Quality Standards](https://www2.census.gov/about/policies/quality/quality-standards.pdf), especially E1-6 (replication documentation), E2-2.3 (visualization requirements), and E3-2.4 (visualization review). Retain review findings and corrections separately from the design checklist.
+
+- [Census API query requirements](https://www.census.gov/data/developers/guidance/api-user-guide.Query_Limits.html).
+- [Section 508 testing methods](https://www.section508.gov/test/testing-overview/).
+- [USWDS data visualization guidance](https://designsystem.digital.gov/components/data-visualizations/).

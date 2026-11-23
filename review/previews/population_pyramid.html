@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Population Pyramid</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <style>body{max-width:70rem;margin:2rem auto;padding:0 1rem;font:17px/1.6 system-ui,sans-serif;color:#171717;background:#fff}img{max-width:100%;height:auto}table{border-collapse:collapse;display:block;overflow:auto}th,td{border:1px solid #888;padding:.4rem;text-align:left}a{color:#0645ad}h1,h2,h3{line-height:1.25}pre{overflow:auto}</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Population Pyramid</h1>
+</header>
+<h1 id="population-pyramid">Population Pyramid</h1>
+<p>Also known as: <em>age-sex pyramid</em>.</p>
+<h2 id="applying-this-guidance">Applying this guidance</h2>
+<p>Apply the <a
+href="https://www2.census.gov/about/policies/quality/quality-standards.pdf">Census
+Bureau Statistical Quality Standards</a>, revised September 29, 2026,
+within their stated scope. The chart-selection advice and implementation
+checks on this page explain practical design choices; they do not create
+additional agency mandates. Treat <strong>Essential</strong> items as
+the core design conditions for this chart, and confirm formal
+applicability through the program’s review process.</p>
+<p>Coordinate this page with <a href="../../component/titles.md">Titles
+and Subtitles</a>, <a href="../../component/Legend.md">Legends</a>, <a
+href="../../component/Source.md">Sources</a>, and <a
+href="uncertainty.html">Visualizing Uncertainty</a>. Keep detailed
+component guidance in those shared pages rather than duplicating it
+here.</p>
+<h2 id="purpose-and-overview">1. Purpose and Overview</h2>
+<p>A population pyramid displays the distribution of a population by
+<strong>age and sex</strong>, with horizontal bars extending from a
+shared zero line. Conventionally, males are on the left and females on
+the right. The shape need not resemble a triangle. Pyramids show counts
+or the percentage of the <strong>whole population</strong> in each
+age-by-sex group.</p>
+<h2 id="when-to-use">2. When to Use</h2>
+<h3 id="essential">Essential</h3>
+<ul>
+<li>Label the geographic area, reference period, age groups, measure,
+and units.</li>
+<li>Center the dividing axis at <strong>zero</strong>; use matching
+magnitudes and tick intervals on both sides.</li>
+<li>Put males on the left, females on the right, and younger groups at
+the bottom.</li>
+<li>Use a consistent age-band definition, ordinarily five-year groups
+with an open-ended oldest group.</li>
+<li>When plotting percentages, divide <strong>every age-sex group by the
+total population</strong>, not its sex-specific subtotal. Both sides
+must add to <strong>100% combined</strong>, subject to rounding.</li>
+<li>Use the same scale across panels when comparing multiple
+populations.</li>
+</ul>
+<h3 id="avoid">Avoid</h3>
+<ul>
+<li>Mixing different age-band widths or denominators without a
+conspicuous explanation.</li>
+<li>Showing a 200% combined total through sex-specific percentages
+labeled as whole-population percentages.</li>
+<li>Using unequal left and right scales, or presenting displayed
+negative bar positions as negative population estimates.</li>
+<li>Relying on color alone to communicate sex or age grouping.</li>
+</ul>
+<h2 id="when-to-use-an-alternative">3. When to Use an Alternative</h2>
+<p><strong>Recommended:</strong> Use a population pyramid to compare age
+structure by sex for one population or a small number of populations
+with aligned age categories. Use small multiples with identical scales
+for comparison across states or periods.</p>
+<p><strong>Not recommended:</strong> For detailed comparisons among many
+geographies or many age-sex categories, an accessible table or another
+chart may communicate values more effectively. Use a line graph when the
+primary question concerns a trend over time rather than population
+composition at one date.</p>
+<h2 id="choosing-between-alternatives">4. Choosing Between
+Alternatives</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Question</th>
+<th>Representation</th>
+<th>Interpretation caution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>How many people are in each age-sex group?</td>
+<td>Mirrored count bars</td>
+<td>Larger geographic areas often have larger bars because population
+sizes differ.</td>
+</tr>
+<tr class="even">
+<td>What share of a population falls in each group?</td>
+<td>Mirrored percent-of-total bars</td>
+<td>Both sides together sum to 100%; labels must name the
+denominator.</td>
+</tr>
+<tr class="odd">
+<td>How do two populations differ?</td>
+<td>Small-multiple pyramids</td>
+<td>Keep age bins, units, and axis scales consistent.</td>
+</tr>
+<tr class="even">
+<td>Do users need exact estimates?</td>
+<td>Accessible data table</td>
+<td>Provide the table alongside—not solely through—the image.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="data-requirements-and-statistical-considerations">5. Data
+Requirements and Statistical Considerations</h2>
+<ul>
+<li>Data require mutually exclusive age-sex groups that exhaust the
+reported total population; confirm that each category is counted
+once.</li>
+<li><strong>2024 ACS 1-Year Detailed Table B01001 (Sex by Age)</strong>
+provides total population, male and female subtotals, and detailed
+age-by-sex estimates. The example combines adjacent source rows to make
+five-year age bands, with <strong>85 years and over</strong> as the last
+open-ended band.</li>
+<li>Check whether male plus female equals the total, whether age groups
+reconcile to the sex subtotals, and whether percentages total 100%
+before plotting.</li>
+<li>ACS figures are survey estimates. Published count margins of error
+exist for detailed source rows; aggregating rows and calculating
+percentages requires appropriate variance methods. This demonstration
+<strong>does not claim calculated margins of error</strong> for
+aggregated bins or percentages.</li>
+<li>Ensure geography, dataset vintage, and definitions are comparable
+when creating multiple panels. A 1-year ACS release is not appropriate
+for every geography.</li>
+</ul>
+<h2 id="visualization-specific-considerations-and-accessibility">6.
+Visualization-Specific Considerations and Accessibility</h2>
+<p>Use direct panel headings, age labels, mirrored number labels and a
+meaningful legend. Bars should have visible separators and sufficient
+contrast. Male/female positions and text labels must remain
+interpretable without color. In a chart with multiple panels, use a
+shared axis to avoid artificial visual differences. Provide short
+alternative text explaining the display and a separate HTML data table
+with exact values and clear headers. Review chart readability at 200%
+zoom and test the rendered page by keyboard and screen reader.
+Accessibility is not established by image production alone.</p>
+<h3 id="row-labels-spacing-and-fills">Row labels, spacing, and
+fills</h3>
+<p>Use narrow separators between age rows without making the row
+boundaries dominate the bars. Place age labels outside the bar field, on
+both outer sides when that improves comparison; do not place labels over
+the central data marks. Keep the shared zero baseline visually clear.
+Use two principal sex-category fills, with optional light/dark variation
+only when it improves row tracking. Text labels and left/right placement
+must identify the categories even without color. A highlight needs an
+explicit purpose and a redundant noncolor cue rather than an unexplained
+extra category.</p>
+<h3 id="design-comparison">Design comparison</h3>
+<p>Use these comparisons to connect each design choice with its effect
+on interpretation.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Problematic approach</th>
+<th>Why it matters</th>
+<th>Preferred approach</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Each sex is normalized to 100% but the axis says percent of total
+population</td>
+<td>The two sides sum to 200% under a misleading denominator label</td>
+<td>Divide all age-sex estimates by the same whole-population total, or
+clearly name a different measure</td>
+</tr>
+<tr class="even">
+<td>Left bars have negative value labels</td>
+<td>Drawing coordinates look like negative population estimates</td>
+<td>Use negative coordinates for placement only; display positive
+magnitudes in labels and the table</td>
+</tr>
+<tr class="odd">
+<td>Source age rows are treated as equal-width five-year bands</td>
+<td>Unequal source intervals distort the intended age grouping</td>
+<td>Use the documented row mapping; combine split source intervals
+before plotting</td>
+</tr>
+</tbody>
+</table>
+<h3 id="checking-the-published-example">Checking the published
+example</h3>
+<p>Test the chart at its intended display size and with enlarged text.
+Follow the reading sequence from title to explanation, figure, table,
+and source. Check that labels and meaningful marks remain
+distinguishable without color and that any controls can be operated by
+keyboard with visible focus. Read the explanation and table with a
+screen reader to confirm that they convey the same measures, units,
+missing-data conditions, and important relationships as the chart.</p>
+<p>Use <a
+href="https://www.section508.gov/test/testing-overview/">automated and
+manual accessibility testing</a> together. A downloadable CSV supplies
+values but does not replace the chart’s explanatory narrative; see <a
+href="https://designsystem.digital.gov/components/data-visualizations/">USWDS
+visualization guidance</a>. Record the page/version, tool or assistive
+technology, result, and corrective action. Apply the sponsor’s agreed
+accessibility baseline rather than treating a palette simulation as a
+conformance test.</p>
+<h2 id="original-examples-and-additional-acs-demonstration">7. Original
+Examples and Additional ACS Demonstration</h2>
+<h3 id="original-examples-and-their-teaching-purpose">7.1 Original
+examples and their teaching purpose</h3>
+<p>The following examples are retained from the Census guidance. Their
+datasets, periods, universes and design lessons remain distinct. Some
+illustrate limitations or less-preferred choices; inclusion does not
+certify every design or its accessibility.</p>
+<p><strong><em>Example 1:</em></strong> Same scale for side-by-side
+population pyramids</p>
+<figure>
+<img src="../../visualization_type/assets/PopulationPyramid1.jpg"
+alt="Denver County population pyramids for 2000, 2010 and 2020 with a common magnitude scale." />
+<figcaption aria-hidden="true">Denver County population pyramids for
+2000, 2010 and 2020 with a common magnitude scale.</figcaption>
+</figure>
+<p><strong><em>Example 2:</em></strong> Separate color for male and
+female bars</p>
+<figure>
+<img src="../../visualization_type/assets/PopulationPyramid2.jpg"
+alt="San Francisco County age-by-sex pyramid for 2018 with male and female bars on opposite sides." />
+<figcaption aria-hidden="true">San Francisco County age-by-sex pyramid
+for 2018 with male and female bars on opposite sides.</figcaption>
+</figure>
+<p><strong><em>Example 3:</em></strong> Using color to highlight
+specific generations or age groups</p>
+<figure>
+<img src="../../visualization_type/assets/PopulationPyramid3.png"
+alt="United States age-by-sex pyramids for 2010 and 2020 highlighting selected cohorts." />
+<figcaption aria-hidden="true">United States age-by-sex pyramids for
+2010 and 2020 highlighting selected cohorts.</figcaption>
+</figure>
+<p><strong><em>Example 4:</em></strong> Using color for superimposed
+population pyramids</p>
+<figure>
+<img src="../../visualization_type/assets/PopulationPyramid4.png"
+alt="Interactive population comparison using superimposed mirrored age distributions." />
+<figcaption aria-hidden="true">Interactive population comparison using
+superimposed mirrored age distributions.</figcaption>
+</figure>
+<p><strong><em>Example 5:</em></strong> Using too many colors so it is
+difficult to distinguish pyramids</p>
+<figure>
+<img src="../../visualization_type/assets/PopulationPyramid5.png"
+alt="Overlaid 2010 population pyramids for Punta Gorda and Provo using many colors; retained as a cautionary design example." />
+<figcaption aria-hidden="true">Overlaid 2010 population pyramids for
+Punta Gorda and Provo using many colors; retained as a cautionary design
+example.</figcaption>
+</figure>
+<h3 id="additional-acs-demonstration">7.2 Additional ACS
+demonstration</h3>
+<p><strong>2024 ACS age-by-sex composition.</strong> B01001: apply the
+documented age-band mapping and use a common whole-population
+denominator in percentage mode.</p>
+<p><strong>What this adds:</strong> Adds reproducible age aggregation,
+total reconciliation and consistent mirrored scales.</p>
+<p><strong>Run evidence:</strong> The supplied November 10, 2026 run
+generated this example. Saved-data arithmetic and chart layout were
+reviewed for this package; published-page accessibility testing remains
+outstanding.</p>
+<figure>
+<img
+src="../../assets/examples/population_pyramid/population_pyramid_acs.png"
+alt="Florida population pyramid for the 2024 ACS: male estimates extend left and female estimates right, from ages 0–4 at the bottom to 85 and older at the top. Both sides show percentages of the same total population, with a symmetric scale." />
+<figcaption aria-hidden="true">Florida population pyramid for the 2024
+ACS: male estimates extend left and female estimates right, from ages
+0–4 at the bottom to 85 and older at the top. Both sides show
+percentages of the same total population, with a symmetric
+scale.</figcaption>
+</figure>
+<p><strong>Source and interpretation:</strong> U.S. Census Bureau, 2024
+ACS 1-Year Estimates, Detailed Table B01001, Florida. Published
+age-by-sex counts are aggregated into five-year bands through 80–84 and
+an open-ended 85+ band. The supplied run completed November 10, 2026
+(UTC).</p>
+<p>Both sides use the whole-population denominator of 23,372,215.
+Aggregated male counts total 11,488,598 and female counts total
+11,883,617; the combined shares sum to 100%. Left-side geometry is
+negative only for drawing: source counts and printed shares remain
+nonnegative. These use the source table’s published sex categories; the
+chart does not display age-cell uncertainty.</p>
+<p><strong>Selected values</strong> (rounded for display; CSV retains
+exported precision):</p>
+<table>
+<thead>
+<tr class="header">
+<th>Sex category</th>
+<th>Population estimate</th>
+<th>Share of total (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Male</td>
+<td>11,488,598</td>
+<td>49.15</td>
+</tr>
+<tr class="even">
+<td>Female</td>
+<td>11,883,617</td>
+<td>50.85</td>
+</tr>
+</tbody>
+</table>
+<p><a
+href="../../assets/examples/population_pyramid/reviewed_data_table.html">Read
+the data tables</a> · <a
+href="../../assets/examples/population_pyramid/population_pyramid_acs.csv">Download
+population_pyramid_acs.csv</a></p>
+<p>Implementation: <a
+href="../../ACS_Examples_Builder/examples/python/03_components/population_pyramid.py">Python
+source</a>. The original illustrations above and the ACS output have
+separate asset paths and source statements.</p>
+<h3 id="how-the-examples-work-together">7.3 How the examples work
+together</h3>
+<p>Use the original illustrations to discuss design choices and their
+source-specific limitations. Use the ACS addition to demonstrate a
+documented data-to-chart workflow. Do not combine values across
+examples, imply that they use one dataset, or relabel a historical image
+as a new ACS output.</p>
+<h2 id="developer-implementation">8. Developer Implementation</h2>
+<p>The following contract defines the intended behavior of the linked
+examples. Confirm the files, commands, dependencies, and generated
+results against the repository before publication.</p>
+<h3 id="data-preparation">8.1 Data Preparation</h3>
+<p><strong>Inputs:</strong> 2024 ACS 1-Year B01001 state-level total,
+sex subtotals, detailed age-sex estimates, source MOEs, and annotations,
+with an explicit output age-band mapping.</p>
+<p>Use the mapping below to construct mutually exclusive five-year age
+bands. Reconcile source age rows to sex subtotals and the
+whole-population total before computing shares. Preserve all source
+MOEs; derived bin or percentage uncertainty requires a separately
+documented calculation.</p>
+<h3 id="python">8.2 Python</h3>
+<p>Use the <a
+href="../../ACS_Examples_Builder/examples/python/03_components/population_pyramid.py">supplied
+Python implementation</a> and the <a
+href="../../ACS_Examples_Builder/build_acs_examples.py">ACS example
+runner</a>. The runner maps this page to job
+<code>population_pyramid</code>. Its dependencies are listed in <a
+href="../../ACS_Examples_Builder/requirements.txt">requirements.txt</a>.
+Confirm supported input options in the implementation and its
+accompanying README.</p>
+<p>The <a
+href="../../review/evidence/RUN_ALL_ACS_EXAMPLES_v03_executed.ipynb">executed
+notebook</a> contains saved outputs from the supplied ACS run. The <a
+href="../../review/evidence/ACS_Actual_Results/execution_status.csv">run
+status CSV</a> records generated results. The notebook produces the ACS
+additions; it does not recreate the historical Census illustrations.</p>
+<h3 id="r">8.3 R</h3>
+<p>The analytical definitions and output checks on this page also
+specify the requirements for an R counterpart. A verified R
+implementation is not bundled in this combined package. Retain R
+execution and Python/R agreement as outstanding validation tasks; do not
+describe them as completed.</p>
+<h3 id="reproducibility-and-adaptation">8.4 Reproducibility and
+Adaptation</h3>
+<p>A personal Census API key is required for data queries under the <a
+href="https://www.census.gov/data/developers/guidance/api-user-guide.Query_Limits.html">current
+Census API guidance</a>. Read <code>CENSUS_API_KEY</code> from the
+analyst’s environment. Do not include keys in source control, saved
+notebooks, request logs, error messages, or execution manifests; redact
+the <code>key</code> query parameter wherever a request URL is recorded.
+No shared developer credential or private file path should be
+required.</p>
+<p>For each run, save the validated data, chart PNG/SVG, a semantic HTML
+table, descriptive-text draft, and a nonsecret manifest in the selected
+output folder. Include source table/variables, full reference period,
+geography, units, transformations, exclusions, dependency versions, and
+retrieval time. Pin or record versions actually tested. For identical
+inputs, R and Python should reproduce the same analytical values within
+an explicitly documented tolerance; visual styling need not be
+pixel-identical.</p>
+<p>When changing years or geographies, recheck product coverage,
+definitions, annotations, and comparability. A successful run does not
+establish statistical significance or accessibility conformance.</p>
+<h3 id="output-verification">8.5 Output Verification</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Check</th>
+<th>Expected evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Reconciliation</td>
+<td>All detailed source age rows appear once; age-bin totals equal the
+corresponding sex subtotals, and both sex subtotals equal
+B01001_001E</td>
+</tr>
+<tr class="even">
+<td>Percentages</td>
+<td>For a positive total, all displayed age-sex shares sum to 100%
+combined within the stated rounding tolerance</td>
+</tr>
+<tr class="odd">
+<td>Geometry and labels</td>
+<td>Both sides and comparison panels use identical magnitude limits; age
+groups increase upward; table values remain nonnegative</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Source-statement pattern for this example:</strong> U.S.
+Census Bureau, American Community Survey, 2024 ACS 1-Year Estimates,
+Detailed Table B01001, selected states. Five-year age groups derived
+from source rows; percentage mode uses the total population as
+denominator. Add the specific source or reproducible request link and
+actual retrieval date; omit the API key. Identify derived calculations
+separately from published estimates.</p>
+<h2 id="common-errors-and-misinterpretations">9. Common Errors and
+Misinterpretations</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Error</th>
+<th>Correction</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Each sex summed to 100%, resulting in 200% combined</td>
+<td>Divide every group by the total population, or change labels to
+clearly state a different measure.</td>
+</tr>
+<tr class="even">
+<td>Male bars interpreted as negative population</td>
+<td>Explain that left-side negative coordinates are a drawing convention
+only.</td>
+</tr>
+<tr class="odd">
+<td>Different axis limits used for side-by-side comparison</td>
+<td>Apply the same limits on both sides and across panels.</td>
+</tr>
+<tr class="even">
+<td>Aggregated bins shown with unverified MOEs</td>
+<td>Preserve the original estimates and verify variance methods before
+reporting derived MOEs.</td>
+</tr>
+<tr class="odd">
+<td>Original image lacks accessible context</td>
+<td>Supply a descriptive text alternative and accessible values
+table.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="publication-quality-checklist">10. Publication Quality
+Checklist</h2>
+<ul class="task-list">
+<li><label><input type="checkbox" />Source, release year, geography,
+units, and denominator identified.</label></li>
+<li><label><input type="checkbox" />Original image assets resolve and
+have meaningful alternative text.</label></li>
+<li><label><input type="checkbox" />All age bins are nonoverlapping and
+exhaustive; sex and population totals reconcile.</label></li>
+<li><label><input type="checkbox" />Male/female scales match, with 0 at
+the center.</label></li>
+<li><label><input type="checkbox" />Percent-of-total pyramids sum to
+100% combined (allow rounding).</label></li>
+<li><label><input type="checkbox" />Generated PNG uses verified ACS
+values, and the published data table matches.</label></li>
+<li><label><input type="checkbox" />Python and R can run in an
+independent environment using analyst-selected
+destinations.</label></li>
+<li><label><input type="checkbox" />Contrast, zoom, keyboard,
+screen-reader, and noncolor tests are documented.</label></li>
+</ul>
+<p>Related guidance: <a href="../../component/SmallMultiples.md">Small
+Multiples</a>, <a href="line_graph.html">Line Graph</a>, <a
+href="uncertainty.html">Visualizing Uncertainty</a>.</p>
+<p><strong>Data source:</strong> <a
+href="https://api.census.gov/data/2024/acs/acs1/groups/B01001.html">2024
+ACS 1-Year Table B01001 metadata</a>.</p>
+<h3 id="standards-and-review-references">Standards and Review
+References</h3>
+<p>The original Census page and its example assets are preserved in this
+package; see the review record for the exact baseline and changes.</p>
+<p>Use the <a
+href="https://www2.census.gov/about/policies/quality/quality-standards.pdf">September
+29, 2026 consolidated Census Statistical Quality Standards</a>,
+especially E1-6 (replication documentation), E2-2.3 (visualization
+requirements), and E3-2.4 (visualization review). Retain review findings
+and corrections separately from the design checklist.</p>
+<ul>
+<li><a
+href="https://www.census.gov/data/developers/guidance/api-user-guide.Query_Limits.html">Census
+API query requirements</a>.</li>
+<li><a href="https://www.section508.gov/test/testing-overview/">Section
+508 testing methods</a>.</li>
+<li><a
+href="https://designsystem.digital.gov/components/data-visualizations/">USWDS
+data visualization guidance</a>.</li>
+</ul>
+</body>
+</html>

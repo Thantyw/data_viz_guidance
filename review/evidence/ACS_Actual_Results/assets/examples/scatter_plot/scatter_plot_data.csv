@@ -1,0 +1,5 @@
+state,median_household_income_usd,income_moe_90_usd,poverty_universe,below_poverty_count,below_poverty_count_moe_90,total_population,poverty_percent,year,source_dataset
+Florida,77735.0,564.0,22898322.0,2758614.0,58688.0,23372215.0,12.047232107226023,2024,2024 ACS 1-year Detailed Tables
+Georgia,79991.0,633.0,10910197.0,1373284.0,36640.0,11180878.0,12.587160433491714,2024,2024 ACS 1-year Detailed Tables
+Texas,79721.0,564.0,30642632.0,4108899.0,76334.0,31290831.0,13.409092926482295,2024,2024 ACS 1-year Detailed Tables
+Virginia,92090.0,831.0,8570581.0,835556.0,26795.0,8811195.0,9.749117358554805,2024,2024 ACS 1-year Detailed Tables

@@ -1,0 +1,23 @@
+{
+  "assigned_pages": 10,
+  "original_images": 28,
+  "original_assets_byte_identical_and_active": true,
+  "acs_figures_integrated": 12,
+  "acs_jobs_integrated": 10,
+  "run_jobs_generated": 11,
+  "source_evidence_byte_identical": true,
+  "unassigned_original_repo_files_unchanged": true,
+  "saved_data_checks_passed": 16,
+  "saved_data_checks_total": 16,
+  "local_liquid_link_issues": [],
+  "data_table_links_and_header_associations": "checked",
+  "page_permalinks_and_numbered_sections": "preserved",
+  "markdown_to_html_previews": "ten Pandoc renders completed",
+  "figure_visual_review": "contact-sheet review of supplied figures; four layouts rebuilt from CSV and reinspected",
+  "credential_literal_scan": "no key-like literals found in supplied text evidence by configured patterns",
+  "api_execution_evidence": "supplied API-mode run manifest and saved outputs; no new API query",
+  "nested_raw_category_audit": "limited: missing raw category counts in supplied CSV",
+  "production_jekyll_build": "not performed",
+  "manual_published_page_accessibility": "not performed; no conformance claim",
+  "R_implementation_and_parity": "not supplied or verified"
+}

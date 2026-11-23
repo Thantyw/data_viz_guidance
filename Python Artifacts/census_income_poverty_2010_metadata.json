@@ -1,0 +1,18 @@
+{
+  "source": "U.S. Census Bureau, ACS 1-Year Estimates",
+  "release_year": 2010,
+  "geography": "State-level geographies returned by ACS",
+  "income_variable": "B19013_001E",
+  "income_moe_variable": null,
+  "poverty_method": "Published subject-table variable S1701_C03_001E",
+  "grouping": "Roughly equal thirds ranked by poverty rate",
+  "ordering": "Descending poverty rate within each group",
+  "caveats": [
+    "ACS estimates have sampling error.",
+    "Missing margins of error are not fabricated.",
+    "No MOE is calculated for the fallback derived poverty rate.",
+    "Income comparisons across years require inflation adjustment.",
+    "High, Mid, and Low Poverty are relative groups, not official labels.",
+    "Color is supplemented by labels and hover information."
+  ]
+}

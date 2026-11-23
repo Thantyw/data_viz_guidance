@@ -1,0 +1,33 @@
+uncertainty: 2024 ACS 1-Year; B19013 state estimates and 90% MOEs
+  script: 03_components/uncertainty.py
+  expected output: uncertainty_acs.png
+nested_categories: 2024 ACS 1-Year; B03002 state categories plus ACS profile DP03 coverage
+  script: 03_components/nested_categories.py
+  expected output: nested_b03002.png, nested_dp03.png
+line_graph: 2021–2024 ACS 1-Year; B19013 state median income, adjusted to 2024 dollars
+  script: 02_time_series/line_graph.py
+  expected output: linegraph_acs_income.png
+area_chart: 2021–2024 ACS 1-Year; B17001 state poverty counts
+  script: 02_time_series/area_chart.py
+  expected output: area_chart.png
+bubble_chart: 2024 ACS 1-Year; B19013, B17001, B01003 state estimates
+  script: 01_bubble_scatter/bubble_chart.py
+  expected output: bubble_chart.png
+scatter_plot: 2024 ACS 1-Year; B19013 and B17001 state estimates
+  script: 01_bubble_scatter/scatter_plot.py
+  expected output: scatter_plot.png
+small_multiples: 2021–2024 ACS 1-Year; B17001 state poverty percentages
+  script: 02_time_series/small_multiples.py
+  expected output: small_multiples.png
+population_pyramid: 2024 ACS 1-Year; B01001 state sex-by-age
+  script: 03_components/population_pyramid.py
+  expected output: population_pyramid_acs.png
+boxplot: 2020–2024 ACS 5-Year; B19013 county median income estimates
+  script: 04_distributions/boxplot.py
+  expected output: boxplot.png
+stacked_area: 2021–2024 ACS 1-Year; B01001 state male/female population
+  script: 02_time_series/stacked_area.py
+  expected output: stacked_area.png
+histogram: 2020–2024 ACS 5-Year; B19013 county median income estimates
+  script: 04_distributions/histogram.py
+  expected output: histogram.png

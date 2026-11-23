@@ -1,0 +1,12 @@
+page,title,source_and_period,expected_image_names,script_relative_path,verification_status
+uncertainty,Visualizing Uncertainty,2024 ACS 1-Year; B19013 state estimates and 90% MOEs,uncertainty_acs.png,examples/python/03_components/uncertainty.py,Not executed with real ACS data in package build
+nested_categories,Nested or Non-Mutually Exclusive Categories,2024 ACS 1-Year; B03002 state categories plus ACS profile DP03 coverage,nested_b03002.png;nested_dp03.png,examples/python/03_components/nested_categories.py,Not executed with real ACS data in package build
+line_graph,Line Graph,"2021–2024 ACS 1-Year; B19013 state median income, adjusted to 2024 dollars",linegraph_acs_income.png,examples/python/02_time_series/line_graph.py,Not executed with real ACS data in package build
+area_chart,Area Chart,2021–2024 ACS 1-Year; B17001 state poverty counts,area_chart.png,examples/python/02_time_series/area_chart.py,Not executed with real ACS data in package build
+bubble_chart,Bubble Chart,"2024 ACS 1-Year; B19013, B17001, B01003 state estimates",bubble_chart.png,examples/python/01_bubble_scatter/bubble_chart.py,Not executed with real ACS data in package build
+scatter_plot,Scatter Plot,2024 ACS 1-Year; B19013 and B17001 state estimates,scatter_plot.png,examples/python/01_bubble_scatter/scatter_plot.py,Not executed with real ACS data in package build
+small_multiples,Small Multiples,2021–2024 ACS 1-Year; B17001 state poverty percentages,small_multiples.png,examples/python/02_time_series/small_multiples.py,Not executed with real ACS data in package build
+population_pyramid,Population Pyramid,2024 ACS 1-Year; B01001 state sex-by-age,population_pyramid_acs.png,examples/python/03_components/population_pyramid.py,Not executed with real ACS data in package build
+boxplot,Boxplot,2020–2024 ACS 5-Year; B19013 county median income estimates,boxplot.png,examples/python/04_distributions/boxplot.py,Not executed with real ACS data in package build
+stacked_area,Stacked Area Chart,2021–2024 ACS 1-Year; B01001 state male/female population,stacked_area.png,examples/python/02_time_series/stacked_area.py,Not executed with real ACS data in package build
+histogram,Histogram,2020–2024 ACS 5-Year; B19013 county median income estimates,histogram.png,examples/python/04_distributions/histogram.py,Not executed with real ACS data in package build

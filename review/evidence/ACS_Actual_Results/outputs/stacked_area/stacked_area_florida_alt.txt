@@ -1,0 +1,1 @@
+Stacked area chart of estimated male and female populations in Florida from 2021 to 2024. Male is the lower solid area; female is the upper hatched area. Total population rises from 21,781,128 to 23,372,215. See the accompanying annual data table for exact values and published 90% margins of error.

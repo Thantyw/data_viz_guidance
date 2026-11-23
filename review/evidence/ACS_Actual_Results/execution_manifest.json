@@ -1,0 +1,107 @@
+{
+  "generated_at_utc": "2026-11-10T20:27:17.623169+00:00",
+  "data_source": "U.S. Census Bureau API",
+  "all_acs_values_retrieved_at_runtime": true,
+  "api_key_saved": false,
+  "records": [
+    {
+      "key": "uncertainty",
+      "title": "Visualizing Uncertainty",
+      "status": "generated_unreviewed",
+      "dataset": "2024 ACS 1-Year; B19013 state estimates and 90% MOEs",
+      "images": "uncertainty_acs.png",
+      "note": "Must review data, output captions, and Section 508 prior to publication",
+      "log_file": "outputs/uncertainty/execution.log"
+    },
+    {
+      "key": "nested_categories",
+      "title": "Nested or Non-Mutually Exclusive Categories",
+      "status": "generated_unreviewed",
+      "dataset": "2024 ACS 1-Year; B03002 state categories plus ACS profile DP03 coverage",
+      "images": "nested_b03002.png;nested_dp03.png",
+      "note": "Must review data, output captions, and Section 508 prior to publication",
+      "log_file": "outputs/nested_categories/execution.log"
+    },
+    {
+      "key": "line_graph",
+      "title": "Line Graph",
+      "status": "generated_unreviewed",
+      "dataset": "2021\u20132024 ACS 1-Year; B19013 state median income, adjusted to 2024 dollars",
+      "images": "linegraph_acs_income.png",
+      "note": "Must review data, output captions, and Section 508 prior to publication",
+      "log_file": "outputs/line_graph/execution.log"
+    },
+    {
+      "key": "area_chart",
+      "title": "Area Chart",
+      "status": "generated_unreviewed",
+      "dataset": "2021\u20132024 ACS 1-Year; B17001 state poverty counts",
+      "images": "area_chart.png",
+      "note": "Must review data, output captions, and Section 508 prior to publication",
+      "log_file": "outputs/area_chart/execution.log"
+    },
+    {
+      "key": "bubble_chart",
+      "title": "Bubble Chart",
+      "status": "generated_unreviewed",
+      "dataset": "2024 ACS 1-Year; B19013, B17001, B01003 state estimates",
+      "images": "bubble_chart.png",
+      "note": "Must review data, output captions, and Section 508 prior to publication",
+      "log_file": "outputs/bubble_chart/execution.log"
+    },
+    {
+      "key": "scatter_plot",
+      "title": "Scatter Plot",
+      "status": "generated_unreviewed",
+      "dataset": "2024 ACS 1-Year; B19013 and B17001 state estimates",
+      "images": "scatter_plot.png",
+      "note": "Must review data, output captions, and Section 508 prior to publication",
+      "log_file": "outputs/scatter_plot/execution.log"
+    },
+    {
+      "key": "small_multiples",
+      "title": "Small Multiples",
+      "status": "generated_unreviewed",
+      "dataset": "2021\u20132024 ACS 1-Year; B17001 state poverty percentages",
+      "images": "small_multiples_acs.png",
+      "note": "Must review data, output captions, and Section 508 prior to publication",
+      "log_file": "outputs/small_multiples/execution.log"
+    },
+    {
+      "key": "population_pyramid",
+      "title": "Population Pyramid",
+      "status": "generated_unreviewed",
+      "dataset": "2024 ACS 1-Year; B01001 state sex-by-age",
+      "images": "population_pyramid_acs.png",
+      "note": "Must review data, output captions, and Section 508 prior to publication",
+      "log_file": "outputs/population_pyramid/execution.log"
+    },
+    {
+      "key": "boxplot",
+      "title": "Boxplot",
+      "status": "generated_unreviewed",
+      "dataset": "2020\u20132024 ACS 5-Year; B19013 county median income estimates",
+      "images": "boxplot_acs.png",
+      "note": "Must review data, output captions, and Section 508 prior to publication",
+      "log_file": "outputs/boxplot/execution.log"
+    },
+    {
+      "key": "stacked_area",
+      "title": "Stacked Area Chart",
+      "status": "generated_unreviewed",
+      "dataset": "2021\u20132024 ACS 1-Year; B01001 state male/female population",
+      "images": "stacked_area_florida.png;stacked_area_georgia.png",
+      "note": "Must review data, output captions, and Section 508 prior to publication",
+      "log_file": "outputs/stacked_area/execution.log"
+    },
+    {
+      "key": "histogram",
+      "title": "Histogram",
+      "status": "generated_unreviewed",
+      "dataset": "2020\u20132024 ACS 5-Year; B19013 county median income estimates",
+      "images": "histogram_acs.png",
+      "note": "Must review data, output captions, and Section 508 prior to publication",
+      "log_file": "outputs/histogram/execution.log"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "data_source": "Supplied November 10, 2026 run; saved CSVs only; no API query",
+  "figures_rebuilt": [
+    "bubble_chart/bubble_chart",
+    "nested_categories/nested_b03002",
+    "stacked_area/stacked_area_florida",
+    "stacked_area/stacked_area_georgia"
+  ],
+  "changes": [
+    "Separate labels and legends from plotted marks",
+    "Reserve footer space",
+    "Use shared zero-based population scale for the two stacked-area charts"
+  ],
+  "data_values_changed": false,
+  "python": "3.12.14",
+  "pandas": "2.2.3",
+  "matplotlib": "3.10.8",
+  "manual_published_page_accessibility": "not performed"
+}

@@ -2,72 +2,109 @@
 layout: default
 title: Grids and Gridlines
 permalink: grid.html
-description: "Short Description of Grids and Gridlines"
+description: "How to use gridlines and map graticules to support data reading without distracting from the data."
 ---
 
-# Grids
+# Grids and Gridlines
 
-Grids provide helpful reference lines inside a wide range of data visualizations that help users better understand the data inside a visualization. Grid add precision in large graphs and highlight subtle differences.
+## Purpose and Overview
 
-When used in traditional data visualizations, such as line graphs or bar charts, grids help users trace data points to their corresponding value in the x or y-axis. While grids are not required in charts or graphs, consider using them when data points are not directly labeled.
+Grids provide reference lines that help readers understand values and compare data points. They can improve precision in large charts and make subtle differences easier to see.
 
-Alternatively, when grids are used in maps, grids provide useful location data outside of the depicted geographic boundaries, such as county or state lines.
+In line graphs, bar charts, and similar visualizations, gridlines help readers trace data points to values on the x- or y-axis. Gridlines are optional; consider using them when data points are not directly labeled.
 
-# Gridlines
+On maps, reference grids can help readers locate places beyond the geographic boundaries shown, such as county or state lines. Graticules show latitude and longitude. They can provide context on reference maps but are not always needed on thematic maps using Census Bureau data.
 
-Grid lines are the individual lines that a grid is composed of. Grid lines should be rendered in a color, such as gray, that doesn’t clutter the data visualization and should have just enough contrast to be visible. Grid lines should never overlap data points and instead be rendered in the background.
+## When This Guidance Applies
 
-# Grids in Maps
+Apply this guidance when deciding whether to include gridlines in a chart or graticules on a map, and when choosing their appearance.
 
-Graticules are lines showing the latitude and longitude of the earth on a map. Graticules can help contextualize a reference map but aren’t always necessary for most thematic maps produced using Census Bureau data. When using graticules, be sure to follow the grid lines guidance above to ensure the lines don’t distract from the contents of the map.
+In addition to the guidance provided in this section, relevant guidance can also be found in the Axes, Color, and Map Layout sections.
 
+## Essential Requirements
 
+* Use a subdued color, such as gray, that keeps gridlines visible without cluttering the visualization.
+* Render gridlines behind data marks so they do not obscure points, bars, or lines. Gridlines may cross the positions of data marks; the concern is visual layering and readability, not preventing every intersection.
+* Keep gridlines from interfering with labels and other text.
 
-## Guidance  
+## Recommended Practices
 
-## Best Practices 
+* Use gridlines when they help readers trace unlabeled data points to axis values.
+* Consider removing gridlines when direct labels already provide the values readers need.
+* Keep gridlines visually secondary to the data.
+* Use map graticules when latitude and longitude help readers understand location.
+* Apply the same subdued styling to graticules so they do not distract from the map's contents.
 
-### Essential 
+## Practices to Avoid
 
-* Render grid lines in a color, such as gray, that doesn’t clutter the data visualization and maintains enough contrast to be visible.
+* Do not draw gridlines over data marks in a way that obscures them.
+* Do not use gridlines so prominent that they compete with the data.
+* Avoid unnecessary gridlines when direct labels already make values clear.
+* Do not add graticules to a thematic map unless they help readers interpret it.
 
-### Avoid
-
-* Never overlap data points with grid lines. Grid lines should instead be rendered in the background.
+## Accessibility
  
-## Additional Recommendations 
+* Keep axis and tick labels at a contrast of at least 4.5:1 against the background, and make sure gridlines do not cross through text in a way that reduces that contrast.
+* If readers must use the gridlines to read values, keep those lines at least 3:1 against the background. Even then, draw them thinner or lighter than the data so the series stays primary.
+* Do not rely on gridlines alone when precise values matter. Use direct labels or provide a data table.
+* On maps, add graticules only when they help interpretation, and keep their labels readable at the intended size.
+* For full requirements, see the [508 Compliance](508.html), [Color](color.html), and [Axes](axes.html) pages. Meeting these bullets does not by itself mean a visualization is 508 compliant.
+ 
 
-### Recommended  
+## Census Data Examples
 
+***Example 1:*** Driving Alone is Still Popular
 
-### Not Recommended  
+![Horizontal bar chart showing transportation to work in New York using 2016 American Community Survey estimates. Driving alone accounts for 52.6 percent, followed by public transportation at 28.4 percent. Light gray vertical gridlines mark the percentage scale, while each bar also has a direct value label.]({{ '/component/assets/grid1.png' | relative_url }})
 
-* If data points are labelled, consider not using gridlines for a cleaner looking visual.
+This example demonstrates the following practice well:
 
-## Examples 
+* Soft gray gridlines remain in the background of the visualization.
 
-***Example 1:*** Driving Alone is Still Popular.
+This chart could be improved:
 
-![Grids 1](assets/grid1.png)
+* Each bar is directly labeled so that the gridlines may be unnecessary. Consider removing them for a cleaner presentation.
 
-This example demonstrates the following properties well: 
+***Example 2:*** Median Sales Price of New Single-Family Homes Sold
 
-* The gridlines are a soft gray and are part of the background of the visualization
+![Line chart showing median sales prices of new single-family homes sold from 2019 to 2023 for the United States and four regions, in thousands of dollars. Light gray horizontal gridlines help readers estimate prices. All series end higher than in 2019, with the Northeast highest in 2023. Region names directly label the lines at the right.]({{ '/component/assets/grid2.png' | relative_url }})
 
-The following improvements can be made: 
+[View the Census Bureau housing story containing the example](https://www.census.gov/library/stories/2024/06/national-housing-month.html).
 
-* The graph labels each bar of the bar chart so the gridlines are a redundancy and not necessary for ease of interpretation of the values on the graph.  So the gridlines could be removed.
+This example demonstrates the following practices well:
 
+* Soft gray gridlines do not interfere with interpretation of the chart.
+* Labels remain clear and readable.
+* Gridlines help readers estimate values and interpret the chart.
 
-***Example 2:*** Median Sales Price of New Single Family Homes Sold.
+## Common Errors and Misinterpretations
 
-![Grids 2](assets/grid2.png)
+| Issue | Why It Matters | Recommended Correction |
+|---|---|---|
+| Gridlines are more prominent than the data | Readers may focus on the grid rather than the values or patterns. | Use a subdued color and keep gridlines visually secondary. |
+| Gridlines obscure data marks | Points, bars, or lines become harder to read. | Render gridlines behind the data marks. |
+| Gridlines interfere with labels | Text becomes harder to read. | Adjust the styling or layout to keep labels clear. |
+| Gridlines repeat information already supplied by direct labels | Extra lines can add clutter without helping interpretation. | Consider removing unnecessary gridlines. |
+| Graticules add no useful location information | They can distract from the map's main message. | Omit them unless they help readers interpret location. |
+| "Behind the data" is interpreted as "never crosses a data position" | Useful reference lines may be removed unnecessarily. | Allow intersections while keeping gridlines behind and visually subordinate to the data. |
 
-https://www.census.gov/library/stories/2024/06/national-housing-month.html
+## Publication Quality Checklist
 
-The graph demonstrates the following well:
-
-* The gridlines are a soft gray and do not interfere with the meaning and interpretation of the chart.
-* Lines are clearly labeled and do not interfere with the wording.
-* The lines help the viewer interpret the values and meaning of the chart. 
-
+- [ ] The visualization fits the analytical question.
+- [ ] Relevant alternatives were considered.
+- [ ] Data source, geography, reference period, and units are documented.
+- [ ] Data transformations and aggregation are appropriate.
+- [ ] Missing values and relevant uncertainty are addressed.
+- [ ] Existing accessibility, scaling, and axes guidance has been followed.
+- [ ] Chart-specific limitations and caveats are explained.
+- [ ] Code examples have been executed and verified.
+- [ ] The visualization has undergone the appropriate review.
+ 
+## Related Pages
+ 
+* [Axes](axes.html): gridlines support the scale; axis titles, ticks, and baselines are covered there.
+* [Line Graphs](linegraph.html): a common use of light gridlines behind a series.
+* [Map Layout](maplayout.html): related guidance when considering graticules on a thematic map.
+* [Color](color.html): keep gridlines visible enough to use without overpowering the data.
+* [Typography](typography.html): keep labels readable so gridlines do not cut through or crowd text.
+* [508 Compliance](508.html): contrast and text alternatives that also apply to labeled axes and gridlines.

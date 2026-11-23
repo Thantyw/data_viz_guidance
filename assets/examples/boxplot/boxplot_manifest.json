@@ -1,0 +1,26 @@
+{
+  "visualization": "boxplot",
+  "input_mode": "api",
+  "input_file": null,
+  "source_metadata": "2024 ACS 5-Year Detailed Tables Census API",
+  "dataset_year": 2024,
+  "states": [
+    "Florida",
+    "Georgia",
+    "Texas",
+    "Virginia"
+  ],
+  "observation_unit": "county",
+  "metric": "county median household income estimate (not individual household income)",
+  "county_rows": 613,
+  "valid_county_rows": 613,
+  "excluded_count": 0,
+  "python": "3.13.18",
+  "pandas": "2.2.3",
+  "numpy": "2.4.6",
+  "timestamp_utc": "2026-11-10T20:27:03.834429+00:00",
+  "api_key_saved": false,
+  "manual_section_508_verification": "not performed",
+  "whisker_rule": "1.5*IQR; outliers shown",
+  "published_MOE_use": "retained for individual county estimates; boxplot quartiles are not uncertainty limits"
+}

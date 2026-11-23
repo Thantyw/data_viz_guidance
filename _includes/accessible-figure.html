@@ -1,0 +1,116 @@
+{% comment %}
+Accessible chart block for Family D pages.
+
+Paste this into a page and fill in the words. The picture, the caption,
+the source line, and the data table stay together.
+
+  src            Path to the chart picture.
+  alt            What a screen reader should read. Say the main message.
+  caption        Visible title for the figure.
+  source         Optional. Defaults to "Source: U.S. Census Bureau".
+  source_detail  Optional longer citation, such as the survey and table.
+  source_url     Optional link for the longer citation.
+  summary        Optional label for the open-and-close control.
+  table_caption  Title read with the data table.
+  headers        Column names, separated by a vertical bar.
+  rows           One row per pair of vertical bars. Cells are separated by one bar.
+  note           Optional note under the first table.
+  table_caption_2, headers_2, rows_2
+                 Optional second table, for a breakdown of one row.
+  id             Optional id for the figure.
+
+Example rows value:
+  Car, truck, or van|2,429,541|76.4%||Worked from home|435,692|13.7%
+{% endcomment %}
+{%- assign source_line = include.source | default: "Source: U.S. Census Bureau" -%}
+{%- assign summary_label = include.summary | default: "Show the data table" -%}
+{%- assign figure_src = include.src -%}
+{%- unless figure_src contains "://" -%}
+  {%- assign figure_src = figure_src | relative_url -%}
+{%- endunless -%}
+<style>
+  .accessible-figure { margin: 1.75rem 0 2rem; padding: 1rem 0 0.25rem; border-top: 4px solid #137e55; border-bottom: 1px solid #e5e5e5; max-width: 100%; }
+  .accessible-figure-caption { margin: 0 0 0.75rem; color: #1b1b1b; font-size: 1.15rem; font-weight: 700; line-height: 1.4; }
+  .accessible-figure img { display: block; max-width: 100%; height: auto; margin: 0.25rem 0 0.75rem; }
+  .accessible-figure-source, .accessible-figure-note { margin: 0.75rem 0; color: #1b1b1b; line-height: 1.5; }
+  .accessible-figure a { color: #1e6bb8; text-decoration: underline; }
+  .accessible-figure summary { color: #1e6bb8; font-weight: 700; cursor: pointer; padding: 0.75rem 0.15rem; }
+  .accessible-figure summary:focus, .accessible-figure a:focus { outline: 3px solid #1e6bb8; outline-offset: 3px; }
+  .accessible-figure table { width: 100%; border-collapse: collapse; margin: 0.25rem 0 0.75rem; }
+  .accessible-figure caption { caption-side: top; text-align: left; color: #1b1b1b; font-weight: 700; padding: 0.35rem 0 0.6rem; }
+  .accessible-figure th, .accessible-figure td { border: 1px solid #c5cdd2; padding: 0.55rem 0.75rem; color: #1b1b1b; vertical-align: top; text-align: left; }
+  .accessible-figure thead th { background: #f4f7f6; font-weight: 700; }
+  .accessible-figure td { text-align: right; }
+  @media (max-width: 800px) {
+    .accessible-figure table { table-layout: fixed; width: 100%; }
+    .accessible-figure th, .accessible-figure td { white-space: normal; overflow-wrap: anywhere; }
+    .accessible-figure tbody th { width: 40%; }
+  }
+</style>
+<figure class="accessible-figure"{% if include.id %} id="{{ include.id | escape }}"{% endif %}>
+  <figcaption class="accessible-figure-caption">{{ include.caption | escape }}</figcaption>
+  <img src="{{ figure_src }}" alt="{{ include.alt | escape }}">
+  <p class="accessible-figure-source">{{ source_line | escape }}. {% if include.source_detail %}{% if include.source_url %}<a href="{{ include.source_url | escape }}">{{ include.source_detail | escape }}</a>{% else %}{{ include.source_detail | escape }}{% endif %}{% endif %}</p>
+  {% if include.headers and include.rows %}
+  <details>
+    <summary>{{ summary_label | escape }}</summary>
+    <table>
+      <caption>{{ include.table_caption | escape }}</caption>
+      <thead>
+        <tr>
+          {% assign header_cells = include.headers | split: "|" %}
+          {% for header in header_cells %}
+          <th scope="col">{{ header | strip | escape }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% assign table_rows = include.rows | split: "||" %}
+        {% for row in table_rows %}
+        <tr>
+          {% assign cells = row | split: "|" %}
+          {% for cell in cells %}
+            {% if forloop.first %}
+            <th scope="row">{{ cell | strip | escape }}</th>
+            {% else %}
+            <td>{{ cell | strip | escape }}</td>
+            {% endif %}
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% if include.note %}
+    <p class="accessible-figure-note">{{ include.note | escape }}</p>
+    {% endif %}
+    {% if include.headers_2 and include.rows_2 %}
+    <table>
+      <caption>{{ include.table_caption_2 | escape }}</caption>
+      <thead>
+        <tr>
+          {% assign header_cells_2 = include.headers_2 | split: "|" %}
+          {% for header in header_cells_2 %}
+          <th scope="col">{{ header | strip | escape }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% assign table_rows_2 = include.rows_2 | split: "||" %}
+        {% for row in table_rows_2 %}
+        <tr>
+          {% assign cells = row | split: "|" %}
+          {% for cell in cells %}
+            {% if forloop.first %}
+            <th scope="row">{{ cell | strip | escape }}</th>
+            {% else %}
+            <td>{{ cell | strip | escape }}</td>
+            {% endif %}
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+  </details>
+  {% endif %}
+</figure>

@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Nested or Non-Mutually Exclusive Categories</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <style>body{max-width:70rem;margin:2rem auto;padding:0 1rem;font:17px/1.6 system-ui,sans-serif;color:#171717;background:#fff}img{max-width:100%;height:auto}table{border-collapse:collapse;display:block;overflow:auto}th,td{border:1px solid #888;padding:.4rem;text-align:left}a{color:#0645ad}h1,h2,h3{line-height:1.25}pre{overflow:auto}</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Nested or Non-Mutually Exclusive Categories</h1>
+</header>
+<h1 id="nested-or-non-mutually-exclusive-categories">Nested or
+Non-Mutually Exclusive Categories</h1>
+<h2 id="applying-this-guidance">Applying this guidance</h2>
+<p>Use the <a
+href="https://www2.census.gov/about/policies/quality/quality-standards.pdf">consolidated
+Census Statistical Quality Standards</a>, revised September 29, 2026,
+within their stated scope. Separate formal requirements from the
+practical design recommendations and implementation choices described
+here. Coordinate this guidance with <a
+href="../../component/titles.md">Titles and Subtitles</a>, <a
+href="../../component/Legend.md">Legends</a>, and <a
+href="../../component/Source.md">Sources</a>.</p>
+<h2 id="purpose-and-overview">1. Purpose and Overview</h2>
+<p>A <strong>nested category</strong> is a subgroup within a larger
+category (for example, private insurance is a subset of people with
+insurance). <strong>Mutually exclusive categories</strong> do not
+overlap at a defined level and universe. <strong>Non-mutually exclusive
+categories</strong> overlap: one person or item may belong to more than
+one category. A parent total must never be added to its own child as if
+they were separate observations; overlapping categories must not be
+stacked as a single additive whole.</p>
+<p>Tables can communicate nesting through indentation, but chart readers
+may miss the hierarchy or an explanatory footnote. The denominator and
+membership rules must be visible where readers interpret the result.</p>
+<h2 id="when-to-use">2. When to Use</h2>
+<p>Use this guidance whenever charted series have a parent–child
+relationship, when membership can overlap, or when a comparison implies
+categories sum to a whole.</p>
+<h3 id="essential">Essential</h3>
+<ul>
+<li><strong>State explicitly which categories overlap</strong>, in an
+associated note, title, subtitle, annotation, or legend. Place the
+explanation where readers will encounter it while interpreting the
+chart.</li>
+<li>State the <strong>universe and denominator</strong> for every
+proportion, especially whether it describes all people or only people
+with a particular attribute.</li>
+<li>Identify parent totals and child categories so readers cannot
+mistake them for disjoint series.</li>
+<li>Check whether displayed groups form a mutually exclusive and
+exhaustive partition <strong>before</strong> using a 100% stacked or
+other part-to-whole display.</li>
+</ul>
+<h3 id="avoid">Avoid</h3>
+<ul>
+<li>Adding a parent and its child or summing overlapping categories to
+imply a population total.</li>
+<li>Using a pie or 100% stacked chart for overlapping categories without
+first creating an explicitly valid disjoint classification.</li>
+<li>Hiding a critical overlap caveat in small-print notes; implying
+distinct groups through color alone.</li>
+</ul>
+<h3 id="additional-recommendations">Additional Recommendations</h3>
+<p><strong>Recommended:</strong> Where defensible, construct mutually
+exclusive categories that reconcile to the relevant whole; label overlap
+explicitly; consider remainder bars, several coordinated charts, or a
+table when those formats communicate membership more clearly.
+(Consolidated from the original.)</p>
+<p><strong>Not recommended:</strong> A visually complex graphic whose
+group structure cannot be interpreted without substantial mental
+arithmetic, or any display that silently changes the denominator across
+panels.</p>
+<h2 id="when-to-use-an-alternative">3. When to Use an Alternative</h2>
+<p>Prefer a <strong>structured table</strong> when nested rows and
+category membership must be inspected precisely. Prefer separate labeled
+bars or <strong>remainder bars</strong> to show each overlapping
+category as a percentage of the <em>same defined universe</em>. Use a
+100% stacked chart only for a verified mutually exclusive and exhaustive
+partition. Use multiple charts or small multiples when a single display
+obscures these distinctions.</p>
+<h2 id="choosing-between-alternatives">4. Choosing Between
+Alternatives</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Analytical goal</th>
+<th>Prefer</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Show a valid insured/uninsured split</td>
+<td>100% stacked bar or labeled table</td>
+<td>Those two categories form a partition when defined for the same
+universe</td>
+</tr>
+<tr class="even">
+<td>Compare overlapping insurance types</td>
+<td>Separate labeled bars/remainder bars</td>
+<td>Each type is evaluated against a stated denominator without
+pretending categories sum to 100%</td>
+</tr>
+<tr class="odd">
+<td>Show parent and nested subtypes</td>
+<td>Indented accessible table or separate panels</td>
+<td>Makes the hierarchy explicit</td>
+</tr>
+<tr class="even">
+<td>Explain multiple overlapping groups</td>
+<td>Cross-tabulation or carefully annotated table</td>
+<td>Displays membership and intersection explicitly where available</td>
+</tr>
+</tbody>
+</table>
+<h2 id="data-requirements-and-statistical-considerations">5. Data
+Requirements and Statistical Considerations</h2>
+<p>Document dataset name, table/variable identifiers, reference year,
+geography, universe, units, category membership rules, denominator, and
+suppression/missing-value conventions. Distinguish
+<strong>counts</strong>, <strong>percentages of everyone</strong>, and
+<strong>percentages of the insured</strong>; these are not
+interchangeable. Do not infer category intersections from marginal
+totals alone.</p>
+<p>For ACS published estimates, retain associated margins of error where
+applicable, distinguish sampling uncertainty from arithmetic
+consistency, and cross-reference <a href="uncertainty.html">Visualizing
+Uncertainty</a>. Additivity checks must respect the published variables,
+estimates, and Census guidance; do not assume derived estimate MOEs
+equal the sum of component MOEs.</p>
+<h2 id="visualization-specific-considerations">6. Visualization-Specific
+Considerations</h2>
+<ul>
+<li>Use consistent ordering, labels, and denominators across panels.
+Explicitly identify overlap in text near the graphic.</li>
+<li>If using remainder bars, label each bar as “has characteristic”
+versus “does not have characteristic” for the <strong>same
+denominator</strong>; do not stack different overlapping characteristics
+together.</li>
+<li>When showing a nested category, use indentation, headings, and
+explanatory labels; do not communicate nesting solely through
+darker/lighter colors.</li>
+</ul>
+<h3 id="accessibility">Accessibility</h3>
+<p>Provide meaningful alternative text describing <strong>which groups
+overlap</strong> and what the viewer should conclude. Include an
+accessible HTML table with column and row headers, group labels,
+counts/percentages, denominators, and relevant notes; a CSV may
+supplement but does not replace it. Check text contrast, noncolor cues,
+logical reading order, keyboard operation where applicable, and
+screen-reader comprehension on the published GitHub page. Review against
+applicable Section 508/WCAG criteria; do not assert compliance on the
+basis of automated tests alone.</p>
+<h3 id="design-comparison">Design comparison</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Problematic approach</th>
+<th>Why it matters</th>
+<th>Preferred approach</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Parent and child appear as equal additive segments</td>
+<td>The same members are counted twice</td>
+<td>Show the hierarchy explicitly or plot mutually exclusive children
+only</td>
+</tr>
+<tr class="even">
+<td>Public and private insurance shares form a 100% stack</td>
+<td>A person may have both forms of coverage</td>
+<td>Use separately labeled bars/remainder bars with a common stated
+universe</td>
+</tr>
+<tr class="odd">
+<td>Overlap is disclosed only in a remote footnote</td>
+<td>Readers interpret the graphic before finding the caveat</td>
+<td>Put a visible membership note beside the chart and repeat the
+explanation in accessible text</td>
+</tr>
+<tr class="even">
+<td>Denominator changes from everyone to insured people between
+panels</td>
+<td>Identical percentages acquire different meanings</td>
+<td>Label each denominator and align panels only when comparisons are
+valid</td>
+</tr>
+</tbody>
+</table>
+<p>The original permits disclosure in notes, titles, subtitles or
+legends. Placing the explanation near the graphic is a practical
+accessibility and interpretation recommendation, not a newly asserted
+Census mandate. If no defensible simple chart communicates the
+membership, use a table.</p>
+<h2 id="original-examples-and-additional-acs-demonstration">7. Original
+Examples and Additional ACS Demonstration</h2>
+<h3 id="original-examples-and-their-teaching-purpose">7.1 Original
+examples and their teaching purpose</h3>
+<p>The following examples are retained from the Census guidance. Their
+datasets, periods, universes and design lessons remain distinct. Some
+illustrate limitations or less-preferred choices; inclusion does not
+certify every design or its accessibility.</p>
+<p><strong><em>Example 1:</em></strong> Table Excerpt from Health
+Insurance Coverage in the United States 2022</p>
+<figure>
+<img src="../../component/assets/Nested1.png"
+alt="Health insurance table with indented parent and subtype rows, estimates, margins of error and notes on overlapping coverage; read the membership discussion below." />
+<figcaption aria-hidden="true">Health insurance table with indented
+parent and subtype rows, estimates, margins of error and notes on
+overlapping coverage; read the membership discussion below.</figcaption>
+</figure>
+<p>Health insurance data has both nested and non-mutually exclusive
+categories characteristics. Whether or not one has health insurance is
+binary, but the categories for displaying types of health insurance are
+not mutually exclusive. In a given year, people can, and do, have both
+public and private insurance, and within the those plans they can take
+advantage of several options. Theoretically, a single person with health
+insurance could be counted in all of the insured categories.</p>
+<p><strong><em>Example 2:</em></strong> Chart excerpt: health insurance
+coverage types in 2021 and change from 2020 to 2021</p>
+<figure>
+<img src="../../component/assets/Nested2.jpg"
+alt="Health insurance chart showing 2021 coverage types and change from 2020 to 2021; public and private coverage types overlap." />
+<figcaption aria-hidden="true">Health insurance chart showing 2021
+coverage types and change from 2020 to 2021; public and private coverage
+types overlap.</figcaption>
+</figure>
+<p>The left-hand bar charts describe the percentages of people who have
+insurance and the types of insurance one has.</p>
+<p>There are several visual miscues in Example 2 that contribute to the
+likelihood of misinterpreting these results. * The first bar plot’s
+color and font scheme create a visual inconsistency. While the bolder
+top bar and lighter subsequent bars in the second and third bar plots
+correctly imply that the lighter categories are subgroups of the top
+bolded category, this visual cue is misleading in the first chart. * The
+viewer needs to perform math to see that the subgroups in the second and
+third bar plot do not add to 100%. * The note stating that these are not
+mutually exclusive is easy to miss, it is buried beneath the chart among
+a series of notes. Obviously good charts aspire to be visually clean and
+the desire to keep the notes small makes sense. But in this case, even
+bolding that note would increase the chance that it gets read. * It’s
+not entirely clear if the statistics in the second two charts are
+percents of the entire population or percents of those with insurance.
+One may conclude that 66% of those with insurance have a private
+insurance plan, or that 66% of people have a private insurance plan.
+Again, the nesting in the table allows the viewer to understand that 66%
+of people have a private insurance plan. The visualization approach used
+in Example 2 is acceptable, but not ideal. A simple fix could be to use
+a stacked bar chart for the first statistic (uninsured vs insured)
+clearly showing they add up to 100%. Because there are only 2
+categories, the stacked bar chart should be easily interpretable and a
+clear “parts of a whole” depiction. Additionally bolding the chart note
+could help increase the clarity. Handling non-mutually exclusive
+categories is a common struggle when determining how to depict your data
+visually. Here are some charts that get increasingly more difficult to
+interpret and ultimately lead to a very complex task for the viewer. The
+complexities here need to be avoided. Always consider how long it takes
+for a viewer to understand the message in your visualization. If you
+find it takes enormous amounts of mental concentration, explore simpler
+solutions or a less complex story. If you cannot find a solution, avoid
+presenting an overly complex chart. Remember, it’s ok and maybe
+preferable in many cases to use a TABLE.</p>
+<p><strong><em>Example 3:</em></strong> <a
+href="https://www.census.gov/library/stories/2023/11/child-care.html">Most
+Parents Don’t Have Any Formal Child Care Arrangements</a></p>
+<figure>
+<img src="../../component/assets/Nested3.png"
+alt="Child-care remainder bars comparing each arrangement with its own complement; arrangements are not additive across bars." />
+<figcaption aria-hidden="true">Child-care remainder bars comparing each
+arrangement with its own complement; arrangements are not additive
+across bars.</figcaption>
+</figure>
+<p>Example 3 displays non-mutually exclusive categories through a series
+of bar charts known as “remainder bars.” Remainder bars show not just
+the individual statistic, but the remainder of the universe for that
+statistic. Remainder bars help users understand the parts of a whole and
+make it easier to see that these individual categories are not mutually
+exclusive.</p>
+<p><strong>Interpretation note:</strong> The original table reports 2021
+and 2022, while the chart image reports 2021 coverage and change from
+2020 to 2021. Preserve those reference periods rather than treating the
+figures as a single matched-year dataset. The insurance illustrations
+demonstrate overlap; the ACS B03002 addition demonstrates a hierarchy
+and valid partition. The ACS profile DP03 extension can demonstrate
+insurance overlap when its variables are verified.</p>
+<h3 id="additional-acs-demonstration">7.2 Additional ACS
+demonstration</h3>
+<p><strong>2024 ACS category relationships.</strong> B03002: validate
+the Hispanic/not-Hispanic partition and separate parents from nested
+children. The supplied builder also has a DP03 insurance-overlap
+example.</p>
+<p><strong>What this adds:</strong> Adds auditable category and
+denominator checks while preserving the original insurance and
+child-care discussions.</p>
+<p><strong>Run evidence:</strong> The supplied November 10, 2026 run
+generated this example. Saved-data arithmetic and chart layout were
+reviewed for this package; published-page accessibility testing remains
+outstanding.</p>
+<figure>
+<img src="../../assets/examples/nested_categories/nested_b03002.png"
+alt="Two stacked bars show Hispanic or Latino and not Hispanic or Latino percentages totaling 100 percent in Florida and Georgia. Race subgroups are nested within origin groups and are not plotted." />
+<figcaption aria-hidden="true">Two stacked bars show Hispanic or Latino
+and not Hispanic or Latino percentages totaling 100 percent in Florida
+and Georgia. Race subgroups are nested within origin groups and are not
+plotted.</figcaption>
+</figure>
+<figure>
+<img src="../../assets/examples/nested_categories/nested_dp03.png"
+alt="Separate bars show overlapping private and public health-insurance coverage in Florida and Georgia. The bars use the civilian noninstitutionalized population denominator and must not be added as a partition." />
+<figcaption aria-hidden="true">Separate bars show overlapping private
+and public health-insurance coverage in Florida and Georgia. The bars
+use the civilian noninstitutionalized population denominator and must
+not be added as a partition.</figcaption>
+</figure>
+<p><strong>Source and interpretation:</strong> U.S. Census Bureau, 2024
+ACS 1-Year Estimates, Detailed Table B03002 and Data Profile DP03.
+B03002 percentages use total population; DP03 coverage percentages use
+the civilian noninstitutionalized population. The supplied run completed
+November 10, 2026 (UTC).</p>
+<p>The origin display is an additive partition; the coverage display is
+not. The saved export contains percentages and a derived overlap count,
+but omits the raw B03002 child counts and DP03 coverage counts. Those
+raw fields are still needed for an independent audit of all category
+checks. The derived overlap is not a separately published estimate and
+has no calculated MOE.</p>
+<p><strong>Selected values</strong> (rounded for display; CSV retains
+exported precision):</p>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>State</th>
+<th>Not Hispanic (%)</th>
+<th>Hispanic (%)</th>
+<th>Private coverage (%)</th>
+<th>Public coverage (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Florida</td>
+<td>71.31</td>
+<td>28.69</td>
+<td>65.41</td>
+<td>35.82</td>
+</tr>
+<tr class="even">
+<td>Georgia</td>
+<td>88.38</td>
+<td>11.62</td>
+<td>67.25</td>
+<td>31.94</td>
+</tr>
+</tbody>
+</table>
+<p><a
+href="../../assets/examples/nested_categories/reviewed_data_table.html">Read
+the data tables</a> · <a
+href="../../assets/examples/nested_categories/nested_categories_acs.csv">Download
+nested_categories_acs.csv</a></p>
+<p>Implementation: <a
+href="../../ACS_Examples_Builder/examples/python/03_components/nested_categories.py">Python
+source</a>. The integrated layout is reproduced from the saved CSV by <a
+href="../../review/rebuild_reviewed_acs_layouts.py">the reviewed-layout
+script</a>. The original illustrations above and the ACS output have
+separate asset paths and source statements.</p>
+<h3 id="how-the-examples-work-together">7.3 How the examples work
+together</h3>
+<p>Use the original illustrations to discuss design choices and their
+source-specific limitations. Use the ACS addition to demonstrate a
+documented data-to-chart workflow. Do not combine values across
+examples, imply that they use one dataset, or relabel a historical image
+as a new ACS output.</p>
+<h2 id="developer-implementation">8. Developer Implementation</h2>
+<h3 id="data-preparation">8.1 Data Preparation</h3>
+<p>Retrieve 2024 ACS 1-Year B03002 and its official metadata. Use
+<code>B03002_001E</code>, <code>B03002_002E</code>,
+<code>B03002_012E</code>, and <code>B03002_003E</code> with
+corresponding annotations and available MOEs. Validate one record per
+selected state, finite valid counts, a positive denominator for
+percentages, and stable universe/period definitions. Keep a category
+relationship field such as <code>whole</code>,
+<code>exclusive_part</code>, or <code>nested_child</code>; a flat label
+alone does not encode membership.</p>
+<h3 id="python">8.2 Python</h3>
+<p>Use the <a
+href="../../ACS_Examples_Builder/examples/python/03_components/nested_categories.py">supplied
+Python implementation</a> and the <a
+href="../../ACS_Examples_Builder/build_acs_examples.py">ACS example
+runner</a>. The runner maps this page to job
+<code>nested_categories</code>. Its dependencies are listed in <a
+href="../../ACS_Examples_Builder/requirements.txt">requirements.txt</a>.
+Confirm supported input options in the implementation and its
+accompanying README.</p>
+<p>The <a
+href="../../review/evidence/RUN_ALL_ACS_EXAMPLES_v03_executed.ipynb">executed
+notebook</a> contains saved outputs from the supplied ACS run. The <a
+href="../../review/evidence/ACS_Actual_Results/execution_status.csv">run
+status CSV</a> records generated results. The notebook produces the ACS
+additions; it does not recreate the historical Census illustrations.</p>
+<h3 id="r">8.3 R</h3>
+<p>The analytical definitions and output checks on this page also
+specify the requirements for an R counterpart. A verified R
+implementation is not bundled in this combined package. Retain R
+execution and Python/R agreement as outstanding validation tasks; do not
+describe them as completed.</p>
+<h3 id="reproducibility-and-adaptation">8.4 Reproducibility and
+Adaptation</h3>
+<p>A personal Census API key is required for data queries under the <a
+href="https://www.census.gov/data/developers/guidance/api-user-guide.Query_Limits.html">current
+API guidance</a>. Read <code>CENSUS_API_KEY</code> from the analyst’s
+environment. Redact the key from logged URLs, errors, saved notebooks,
+and manifests; do not commit it. Save source variables, the full
+reference period, geography, transformations, exclusions, retrieval
+time, and tested dependency versions with the outputs.</p>
+<p>Save category IDs, parent IDs, membership definitions, counts,
+percentage denominators, applicable source MOEs, and reconciliation
+results. Parent-minus-child estimates and derived percentages need
+appropriate uncertainty methods; subtracting or adding their MOEs is not
+a valid general method. Label any intentionally invalid sum as a
+teaching example and keep it separate from published source
+estimates.</p>
+<h3 id="output-verification">8.5 Output Verification</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Check</th>
+<th>Expected evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Origin partition</td>
+<td>Valid <code>002E + 012E = 001E</code> for each included state</td>
+</tr>
+<tr class="even">
+<td>Nesting</td>
+<td>Valid <code>003E ≤ 002E ≤ 001E</code>; child is never added to its
+own parent to form a claimed whole</td>
+</tr>
+<tr class="odd">
+<td>Percentages</td>
+<td>Whole-population and within-parent shares use explicitly different,
+correctly labeled denominators</td>
+</tr>
+<tr class="even">
+<td>Overlap</td>
+<td>Any intersection/union claim has supporting joint-membership data,
+not only marginal totals</td>
+</tr>
+<tr class="odd">
+<td>Accessible explanation</td>
+<td>The narrative and table expose the same hierarchy, denominator and
+overlap caveats as the chart</td>
+</tr>
+</tbody>
+</table>
+<h2 id="common-errors-and-misinterpretations">9. Common Errors and
+Misinterpretations</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Issue</th>
+<th>Why it matters</th>
+<th>Correction</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Parent and subgroup summed</td>
+<td>Double counts members</td>
+<td>Represent parent separately or use disjoint children</td>
+</tr>
+<tr class="even">
+<td>Two overlapping types shown as a 100% whole</td>
+<td>Implies false additivity</td>
+<td>Use separate bars/remainder bars and explicit overlap note</td>
+</tr>
+<tr class="odd">
+<td>Percentage denominator unstated</td>
+<td>Changes the meaning of the comparison</td>
+<td>Label the universe and denominator</td>
+</tr>
+<tr class="even">
+<td>Intersections inferred from marginal totals</td>
+<td>Intersection is not uniquely determined</td>
+<td>Use an authoritative cross-tabulation or appropriate microdata</td>
+</tr>
+<tr class="odd">
+<td>Overlap indicated only by color</td>
+<td>Excludes some users</td>
+<td>Add labels, notes, patterns/structure, and accessible table</td>
+</tr>
+</tbody>
+</table>
+<h2 id="publication-quality-checklist">10. Publication Quality
+Checklist</h2>
+<ul class="task-list">
+<li><label><input type="checkbox" />Source page and original examples
+reconciled against existing repository content.</label></li>
+<li><label><input type="checkbox" />Universe, denominators, hierarchy,
+and overlapping groups clearly identified.</label></li>
+<li><label><input type="checkbox" />Valid part-to-whole partitions
+checked; overlapping categories never combined
+misleadingly.</label></li>
+<li><label><input type="checkbox" />Census table/variables and source
+year verified against official metadata.</label></li>
+<li><label><input type="checkbox" />Python code executes with documented
+input options; source values and derived measures are checked
+independently.</label></li>
+<li><label><input type="checkbox" />Figure and accessible HTML data
+table generated and verified.</label></li>
+<li><label><input type="checkbox" />Alternative text, text contrast,
+noncolor cues, reading order, and applicable manual tests
+documented.</label></li>
+<li><label><input type="checkbox" />Original image paths and external
+links verified on GitHub Pages.</label></li>
+</ul>
+<h2 id="related-pages-and-references">Related Pages and References</h2>
+<ul>
+<li><a href="uncertainty.html">Visualizing Uncertainty</a></li>
+<li><a href="../../component/SmallMultiples.md">Small Multiples</a></li>
+<li><a href="stacked_area.html">Stacked Area Chart</a></li>
+<li><a href="population_pyramid.html">Population Pyramid</a></li>
+<li><a
+href="https://api.census.gov/data/2024/acs/acs1/groups/B03002.html">ACS
+B03002 variable metadata (2024 ACS 1-year)</a></li>
+<li><a
+href="https://www.census.gov/library/stories/2023/11/child-care.html">Most
+Parents Don’t Have Any Formal Child Care Arrangements</a></li>
+</ul>
+<h3 id="standards-and-review-references">Standards and Review
+References</h3>
+<p>Use the September 29, 2026 consolidated Census standards, especially
+E1-6, E2-2.3 and E3-2.4, within their stated scope. Record the
+implementation review, applicable statistical methods and actual
+rendered-site accessibility findings separately from this guidance
+checklist.</p>
+</body>
+</html>
