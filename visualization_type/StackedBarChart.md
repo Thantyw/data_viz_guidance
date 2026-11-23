@@ -346,27 +346,27 @@ The goal is to preserve the analytical meaning of the Census data while allowing
 
 ## Publication Quality Checklist
 
-- [ ] A stacked bar chart is appropriate for the analytical question.
-- [ ] A 100% stacked bar chart is used only when components represent a meaningful whole.
-- [ ] Bars begin at zero.
-- [ ] Categories and subgroup components are clearly defined.
-- [ ] Components sum, or approximately sum because of rounding, to 100%.
-- [ ] Subgroup order is consistent across categories.
-- [ ] The number of subgroups remains interpretable.
-- [ ] The subgroup of greatest analytical importance is positioned appropriately.
-- [ ] A legend or direct labels identify all subgroups.
-- [ ] Missing, suppressed, or unavailable values are handled appropriately.
-- [ ] Color is used purposefully and is not the only means of communicating subgroup meaning.
-- [ ] The Census dataset, table, universe, geography, reference period, components, and units are documented.
-- [ ] Census-published uncertainty has been considered even when it is not visually encoded.
-- [ ] Statistical significance is not inferred from the chart alone.
-- [ ] A meaningful text description or accessible data alternative accompanies the example.
-- [ ] The versioned source-data snapshot is documented.
-- [ ] Python and R implementations have been executed and verified.
-- [ ] Cross-language results have been reviewed for analytical consistency.
-- [ ] Generated output has been inspected before publication.
-- [ ] Reproducibility and adaptation instructions are current.
-- [ ] Related component guidance has been reviewed.
+- A stacked bar chart is appropriate for the analytical question.
+- A 100% stacked bar chart is used only when components represent a meaningful whole.
+- Bars begin at zero.
+- Categories and subgroup components are clearly defined.
+- Components sum, or approximately sum because of rounding, to 100%.
+- Subgroup order is consistent across categories.
+- The number of subgroups remains interpretable.
+- The subgroup of greatest analytical importance is positioned appropriately.
+- A legend or direct labels identify all subgroups.
+- Missing, suppressed, or unavailable values are handled appropriately.
+- Color is used purposefully and is not the only means of communicating subgroup meaning.
+- The Census dataset, table, universe, geography, reference period, components, and units are documented.
+- Census-published uncertainty has been considered even when it is not visually encoded.
+- Statistical significance is not inferred from the chart alone.
+- A meaningful text description or accessible data alternative accompanies the example.
+- The versioned source-data snapshot is documented.
+- Python and R implementations have been executed and verified.
+- Cross-language results have been reviewed for analytical consistency.
+- Generated output has been inspected before publication.
+- Reproducibility and adaptation instructions are current.
+- Related component guidance has been reviewed.
 
 ## Related Pages
 
