@@ -328,25 +328,25 @@ The goal is to preserve the analytical meaning of the Census data while allowing
 
 ## Publication Quality Checklist
 
-- [ ] The selected dot plot type is appropriate for the analytical question.
-- [ ] It is clear whether dots represent individual observations or categorical values.
-- [ ] Axes, scales, units, and categories are clearly identified.
-- [ ] Categories are ordered meaningfully when applicable.
-- [ ] Dots remain visible and interpretable without excessive overlap.
-- [ ] Dot size does not unintentionally encode another quantitative measure.
-- [ ] Color is used purposefully and is not the only means of communicating information.
-- [ ] Comparable dot plots use consistent scales.
-- [ ] The Census dataset, table, universe, geography, reference period, measure, and units are documented.
-- [ ] Missing, suppressed, or unavailable values are handled appropriately.
-- [ ] Census-published margins of error and interpretation limitations are addressed where applicable.
-- [ ] Error-bar overlap or non-overlap is not presented as a statistical significance test.
-- [ ] A meaningful text description or accessible data alternative accompanies the example.
-- [ ] The versioned source-data snapshot is documented.
-- [ ] Python and R implementations have been executed and verified.
-- [ ] Cross-language results have been reviewed for analytical consistency.
-- [ ] Generated output has been inspected before publication.
-- [ ] Reproducibility and adaptation instructions are current.
-- [ ] Related component guidance has been reviewed.
+- The selected dot plot type is appropriate for the analytical question.
+- It is clear whether dots represent individual observations or categorical values.
+- Axes, scales, units, and categories are clearly identified.
+- Categories are ordered meaningfully when applicable.
+- Dots remain visible and interpretable without excessive overlap.
+- Dot size does not unintentionally encode another quantitative measure.
+- Color is used purposefully and is not the only means of communicating information.
+- Comparable dot plots use consistent scales.
+- The Census dataset, table, universe, geography, reference period, measure, and units are documented.
+- Missing, suppressed, or unavailable values are handled appropriately.
+- Census-published margins of error and interpretation limitations are addressed where applicable.
+- Error-bar overlap or non-overlap is not presented as a statistical significance test.
+- A meaningful text description or accessible data alternative accompanies the example.
+- The versioned source-data snapshot is documented.
+- Python and R implementations have been executed and verified.
+- Cross-language results have been reviewed for analytical consistency.
+- Generated output has been inspected before publication.
+- Reproducibility and adaptation instructions are current.
+- Related component guidance has been reviewed.
 
 ## Related Pages
 
