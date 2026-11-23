@@ -371,30 +371,30 @@ The goal is to preserve the analytical meaning of the Census data while allowing
 
 ## Publication Quality Checklist
 
-- [ ] A slope diagram is appropriate for comparing exactly two selected points or periods.
-- [ ] Both comparison periods are clearly identified using their complete reference periods.
-- [ ] ACS multi-year estimates are not described as individual annual observations.
-- [ ] Period overlap has been checked and documented where relevant.
-- [ ] The values, units, universes, and definitions are comparable across both periods.
-- [ ] The same categories or geographies are correctly matched across both datasets.
-- [ ] All lines or endpoints in the static slope diagram are clearly identified.
-- [ ] The number of lines remains interpretable.
-- [ ] Labels and lines do not overlap excessively.
-- [ ] Comparable panels or small multiples use consistent scales.
-- [ ] Absolute versus relative change has been considered.
-- [ ] Percentage-point change is distinguished from percent change.
-- [ ] Intermediate trends are not implied by the connecting lines.
-- [ ] Census-published uncertainty has been considered.
-- [ ] Statistical significance is not inferred from slope direction or steepness alone.
-- [ ] Color is not the only means of identifying categories.
-- [ ] Missing, suppressed, or unavailable values are handled appropriately.
-- [ ] A meaningful text description or accessible data alternative accompanies the example.
-- [ ] Both versioned source-data snapshots are documented.
-- [ ] Python and R implementations have been executed and verified.
-- [ ] Cross-language results have been reviewed for analytical consistency.
-- [ ] Generated output has been inspected before publication.
-- [ ] Reproducibility and adaptation instructions are current.
-- [ ] Related component guidance has been reviewed.
+- A slope diagram is appropriate for comparing exactly two selected points or periods.
+- Both comparison periods are clearly identified using their complete reference periods.
+- ACS multi-year estimates are not described as individual annual observations.
+- Period overlap has been checked and documented where relevant.
+- The values, units, universes, and definitions are comparable across both periods.
+- The same categories or geographies are correctly matched across both datasets.
+- All lines or endpoints in the static slope diagram are clearly identified.
+- The number of lines remains interpretable.
+- Labels and lines do not overlap excessively.
+- Comparable panels or small multiples use consistent scales.
+- Absolute versus relative change has been considered.
+- Percentage-point change is distinguished from percent change.
+- Intermediate trends are not implied by the connecting lines.
+- Census-published uncertainty has been considered.
+- Statistical significance is not inferred from slope direction or steepness alone.
+- Color is not the only means of identifying categories.
+- Missing, suppressed, or unavailable values are handled appropriately.
+- A meaningful text description or accessible data alternative accompanies the example.
+- Both versioned source-data snapshots are documented.
+- Python and R implementations have been executed and verified.
+- Cross-language results have been reviewed for analytical consistency.
+- Generated output has been inspected before publication.
+- Reproducibility and adaptation instructions are current.
+- Related component guidance has been reviewed.
 
 ## Related Pages
 
